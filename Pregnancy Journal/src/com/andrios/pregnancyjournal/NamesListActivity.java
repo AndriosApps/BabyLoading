@@ -1,14 +1,16 @@
 package com.andrios.pregnancyjournal;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
-import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
 
 public class NamesListActivity extends Activity {
 	
@@ -25,7 +27,23 @@ public class NamesListActivity extends Activity {
         
         getExtras();
         setConnections();
+        setOnClickListeners();
     }
+
+	private void setOnClickListeners() {
+		listView.setOnItemClickListener(new OnItemClickListener() {
+
+			public void onItemClick(AdapterView<?> arg0, View v, int row,
+					long arg3) {
+				Intent intent = new Intent(v.getContext(), BabyNameViewActivity.class);
+				intent.putExtra("list", nameList);
+				intent.putExtra("index", row);
+				startActivity(intent);
+			}
+
+		});
+		
+	}
 
 	private void getExtras() {
 		createTestNames();
