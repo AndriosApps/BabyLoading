@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, MainActivity!</string>
+    <string name="app_name">Pregnancy Journal</string>
+    <string name="color_pink">#ff99ff</string>
+    <string name="color_blue">#33cccc</string>
+    <string name="color_title">#ffffff</string>
+    <string name="color_text_1">#000000</string>
+    <string name="size_title">22dip</string>
+</resources>

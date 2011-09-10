@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" android:background="#ff99ff">
+    <LinearLayout android:id="@+id/linearLayout2" android:background="#33cccc" android:layout_width="match_parent" android:layout_weight="0" android:layout_height="50dip" android:gravity="center">
+        <TextView android:layout_height="wrap_content" android:textColor="#ffffff" android:id="@+id/textView1" android:layout_width="wrap_content" android:textSize="22dip" android:text="@string/app_name"></TextView>
+        <LinearLayout android:id="@+id/linearLayout3" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="1"></LinearLayout>
+        <Button android:text="Settings" android:id="@+id/button1" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/linearLayout1" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+        <LinearLayout android:id="@+id/linearLayout4" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center">
+            <LinearLayout android:id="@+id/linearLayout6" android:layout_weight="1" android:gravity="center" android:orientation="vertical" android:layout_width="75dip" android:layout_height="match_parent">
+                <Button android:text="" android:background="@drawable/journal" android:layout_width="75dip" android:layout_height="75dip" android:id="@+id/mainActivityJournalBTN"></Button>
+                <TextView android:layout_height="wrap_content" android:text="Journal" android:textColor="#000000" android:id="@+id/textView2" android:layout_width="wrap_content"></TextView>
+            </LinearLayout>
+            <LinearLayout android:id="@+id/linearLayout7" android:layout_weight="1" android:gravity="center" android:orientation="vertical" android:layout_width="75dip" android:layout_height="match_parent">
+                <Button android:text="" android:background="@drawable/names" android:layout_width="75dip" android:layout_height="75dip" android:id="@+id/mainActivityNamesBTN"></Button>
+                <TextView android:layout_height="wrap_content" android:text="Names" android:textColor="#000000" android:id="@+id/textView3" android:layout_width="wrap_content"></TextView>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/linearLayout5" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center">
+            <LinearLayout android:id="@+id/linearLayout8" android:layout_weight="1" android:gravity="center" android:orientation="vertical" android:layout_width="75dip" android:layout_height="match_parent"></LinearLayout>
+            <LinearLayout android:id="@+id/linearLayout9" android:layout_weight="1" android:gravity="center" android:orientation="vertical" android:layout_width="75dip" android:layout_height="match_parent"></LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

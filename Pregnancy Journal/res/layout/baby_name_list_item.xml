@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content" android:id="@+id/baby_name_list_item_backgroundLL">
+  <ImageView 
+  	android:layout_width="75dp" 
+  	android:layout_height="75dp" 
+  	android:src="@drawable/icon" 
+  	android:scaleType="fitXY" android:id="@+id/baby_name_list_item_displayIMG">
+  </ImageView>
+  <LinearLayout 
+  	android:layout_height="match_parent" 
+  	android:id="@+id/linearLayout1" 
+  	android:layout_width="50dp" android:layout_weight="1" android:orientation="horizontal">
+      <LinearLayout android:id="@+id/linearLayout3" android:gravity="center|left" android:layout_height="match_parent" android:layout_width="100dip" android:layout_weight="1">
+          <TextView android:layout_height="wrap_content" android:text="TextView" android:layout_width="wrap_content" android:id="@+id/baby_name_list_item_nameLBL" android:textSize="18dip"></TextView>
+      </LinearLayout>
+      <LinearLayout android:id="@+id/linearLayout2" android:layout_height="match_parent" android:gravity="center" android:layout_width="100dip" android:layout_weight="1" android:orientation="vertical">
+          <LinearLayout android:id="@+id/linearLayout4" android:layout_height="50dip" android:layout_weight="1" android:layout_width="match_parent" android:gravity="center">
+              <TextView android:layout_weight="0" android:layout_height="wrap_content" android:text="Mom" android:id="@+id/textView1" android:layout_width="40dip" android:gravity="center"></TextView>
+              <LinearLayout android:id="@+id/linearLayout6" android:layout_width="wrap_content" android:layout_height="match_parent" android:gravity="center" android:layout_weight="1">
+                  <ImageView android:id="@+id/imageView1" android:src="@drawable/star_outline" android:layout_width="15dip" android:layout_height="15dip" android:scaleType="fitXY"></ImageView>
+                  <ImageView android:id="@+id/imageView2" android:src="@drawable/star_outline" android:layout_width="15dip" android:layout_height="15dip" android:scaleType="fitXY"></ImageView>
+                  <ImageView android:id="@+id/imageView3" android:src="@drawable/star_outline" android:layout_width="15dip" android:layout_height="15dip" android:scaleType="fitXY"></ImageView>
+                  <ImageView android:id="@+id/imageView4" android:src="@drawable/star_outline" android:layout_width="15dip" android:layout_height="15dip" android:scaleType="fitXY"></ImageView>
+                  <ImageView android:id="@+id/imageView5" android:src="@drawable/star_outline" android:layout_width="15dip" android:layout_height="15dip" android:scaleType="fitXY"></ImageView>
+              </LinearLayout>
+          </LinearLayout>
+          <LinearLayout android:id="@+id/linearLayout5" android:layout_height="50dip" android:layout_weight="1" android:layout_width="match_parent" android:gravity="center">
+              <TextView android:layout_weight="0" android:layout_height="wrap_content" android:text="Dad" android:id="@+id/textView2" android:layout_width="40dip" android:gravity="center"></TextView>
+              <LinearLayout android:id="@+id/linearLayout7" android:layout_width="wrap_content" android:layout_height="match_parent" android:gravity="center" android:layout_weight="1">
+                  <ImageView android:scaleType="fitXY" android:id="@+id/ImageView03" android:layout_width="15dip" android:src="@drawable/star_outline" android:layout_height="15dip"></ImageView>
+                  <ImageView android:scaleType="fitXY" android:id="@+id/ImageView01" android:layout_width="15dip" android:src="@drawable/star_outline" android:layout_height="15dip"></ImageView>
+                  <ImageView android:scaleType="fitXY" android:id="@+id/ImageView02" android:layout_width="15dip" android:src="@drawable/star_outline" android:layout_height="15dip"></ImageView>
+                  <ImageView android:scaleType="fitXY" android:id="@+id/ImageView04" android:layout_width="15dip" android:src="@drawable/star_outline" android:layout_height="15dip"></ImageView>
+                  <ImageView android:scaleType="fitXY" android:id="@+id/ImageView05" android:layout_width="15dip" android:src="@drawable/star_outline" android:layout_height="15dip"></ImageView>
+              </LinearLayout>
+          </LinearLayout>
+      </LinearLayout>
+  </LinearLayout>
+  
+  
+  
+  
+</LinearLayout>
