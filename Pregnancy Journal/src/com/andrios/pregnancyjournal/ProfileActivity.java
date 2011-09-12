@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
+
+import com.andrios.apft.R;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -13,15 +16,23 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Window;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 public class ProfileActivity extends Activity {
 	
 	Profile profile;
-	TextView nameLBL;
+	TextView nameLBL, date1LBL, date2LBL, dateTypeLBL;
+	ViewFlipper flipper;
+	SegmentedControlButton dueRDO, lmpRDO;
+	
+	
 	
     /** Called when the activity is first created. */
     @Override
@@ -39,14 +50,37 @@ public class ProfileActivity extends Activity {
     
     
 	private void setConnections() {
-		nameLBL = (TextView) findViewById(R.id.ProfileActivityNameLBL);
-		nameLBL.setText(profile.getName());
 		
+		flipper = (ViewFlipper) findViewById(R.id.details); 
+		flipper.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_in));
+	    flipper.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_out));
+		nameLBL = (TextView) findViewById(R.id.ProfileActivityNameLBL);
+		
+		
+		date1LBL = (TextView) findViewById(R.id.profileActivityDateLBL);
+		
+		date2LBL = (TextView) findViewById(R.id.profileActivityDate2LBL);
+		dateTypeLBL = (TextView) findViewById(R.id.profileActivityDateTypeLBL);
+	
+		dueRDO = (SegmentedControlButton) findViewById(R.id.profileActivityDueRDO);
+		dueRDO.setChecked(!profile.isLMPDate());
+		lmpRDO = (SegmentedControlButton) findViewById(R.id.profileActivityLMPRDO);
+		lmpRDO.setChecked(profile.isLMPDate());
+		
+		setDataField();
 	}
 
 
 	private void setOnClickListeners() {
-		// TODO Auto-generated method stub
+		dueRDO.setOnCheckedChangeListener(new OnCheckedChangeListener(){
+
+			public void onCheckedChanged(CompoundButton buttonView,
+					boolean isChecked) {
+				profile.setisLMPDate(!dueRDO.isChecked());
+				setDataField();
+			}
+			
+		});
 		
 	}
 
@@ -112,6 +146,63 @@ public class ProfileActivity extends Activity {
 					}
 				});
 		alert.show();
+	}
+	
+	private void setDataField(){
+		
+		nameLBL.setText(profile.getName());
+		date1LBL.setText(profile.getDateString());
+		
+		
+		Calendar c = (Calendar) profile.getDate().clone();
+		
+		if(profile.isLMPDate()){
+			c.add(Calendar.DAY_OF_YEAR, 280);
+			dateTypeLBL.setText("Due Date");
+		}else{
+			c.add(Calendar.DAY_OF_YEAR, -280);
+			dateTypeLBL.setText("LMP Date");
+		}
+		
+		String dateString = "";
+		int day = c.get(Calendar.DAY_OF_MONTH);
+		int month = c.get(Calendar.MONTH)+1;
+		int year = c.get(Calendar.YEAR);
+		String monthString = "";
+		System.out.println("Month Is " + month);
+		if(month == 1){
+			monthString = "January";
+		}else if(month == 2){
+			monthString = "February";
+		}else if(month == 3){
+			monthString = "March";
+		}else if(month == 4){
+			monthString = "April";
+		}else if(month == 5){
+			monthString = "May";
+		}else if(month == 6){
+			monthString = "June";
+		}else if(month == 7){
+			monthString = "July";
+		}else if(month == 8){
+			monthString = "August";
+		}else if(month == 9){
+			monthString = "September";
+		}else if(month == 10){
+			monthString = "October";
+		}else if(month == 11){
+			monthString = "November";
+		}else if(month == 12){
+			monthString = "December";
+		}
+		dateString = day + " " + monthString + " " + year; 
+        date2LBL.setText(dateString);
+		
+	}
+	
+	public void onPause(){
+		super.onPause();
+		write(ProfileActivity.this);
 	}
     
 }

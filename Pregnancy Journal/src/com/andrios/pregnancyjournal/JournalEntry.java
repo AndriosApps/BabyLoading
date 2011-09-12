@@ -18,8 +18,8 @@ public class JournalEntry implements Serializable{
 	private boolean wishingBoy;
 	boolean wishingChanged;
 	boolean isImportant;
-	int weight;
-	int waist;
+	double weight;
+	double waist;
 	
 	public JournalEntry(){
 		this.date = Calendar.getInstance();
@@ -100,11 +100,11 @@ public class JournalEntry implements Serializable{
 		return dateString;
 	}
 	
-	public int getWeight(){
+	public double getWeight(){
 		return weight;
 	}
 	
-	public int getWaist(){
+	public  double getWaist(){
 		return waist;
 	}
 	
@@ -203,11 +203,11 @@ public class JournalEntry implements Serializable{
 		return myString;
 	}
 	
-	public void setWeight(int weight){
+	public void setWeight(double weight){
 		this.weight = weight;
 	}
 	
-	public void setWaist(int waist){
+	public void setWaist(double waist){
 		this.waist = waist;
 	}
 	

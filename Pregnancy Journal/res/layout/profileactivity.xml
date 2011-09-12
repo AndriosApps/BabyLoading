@@ -15,23 +15,22 @@
             </LinearLayout>
             <LinearLayout android:layout_width="match_parent" android:id="@+id/LinearLayout01" android:gravity="center" android:layout_height="wrap_content" android:layout_weight="1">
                 <RadioGroup android:id="@+id/radioGroup1" android:layout_height="50dip" android:orientation="horizontal" android:layout_width="wrap_content">
-                    <com.andrios.pregnancyjournal.SegmentedControlButton android:text="Due" android:id="@+id/radio0" android:checked="true" android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="50dip"></com.andrios.pregnancyjournal.SegmentedControlButton>
-                    <com.andrios.pregnancyjournal.SegmentedControlButton android:text="LMP" android:id="@+id/radio1" android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="50dip"></com.andrios.pregnancyjournal.SegmentedControlButton>
+                    <com.andrios.pregnancyjournal.SegmentedControlButton android:text="Due" android:checked="true" android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="50dip" android:id="@+id/profileActivityDueRDO"></com.andrios.pregnancyjournal.SegmentedControlButton>
+                    <com.andrios.pregnancyjournal.SegmentedControlButton android:text="LMP" android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="50dip" android:id="@+id/profileActivityLMPRDO"></com.andrios.pregnancyjournal.SegmentedControlButton>
                 </RadioGroup>
-                <TextView android:layout_width="wrap_content" android:textColor="#ffffff" android:layout_height="wrap_content" android:text="11 Sep 2012" android:id="@+id/TextView01" android:layout_weight="1" android:gravity="center"></TextView>
+                <TextView android:layout_width="wrap_content" android:textColor="#ffffff" android:layout_height="wrap_content" android:text="11 Sep 2012" android:layout_weight="1" android:gravity="center" android:id="@+id/profileActivityDateLBL"></TextView>
             </LinearLayout>
             <LinearLayout android:id="@+id/linearLayout8" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:layout_weight="1">
-                <RadioGroup android:id="@+id/RadioGroup01" android:layout_height="50dip" android:orientation="horizontal" android:layout_width="wrap_content">
-                    <com.andrios.pregnancyjournal.SegmentedControlButton android:text="Due" android:id="@+id/SegmentedControlButton02" android:checked="true" android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="50dip"></com.andrios.pregnancyjournal.SegmentedControlButton>
-                    <com.andrios.pregnancyjournal.SegmentedControlButton android:text="LMP" android:id="@+id/SegmentedControlButton01" android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="50dip"></com.andrios.pregnancyjournal.SegmentedControlButton>
-                </RadioGroup>
-                <TextView android:layout_height="wrap_content" android:textColor="#ffffff" android:id="@+id/textView2" android:text="07 DEC 2012" android:layout_weight="1" android:gravity="center" android:layout_width="75dip"></TextView>
+                <TextView android:layout_height="wrap_content" android:textColor="#ffffff" android:text="Due Date:" android:layout_weight="1" android:layout_width="wrap_content" android:gravity="center" android:id="@+id/profileActivityDateTypeLBL"></TextView>
+                <TextView android:layout_height="wrap_content" android:textColor="#ffffff" android:text="07 DEC 2012" android:layout_weight="1" android:gravity="center" android:layout_width="75dip" android:id="@+id/profileActivityDate2LBL"></TextView>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
-<LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout4" android:layout_height="wrap_content">
+<LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout4" android:textColor="#ffffff" android:layout_height="wrap_content" android:layout_weight="1">
     <CheckBox android:text="Pregnant" android:id="@+id/checkBox1" android:layout_width="wrap_content" android:layout_height="wrap_content"></CheckBox>
 </LinearLayout>
-<LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout5" android:layout_height="wrap_content"></LinearLayout>
+<LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout5" android:layout_height="wrap_content">
+    <SeekBar android:layout_height="wrap_content" android:id="@+id/seekBar1" android:layout_width="match_parent"></SeekBar>
+</LinearLayout>
 </LinearLayout>
