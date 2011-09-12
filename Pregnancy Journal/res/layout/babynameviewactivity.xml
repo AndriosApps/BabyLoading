@@ -3,12 +3,11 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="match_parent" 
-  android:background="#ff99ff"
-  android:orientation="vertical">
-    <LinearLayout android:id="@+id/linearLayout1" android:background="#33cccc" android:layout_width="match_parent" android:layout_height="50dip" android:gravity="center">
+  android:orientation="vertical" android:background="@drawable/background_pink">
+    <LinearLayout android:id="@+id/linearLayout1" android:background="#0099cc" android:layout_width="match_parent" android:layout_height="50dip" android:gravity="center">
         <TextView android:text="John" android:textSize="22dip" android:textColor="#ffffff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0" android:id="@+id/babyNameViewActivityNameLBL"></TextView>
         <LinearLayout android:id="@+id/linearLayout3" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="1"></LinearLayout>
-        <Button android:layout_weight="0" android:text="Button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/babyNameViewActivityEditBTN"></Button>
+        <Button android:layout_weight="0" android:text="Save" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/babyNameViewActivitySaveBTN"></Button>
     </LinearLayout>
     <LinearLayout android:id="@+id/linearLayout2" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
         <LinearLayout android:id="@+id/linearLayout4" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
@@ -16,20 +15,20 @@
                 <ImageView android:src="@drawable/icon" android:id="@+id/babyNameViewActivityGenderIMG" android:layout_width="75dip" android:layout_height="75dip" android:scaleType="fitXY"></ImageView>
                 <LinearLayout android:id="@+id/linearLayout8" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
                     <LinearLayout android:id="@+id/linearLayout9" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center">
-                        <TextView android:text="Mom" android:layout_height="wrap_content" android:id="@+id/textView2" android:layout_width="100dip" android:gravity="center"></TextView>
-                        <ImageView android:src="@drawable/icon" android:layout_width="25dip" android:layout_height="25dip" android:scaleType="fitXY" android:id="@+id/mom1"></ImageView>
-                        <ImageView android:src="@drawable/icon" android:layout_width="25dip" android:layout_height="25dip" android:scaleType="fitXY" android:id="@+id/mom2"></ImageView>
-                        <ImageView android:src="@drawable/icon" android:layout_width="25dip" android:layout_height="25dip" android:scaleType="fitXY" android:id="@+id/mom3"></ImageView>
-                        <ImageView android:src="@drawable/icon" android:layout_width="25dip" android:layout_height="25dip" android:scaleType="fitXY" android:id="@+id/mom4"></ImageView>
-                        <ImageView android:src="@drawable/icon" android:layout_width="25dip" android:layout_height="25dip" android:scaleType="fitXY" android:id="@+id/mom5"></ImageView>
+                        <TextView android:text="Mom" android:textColor="#ffffff" android:layout_height="wrap_content" android:id="@+id/textView2" android:layout_width="100dip" android:gravity="center"></TextView>
+                        <ImageView android:layout_width="25dip" android:layout_height="25dip" android:scaleType="fitXY" android:id="@+id/mom1" android:src="@drawable/star_outline"></ImageView>
+                        <ImageView android:layout_width="25dip" android:layout_height="25dip" android:scaleType="fitXY" android:id="@+id/mom2" android:src="@drawable/star_outline"></ImageView>
+                        <ImageView android:layout_width="25dip" android:layout_height="25dip" android:scaleType="fitXY" android:id="@+id/mom3" android:src="@drawable/star_outline"></ImageView>
+                        <ImageView android:layout_width="25dip" android:layout_height="25dip" android:scaleType="fitXY" android:id="@+id/mom4" android:src="@drawable/star_outline"></ImageView>
+                        <ImageView android:layout_width="25dip" android:layout_height="25dip" android:scaleType="fitXY" android:id="@+id/mom5" android:src="@drawable/star_outline"></ImageView>
                     </LinearLayout>
                     <LinearLayout android:id="@+id/linearLayout10" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center">
-                        <TextView android:text="Dad" android:layout_height="wrap_content" android:id="@+id/textView3" android:layout_width="100dip" android:gravity="center"></TextView>
-                        <ImageView android:src="@drawable/icon" android:layout_width="25dip" android:layout_height="25dip" android:scaleType="fitXY" android:id="@+id/mom1"></ImageView>
-                        <ImageView android:src="@drawable/icon" android:layout_width="25dip" android:layout_height="25dip" android:scaleType="fitXY" android:id="@+id/mom2"></ImageView>
-                        <ImageView android:src="@drawable/icon" android:layout_width="25dip" android:layout_height="25dip" android:scaleType="fitXY" android:id="@+id/mom3"></ImageView>
-                        <ImageView android:src="@drawable/icon" android:layout_width="25dip" android:layout_height="25dip" android:scaleType="fitXY" android:id="@+id/mom4"></ImageView>
-                        <ImageView android:src="@drawable/icon" android:layout_width="25dip" android:layout_height="25dip" android:scaleType="fitXY" android:id="@+id/mom5"></ImageView>
+                        <TextView android:text="Dad" android:textColor="#ffffff" android:layout_height="wrap_content" android:id="@+id/textView3" android:layout_width="100dip" android:gravity="center"></TextView>
+                        <ImageView android:layout_width="25dip" android:layout_height="25dip" android:scaleType="fitXY" android:src="@drawable/star_outline" android:id="@+id/dad1"></ImageView>
+                        <ImageView android:layout_width="25dip" android:layout_height="25dip" android:scaleType="fitXY" android:src="@drawable/star_outline" android:id="@+id/dad2"></ImageView>
+                        <ImageView android:layout_width="25dip" android:layout_height="25dip" android:scaleType="fitXY" android:src="@drawable/star_outline" android:id="@+id/dad3"></ImageView>
+                        <ImageView android:layout_width="25dip" android:layout_height="25dip" android:scaleType="fitXY" android:src="@drawable/star_outline" android:id="@+id/dad4"></ImageView>
+                        <ImageView android:layout_width="25dip" android:layout_height="25dip" android:scaleType="fitXY" android:src="@drawable/star_outline" android:id="@+id/dad5"></ImageView>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -37,15 +36,13 @@
             </LinearLayout>
         </LinearLayout>
         <LinearLayout android:id="@+id/linearLayout5" android:layout_width="match_parent" android:layout_height="75dip" android:gravity="center">
-            <CheckBox android:text="Veto" android:id="@+id/checkBox1" android:layout_width="wrap_content" android:layout_height="wrap_content"></CheckBox>
             <LinearLayout android:id="@+id/linearLayout12" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="1"></LinearLayout>
             <LinearLayout android:id="@+id/linearLayout13" android:layout_height="match_parent" android:layout_weight="0" android:layout_width="150dip" android:gravity="center|left">
-                <Spinner android:id="@+id/spinner1" android:layout_height="wrap_content" android:layout_width="120dip"></Spinner>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout android:id="@+id/linearLayout11" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_weight="1">
-            <TextView android:text="TextView" android:id="@+id/textView4" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
-            <EditText android:text="EditText" android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/editText1" android:layout_weight="1"></EditText>
+            <TextView android:text="Notes" android:textColor="#ffffff" android:id="@+id/textView4" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+            <EditText android:text="EditText" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:id="@+id/babyNameViewActivityCommentsTXT" android:gravity="top" android:inputType="textImeMultiLine"></EditText>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

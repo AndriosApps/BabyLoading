@@ -14,11 +14,16 @@ public class BabyName implements Serializable {
 	private int dadRating;
 	private boolean firstName;
 	private boolean isMale;
+	
 	private String comments;
 	
 	
 	public BabyName(){
-		
+		this.name = "Click Here";
+		this.isMale = true;
+		this.momRating = 0;
+		this.dadRating = 0;
+		this.comments = "Add Comments Here!";
 	}
 	
 	/*
@@ -75,6 +80,20 @@ public class BabyName implements Serializable {
 	
 	public String getComments(){
 		return comments;
+	}
+	
+	public double getRating(){
+		return (double) (momRating + dadRating)/2;
+	}
+	
+	public String print(){
+		String myString = "\n" + name +
+						"\n Mom's Rating: " + Integer.toString(momRating)+
+						"\n Dad's Rating: " + Integer.toString(dadRating)+
+						"\n" + comments + "\n\n";
+		
+		
+		return myString;
 	}
 
 

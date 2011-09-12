@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent" 
+  android:orientation="vertical" android:background="@drawable/background_pink">
+    <LinearLayout android:id="@+id/linearLayout1" android:background="#0099cc" android:layout_width="match_parent" android:layout_height="50dip" android:gravity="center">
+        <TextView android:text="10 SEP 2011" android:textSize="22dip" android:textColor="#ffffff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0" android:id="@+id/journalEntryViewActivityDateLBL"></TextView>
+        <LinearLayout android:id="@+id/linearLayout3" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="1"></LinearLayout>
+        <Button android:layout_weight="0" android:text="Save" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/journalEntryViewActivitySaveBTN"></Button>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/linearLayout2" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+        <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout5" android:gravity="center" android:layout_height="75dip">
+            <LinearLayout android:layout_weight="1" android:layout_width="wrap_content" android:id="@+id/linearLayout12" android:layout_height="match_parent" android:gravity="center">
+                <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Title" android:id="@+id/journalEntryViewActivityTitleTXT"></EditText>
+            </LinearLayout>
+            <LinearLayout android:layout_weight="0" android:layout_width="150dip" android:id="@+id/linearLayout13" android:layout_height="match_parent" android:gravity="center">
+                <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Important" android:id="@+id/journalEntryViewActivityImportantCheckBox"></CheckBox>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/linearLayout4" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+            <LinearLayout android:id="@+id/linearLayout6" android:layout_height="match_parent" android:layout_width="match_parent" android:orientation="horizontal">
+                <LinearLayout android:layout_width="wrap_content" android:id="@+id/linearLayout8" android:layout_height="match_parent" android:orientation="vertical">
+                    <Spinner android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/journalEntryViewActivityMoodSpinner"></Spinner>
+                    <CheckBox android:text="Morning Sick" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/journalEntryViewMorningSickCheckBox"></CheckBox>
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:id="@+id/linearLayout10" android:layout_height="match_parent" android:layout_weight="1"></LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:id="@+id/linearLayout9" android:layout_height="match_parent" android:layout_weight="0" android:padding="5dip" android:orientation="vertical">
+                    <TextView android:text="Wishing for" android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+                    <RadioGroup android:id="@+id/radioGroup1" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                        <RadioButton android:text="Boy" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/journalEntryViewWishingBoyRDO" android:checked="false"></RadioButton>
+                        <RadioButton android:text="Girl" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/journalEntryViewWishingGirlRDO"></RadioButton>
+                    </RadioGroup>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:id="@+id/linearLayout7" android:layout_height="match_parent" android:layout_width="match_parent">
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/linearLayout11" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_weight="1">
+            <TextView android:text="Notes" android:textColor="#ffffff" android:id="@+id/textView4" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+            <EditText android:text="EditText" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="top" android:inputType="textImeMultiLine" android:id="@+id/journalEntryViewActivityCommentsTXT"></EditText>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -2,5 +2,12 @@
 <LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
-  android:layout_height="match_parent">
+  android:layout_height="match_parent" 
+  android:orientation="vertical" android:background="@drawable/background_pink">
+    <LinearLayout android:id="@+id/linearLayout1" android:background="#0099cc" android:layout_width="match_parent" android:layout_height="50dip" android:gravity="center">
+        <TextView android:layout_weight="0" android:textColor="#ffffff" android:layout_height="wrap_content" android:text="Journal Entries" android:textSize="22dip" android:id="@+id/textView1" android:layout_width="wrap_content"></TextView>
+        <LinearLayout android:layout_width="wrap_content" android:layout_weight="1" android:layout_height="match_parent" android:id="@+id/journalListActivityListView"></LinearLayout>
+        <Button android:text="New" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/journalListActivityNewBTN"></Button>
+    </LinearLayout>
+    <ListView android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/journalListActivityListview"></ListView>
 </LinearLayout>
