@@ -18,15 +18,19 @@ public class JournalEntry implements Serializable{
 	private boolean wishingBoy;
 	boolean wishingChanged;
 	boolean isImportant;
+	boolean isDrVisit;
+	boolean isUltrasound;
 	double weight;
 	double waist;
 	
 	public JournalEntry(){
 		this.date = Calendar.getInstance();
-		this.notes = "Use this to say whatever you want";
+		this.notes = "";
 		this.mood = 0;
 		this.isMorningSick = false;
 		this.wishingChanged = false;
+		this.isDrVisit = false;
+		this.isUltrasound = false;
 		this.title = "";
 	}
 	
@@ -106,6 +110,14 @@ public class JournalEntry implements Serializable{
 	
 	public  double getWaist(){
 		return waist;
+	}
+	
+	public boolean isDrVisit(){
+		return isDrVisit;
+	}
+	
+	public boolean isUltrasound(){
+		return isUltrasound;
 	}
 	
 	
@@ -209,6 +221,13 @@ public class JournalEntry implements Serializable{
 	
 	public void setWaist(double waist){
 		this.waist = waist;
+	}
+	public void setDrVisit(boolean isDrVisit){
+		this.isDrVisit = isDrVisit;
+	}
+	
+	public void setUltrasound(boolean isUltrasound){
+		this.isUltrasound = isUltrasound;
 	}
 	
 	

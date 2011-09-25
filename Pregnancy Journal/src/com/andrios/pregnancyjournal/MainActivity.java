@@ -40,7 +40,7 @@ public class MainActivity extends Activity {
 			     
 			    emailIntent .setType("plain/text");
 			     
-			    emailIntent .putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"miniMurph2012@gmail.com"});
+			    //emailIntent .putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"miniMurph2012@gmail.com"});
 			     
 			    emailIntent .putExtra(android.content.Intent.EXTRA_SUBJECT, "Baby Email");
 			     

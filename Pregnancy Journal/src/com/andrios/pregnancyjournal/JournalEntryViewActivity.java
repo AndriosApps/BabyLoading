@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -19,6 +20,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.ViewFlipper;
 
 public class JournalEntryViewActivity extends Activity {
 	
@@ -31,11 +33,12 @@ public class JournalEntryViewActivity extends Activity {
 	TextView dateLBL;
 	EditText commentsTXT, titleTXT;
 	JournalEntry note;
-	Button saveBTN;
+	Button saveBTN,flipBTN;
+	ViewFlipper flipper;
 	OnClickListener myOnClickListener;
-	Button newBTN;
+
 	Spinner moodSpinner;
-	CheckBox morningSickCheckBox, importantCheckBox;
+	CheckBox morningSickCheckBox, importantCheckBox, ultrasoundCheckBox, drVisitCheckBox;
 	RadioButton boy, girl;
 
 	private String array_spinner[];
@@ -69,6 +72,12 @@ public class JournalEntryViewActivity extends Activity {
 	}
 	
 	private void setConnections() {
+		
+		flipBTN = (Button) findViewById(R.id.journalEntryActivityFlipBTN);
+		flipper = (ViewFlipper) findViewById(R.id.details); 
+		flipper.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_in));
+	    flipper.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_out));
+		
 		array_spinner=new String[8];
 		array_spinner[0]="Excited";
 		array_spinner[1]="Happy";
@@ -96,6 +105,12 @@ public class JournalEntryViewActivity extends Activity {
 		importantCheckBox = (CheckBox) findViewById(R.id.journalEntryViewActivityImportantCheckBox);
 		importantCheckBox.setChecked(note.getImportant());
 		
+		ultrasoundCheckBox = (CheckBox) findViewById(R.id.journalEntryViewUltrasoundCheckBox);
+		ultrasoundCheckBox.setChecked(note.isUltrasound());
+		
+		
+		drVisitCheckBox = (CheckBox) findViewById(R.id.journalEntryViewDrVisitCheckBox);
+		drVisitCheckBox.setChecked(note.isDrVisit());
 		
 		commentsTXT = (EditText) findViewById(R.id.journalEntryViewActivityCommentsTXT);
 		commentsTXT.setText(note.getNotes());
@@ -113,6 +128,19 @@ public class JournalEntryViewActivity extends Activity {
 	}
 	
 	private void setOnClickListeners(){
+		flipBTN.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View arg0) {
+				flipper.showNext();
+				if(flipper.getDisplayedChild() == 0){
+					flipBTN.setBackgroundResource(R.drawable.button_page);
+				}else{
+					flipBTN.setBackgroundResource(R.drawable.button_clipboard);
+				}
+				
+			}
+			
+		});
 		dateLBL.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
@@ -130,6 +158,8 @@ public class JournalEntryViewActivity extends Activity {
 					note.setNotes(commentsTXT.getText().toString().trim());
 					note.setMood(moodSpinner.getSelectedItemPosition());
 					note.setMorningSick(morningSickCheckBox.isChecked());
+					note.setDrVisit(drVisitCheckBox.isChecked());
+					note.setUltrasound(ultrasoundCheckBox.isChecked());
 					note.setTitle(titleTXT.getText().toString().trim());
 					note.setImportant(importantCheckBox.isChecked());
 					if(boy.isChecked() || girl.isChecked()){

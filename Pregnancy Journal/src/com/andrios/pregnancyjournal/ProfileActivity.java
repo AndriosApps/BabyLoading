@@ -8,8 +8,6 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import com.andrios.apft.R;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -29,7 +27,7 @@ public class ProfileActivity extends Activity {
 	
 	Profile profile;
 	TextView nameLBL, date1LBL, date2LBL, dateTypeLBL;
-	ViewFlipper flipper;
+	
 	SegmentedControlButton dueRDO, lmpRDO;
 	
 	
@@ -51,9 +49,6 @@ public class ProfileActivity extends Activity {
     
 	private void setConnections() {
 		
-		flipper = (ViewFlipper) findViewById(R.id.details); 
-		flipper.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_in));
-	    flipper.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_out));
 		nameLBL = (TextView) findViewById(R.id.ProfileActivityNameLBL);
 		
 		

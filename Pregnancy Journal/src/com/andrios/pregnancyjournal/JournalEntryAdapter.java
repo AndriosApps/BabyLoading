@@ -91,6 +91,10 @@ public class JournalEntryAdapter extends ArrayAdapter<JournalEntry>{
                     
                     if(b.getImportant()){
                     	importantIMG.setImageResource(R.drawable.exclamation);
+                    }else if(b.isDrVisit()){
+                    	importantIMG.setImageResource(R.drawable.doctor);
+                    }else if(b.isUltrasound()){
+                    	importantIMG.setImageResource(R.drawable.ultrasound);
                     }else{
                     	importantIMG.setImageResource(R.drawable.nothing);
                     }
