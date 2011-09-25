@@ -7,15 +7,15 @@
     <LinearLayout android:id="@+id/linearLayout1" android:layout_height="50dip" android:background="#0099cc" android:gravity="center" android:layout_width="match_parent">
         <TextView android:textSize="22dip" android:layout_height="wrap_content" android:id="@+id/journalEntryViewActivityDateLBL" android:text="10 SEP 2011" android:layout_weight="0" android:textColor="#ffffff" android:layout_width="wrap_content"></TextView>
         <LinearLayout android:id="@+id/linearLayout3" android:layout_height="match_parent" android:layout_weight="1" android:layout_width="wrap_content"></LinearLayout>
-        <Button android:id="@+id/journalEntryViewActivitySaveBTN" android:text="Save" android:layout_height="wrap_content" android:layout_weight="0" android:layout_width="wrap_content"></Button>
-        <Button android:text="Notes" android:id="@+id/button1" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+        <Button android:id="@+id/journalEntryViewActivitySaveBTN" android:text="" android:layout_height="wrap_content" android:layout_weight="0" android:layout_width="wrap_content" android:background="@drawable/button_save"></Button>
+        <Button android:id="@+id/journalEntryActivityFlipBTN" android:text="" android:layout_height="wrap_content" android:layout_width="wrap_content" android:background="@drawable/button_page"></Button>
     </LinearLayout>
   <ViewFlipper android:id="@+id/details" android:layout_height="fill_parent" android:paddingLeft="15dip" android:paddingRight="15dip" android:layout_width="fill_parent" android:layout_weight="1">
       <LinearLayout android:orientation="vertical" android:id="@+id/linearLayout14" android:layout_width="match_parent" android:layout_height="match_parent">
           <LinearLayout android:orientation="vertical" android:id="@+id/linearLayout2" android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="match_parent">
               <LinearLayout android:id="@+id/linearLayout5" android:layout_height="75dip" android:gravity="center" android:layout_width="match_parent">
                   <LinearLayout android:id="@+id/linearLayout12" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:layout_width="wrap_content">
-                      <EditText android:hint="Title" android:id="@+id/journalEntryViewActivityTitleTXT" android:layout_height="wrap_content" android:layout_width="match_parent"></EditText>
+                      <EditText android:hint="Title" android:text="EditText" android:id="@+id/journalEntryViewActivityTitleTXT" android:layout_height="wrap_content" android:layout_width="match_parent"></EditText>
                   </LinearLayout>
                   <LinearLayout android:id="@+id/linearLayout13" android:layout_height="match_parent" android:layout_weight="0" android:gravity="center" android:layout_width="150dip">
                       <CheckBox android:id="@+id/journalEntryViewActivityImportantCheckBox" android:text="Important" android:layout_height="wrap_content" android:layout_width="wrap_content"></CheckBox>
@@ -25,7 +25,9 @@
                   <LinearLayout android:orientation="horizontal" android:id="@+id/linearLayout6" android:layout_height="match_parent" android:layout_width="match_parent">
                       <LinearLayout android:orientation="vertical" android:id="@+id/linearLayout8" android:layout_height="match_parent" android:layout_width="wrap_content">
                           <Spinner android:id="@+id/journalEntryViewActivityMoodSpinner" android:layout_height="wrap_content" android:layout_width="match_parent"></Spinner>
-                          <CheckBox android:id="@+id/journalEntryViewMorningSickCheckBox" android:text="Morning Sick" android:layout_height="wrap_content" android:layout_width="wrap_content"></CheckBox>
+                          <CheckBox android:text="Ultrasound" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/journalEntryViewUltrasoundCheckBox"></CheckBox>
+                          <CheckBox android:text="Dr. Appointment" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/journalEntryViewDrVisitCheckBox"></CheckBox>
+                          <CheckBox android:text="Morning Sick" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/journalEntryViewMorningSickCheckBox"></CheckBox>
                       </LinearLayout>
                       <LinearLayout android:id="@+id/linearLayout10" android:layout_height="match_parent" android:layout_weight="1" android:layout_width="wrap_content"></LinearLayout>
                       <LinearLayout android:orientation="vertical" android:id="@+id/linearLayout9" android:layout_height="match_parent" android:padding="5dip" android:layout_weight="0" android:layout_width="wrap_content">
@@ -40,10 +42,10 @@
               </LinearLayout>
           </LinearLayout>
       </LinearLayout>
-      <LinearLayout android:id="@+id/linearLayout15" android:layout_width="wrap_content" android:layout_height="wrap_content">
-          <LinearLayout android:orientation="vertical" android:id="@+id/linearLayout11" android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="match_parent">
+      <LinearLayout android:id="@+id/linearLayout15" android:layout_width="match_parent" android:layout_height="match_parent">
+          <LinearLayout android:orientation="vertical" android:id="@+id/linearLayout11" android:layout_height="match_parent" android:layout_width="match_parent" android:layout_weight="1">
               <TextView android:layout_height="wrap_content" android:id="@+id/textView4" android:text="Notes" android:textColor="#ffffff" android:layout_width="wrap_content"></TextView>
-              <EditText android:gravity="top" android:id="@+id/journalEntryViewActivityCommentsTXT" android:layout_height="wrap_content" android:layout_weight="1" android:inputType="textImeMultiLine" android:text="EditText" android:layout_width="match_parent"></EditText>
+              <EditText android:gravity="top" android:id="@+id/journalEntryViewActivityCommentsTXT" android:layout_height="match_parent" android:layout_weight="1" android:inputType="textMultiLine|textImeMultiLine" android:text="EditText" android:layout_width="match_parent"></EditText>
           </LinearLayout>
       </LinearLayout>
   

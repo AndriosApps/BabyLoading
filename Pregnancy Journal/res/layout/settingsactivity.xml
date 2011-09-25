@@ -10,22 +10,22 @@
       <LinearLayout android:id="@+id/linearLayout2" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
           <LinearLayout android:id="@+id/linearLayout4" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1">
               <LinearLayout android:layout_width="wrap_content" android:id="@+id/linearLayout6" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
-                  <Button android:text="" android:background="@drawable/logo_96white" android:layout_width="125dip" android:layout_height="75dip" android:id="@+id/settingsActivityAboutBTN"></Button>
-                  <TextView android:text="About" android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+                  <Button android:text="" android:layout_height="75dip" android:id="@+id/settingsActivityAboutBTN" android:background="@drawable/andrios" android:layout_width="75dip"></Button>
+                  <TextView android:text="About" android:textColor="#000000" android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
               </LinearLayout>
               <LinearLayout android:layout_width="wrap_content" android:id="@+id/linearLayout7" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
-                  <Button android:layout_width="100dip" android:text="Button" android:layout_height="100dip" android:id="@+id/settingsActivityProfileBTN"></Button>
-                  <TextView android:text="Profile" android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+                  <Button android:layout_width="100dip" android:text="" android:layout_height="100dip" android:id="@+id/settingsActivityProfileBTN" android:background="@drawable/storks"></Button>
+                  <TextView android:text="Profile" android:textColor="#000000" android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
               </LinearLayout>
           </LinearLayout>
           <LinearLayout android:id="@+id/linearLayout5" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1">
               <LinearLayout android:layout_width="wrap_content" android:id="@+id/linearLayout8" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
                   <Button android:layout_width="100dip" android:text="Button" android:id="@+id/button3" android:layout_height="100dip"></Button>
-                  <TextView android:text="TextView" android:id="@+id/textView3" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+                  <TextView android:text="TextView" android:textColor="#000000" android:id="@+id/textView3" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
               </LinearLayout>
               <LinearLayout android:layout_width="wrap_content" android:id="@+id/linearLayout9" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
                   <Button android:layout_width="100dip" android:text="" android:layout_height="100dip" android:background="@drawable/icon_save" android:id="@+id/settingsActivitySaveBTN"></Button>
-                  <TextView android:text="Save" android:id="@+id/textView4" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+                  <TextView android:text="Save" android:textColor="#000000" android:id="@+id/textView4" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
               </LinearLayout>
           </LinearLayout>
       </LinearLayout>

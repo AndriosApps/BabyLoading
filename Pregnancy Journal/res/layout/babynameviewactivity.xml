@@ -7,7 +7,7 @@
     <LinearLayout android:id="@+id/linearLayout1" android:background="#0099cc" android:layout_width="match_parent" android:layout_height="50dip" android:gravity="center">
         <TextView android:text="John" android:textSize="22dip" android:textColor="#ffffff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0" android:id="@+id/babyNameViewActivityNameLBL"></TextView>
         <LinearLayout android:id="@+id/linearLayout3" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="1"></LinearLayout>
-        <Button android:layout_weight="0" android:text="Save" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/babyNameViewActivitySaveBTN"></Button>
+        <Button android:layout_weight="0" android:text="" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/babyNameViewActivitySaveBTN" android:background="@drawable/button_save"></Button>
     </LinearLayout>
     <LinearLayout android:id="@+id/linearLayout2" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
         <LinearLayout android:id="@+id/linearLayout4" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
