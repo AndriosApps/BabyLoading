@@ -11,7 +11,7 @@ import android.widget.Button;
 
 public class MainActivity extends Activity {
 	
-	Button namesBTN, journalBTN, settingsBTN, emailBTN;
+	Button namesBTN, journalBTN, settingsBTN, emailBTN, profileBTN;
 	
 	
     /** Called when the activity is first created. */
@@ -30,9 +30,21 @@ public class MainActivity extends Activity {
 		journalBTN = (Button) findViewById(R.id.mainActivityJournalBTN);
 		settingsBTN = (Button) findViewById(R.id.mainActivitySettingsBTN);
 		emailBTN = (Button) findViewById(R.id.mainActivityEmailBTN);
+
+		profileBTN = (Button) findViewById(R.id.mainActivityProfileBTN);
 	}
 
 	private void setOnClickListeners() {
+		profileBTN.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				Intent intent = new Intent(v.getContext(), ProfileActivity.class);
+				
+				startActivity(intent);
+				
+			}
+		});
+		
 		emailBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {

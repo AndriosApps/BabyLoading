@@ -23,7 +23,7 @@ import android.widget.Toast;
 
 public class SettingsActivity extends Activity {
 	
-	Button saveBTN, aboutBTN, profileBTN;
+	Button saveBTN, aboutBTN;
 	ArrayList<BabyName> nameList;
 	ArrayList<JournalEntry> journalList;
 	
@@ -44,19 +44,10 @@ public class SettingsActivity extends Activity {
 	private void setConnections() {
 		saveBTN = (Button) findViewById(R.id.settingsActivitySaveBTN);
 		aboutBTN = (Button) findViewById(R.id.settingsActivityAboutBTN);
-		profileBTN = (Button) findViewById(R.id.settingsActivityProfileBTN);
 	}
 
 	private void setOnClickListeners() {
-		profileBTN.setOnClickListener(new OnClickListener(){
-
-			public void onClick(View v) {
-				Intent intent = new Intent(v.getContext(), ProfileActivity.class);
-				
-				startActivity(intent);
-				
-			}
-		});
+		
 		aboutBTN.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
