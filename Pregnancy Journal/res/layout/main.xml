@@ -11,18 +11,18 @@
     <LinearLayout android:id="@+id/linearLayout1" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
         <LinearLayout android:id="@+id/linearLayout4" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:layout_weight="1">
             <LinearLayout android:id="@+id/linearLayout6" android:layout_weight="1" android:gravity="center" android:orientation="vertical" android:layout_width="75dip" android:layout_height="match_parent">
-                <Button android:layout_width="125dip" android:layout_height="125dip" android:background="@drawable/momprofile" android:id="@+id/mainActivityProfileBTN"></Button>
+                <Button android:background="@drawable/button_name_tag" android:layout_width="140dip" android:id="@+id/mainActivityNamesBTN" android:layout_height="140dip"></Button>
             </LinearLayout>
             <LinearLayout android:id="@+id/linearLayout7" android:layout_weight="1" android:gravity="center" android:orientation="vertical" android:layout_width="75dip" android:layout_height="match_parent">
-                <Button android:layout_width="125dip" android:background="@drawable/button_journal" android:layout_height="125dip" android:id="@+id/mainActivityJournalBTN"></Button>
+                <Button android:background="@drawable/momprofile" android:layout_width="125dip" android:id="@+id/mainActivityProfileBTN" android:layout_height="125dip"></Button>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout android:id="@+id/linearLayout5" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:layout_weight="1">
             <LinearLayout android:layout_width="75dip" android:orientation="vertical" android:gravity="center" android:layout_weight="1" android:layout_height="match_parent" android:id="@+id/LinearLayout01">
-                <Button android:layout_width="140dip" android:background="@drawable/button_name_tag" android:layout_height="140dip" android:id="@+id/mainActivityNamesBTN"></Button>
+                <Button android:background="@drawable/button_journal" android:layout_width="125dip" android:id="@+id/mainActivityJournalBTN" android:layout_height="125dip"></Button>
             </LinearLayout>
             <LinearLayout android:id="@+id/linearLayout8" android:layout_weight="1" android:gravity="center" android:orientation="vertical" android:layout_width="75dip" android:layout_height="match_parent">
-                <Button android:text="" android:id="@+id/mainActivityEmailBTN" android:background="@drawable/button_email_baby" android:layout_width="125dip" android:layout_height="125dip"></Button>
+                <Button android:text="" android:id="@+id/mainActivityEmailBTN" android:background="@drawable/button_email_baby" android:layout_height="150dip" android:layout_width="150dip"></Button>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
