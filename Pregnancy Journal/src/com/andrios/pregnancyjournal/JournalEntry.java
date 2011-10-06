@@ -3,6 +3,9 @@ package com.andrios.pregnancyjournal;
 import java.io.Serializable;
 import java.util.Calendar;
 
+import android.graphics.Bitmap;
+import android.net.Uri;
+
 public class JournalEntry implements Serializable{
 
 	/**
@@ -22,6 +25,7 @@ public class JournalEntry implements Serializable{
 	boolean isUltrasound;
 	double weight;
 	double waist;
+	SerialBitmap entryBitmap;
 	
 	public JournalEntry(){
 		this.date = Calendar.getInstance();
@@ -32,6 +36,7 @@ public class JournalEntry implements Serializable{
 		this.isDrVisit = false;
 		this.isUltrasound = false;
 		this.title = "";
+		entryBitmap = new SerialBitmap();
 	}
 	
 	
@@ -118,6 +123,16 @@ public class JournalEntry implements Serializable{
 	
 	public boolean isUltrasound(){
 		return isUltrasound;
+	}
+	
+	
+	public Bitmap getBitmap(){
+		try{
+			return entryBitmap.bitmap;
+		}catch(Exception e){
+			return null;
+		}
+		
 	}
 	
 	
@@ -228,6 +243,11 @@ public class JournalEntry implements Serializable{
 	
 	public void setUltrasound(boolean isUltrasound){
 		this.isUltrasound = isUltrasound;
+	}
+	
+	
+	public void setBitmap(Bitmap profileBitmap){
+		this.entryBitmap.bitmap = profileBitmap;
 	}
 	
 	

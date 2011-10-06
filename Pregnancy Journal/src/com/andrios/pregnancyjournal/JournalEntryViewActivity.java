@@ -1,5 +1,7 @@
 package com.andrios.pregnancyjournal;
 
+
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -7,7 +9,11 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
@@ -17,15 +23,19 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 public class JournalEntryViewActivity extends Activity {
 	
 
 	static final int DATE_DIALOG_ID = 1;
+
+	static final int SELECT_IMAGE = 2;
 	
 	ArrayList<JournalEntry> noteList;
 	int index, mMonth, mDay, mYear;
@@ -36,7 +46,7 @@ public class JournalEntryViewActivity extends Activity {
 	Button saveBTN,flipBTN;
 	ViewFlipper flipper;
 	OnClickListener myOnClickListener;
-
+	ImageView entryIMG;
 	Spinner moodSpinner;
 	CheckBox morningSickCheckBox, importantCheckBox, ultrasoundCheckBox, drVisitCheckBox;
 	RadioButton boy, girl;
@@ -93,6 +103,11 @@ public class JournalEntryViewActivity extends Activity {
 		moodSpinner.setAdapter(adapter);
 		moodSpinner.setSelection(note.getMood());
 		
+		entryIMG = (ImageView) findViewById(R.id.journalEntryViewActivityEntryIMG);
+		if(note.getBitmap() != null){
+			entryIMG.setImageBitmap(note.getBitmap());
+		}
+		
 		saveBTN = (Button) findViewById(R.id.journalEntryViewActivitySaveBTN);
 		
 		dateLBL = (TextView) findViewById(R.id.journalEntryViewActivityDateLBL);
@@ -128,6 +143,16 @@ public class JournalEntryViewActivity extends Activity {
 	}
 	
 	private void setOnClickListeners(){
+		entryIMG.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				
+				startActivityForResult(new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI), SELECT_IMAGE);
+				
+			}
+			
+		});
+				
 		flipBTN.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View arg0) {
@@ -154,6 +179,8 @@ public class JournalEntryViewActivity extends Activity {
 
 			public void onClick(View v) {
 				if(checkFormat()){
+					
+					System.out.println("SAVE 1");
 					Intent intent = new Intent();
 					note.setNotes(commentsTXT.getText().toString().trim());
 					note.setMood(moodSpinner.getSelectedItemPosition());
@@ -165,26 +192,22 @@ public class JournalEntryViewActivity extends Activity {
 					if(boy.isChecked() || girl.isChecked()){
 						note.setWishingBoy(boy.isChecked());
 					}
-					
+
+					System.out.println("SAVE 2");
 					if(index == -1){
 						noteList.add(note);
 					}else{
 						noteList.set(index, note);
 					}
-					
-					
+					Toast.makeText(JournalEntryViewActivity.this, "saving entry", Toast.LENGTH_SHORT).show();//TODO
+
+					System.out.println("SAVE 3");
 					intent.putExtra("list", noteList);
 				System.out.println("SAVE BUTTON CLICKED");
 					JournalEntryViewActivity.this.setResult(RESULT_OK, intent);
 					JournalEntryViewActivity.this.finish();
 				}
-				
 			}
-
-			
-
-			
-			
 		});
 	}
 	
@@ -231,6 +254,73 @@ public class JournalEntryViewActivity extends Activity {
 
 	          
 	    };
+	    
+		@Override
+	    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+			
+	    	if (requestCode == SELECT_IMAGE) {
+	    		if (resultCode == RESULT_OK) {
+	    			Uri selectedImage = intent.getData();
+					Bitmap bitmap = null;
+	    			try {
+						bitmap = getResizedBitmap((MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage)));
+						
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (Exception e) {
+						System.out.println("ERROR!");
+						e.printStackTrace();
+					}
+					
+					
+	    			Toast.makeText(this, "setting bitmap", Toast.LENGTH_SHORT).show();//TODO
+					note.setBitmap(bitmap);
+					entryIMG.setImageBitmap(note.getBitmap());
+					Toast.makeText(this, "set bitmap", Toast.LENGTH_SHORT).show();//TODO
+	    			
+	    		} else {
+	    			
+	    			Toast.makeText(this, "Add  Canceled", Toast.LENGTH_SHORT).show();
+	    		}
+	    	}
+	    }
+
+		//decodes image and scales it to reduce memory consumption
+		public Bitmap getResizedBitmap(Bitmap bm) {
+			
+			int width = bm.getWidth();
+			int height = bm.getHeight();
+			float scaleWidth;
+			float scaleHeight;
+			
+			if(width > 1000){
+				scaleWidth = ((float) 1000) / width;
+				 
+				scaleHeight = scaleWidth;
+			}else{
+				scaleWidth = (float) 1.0;
+				scaleHeight = (float) 1.0;
+			}
+			
+			
+			
+		 
+				// create a matrix for the manipulation
+		 
+		Matrix matrix = new Matrix();
+		 
+			// resize the bit map
+		 
+			matrix.postScale(scaleWidth, scaleHeight);
+		 
+			// recreate the new Bitmap
+				 
+				Bitmap resizedBitmap = Bitmap.createBitmap(bm, 0, 0, width, height, matrix, false);
+			 
+		return resizedBitmap;
+				 
+	}
 
 
 }
