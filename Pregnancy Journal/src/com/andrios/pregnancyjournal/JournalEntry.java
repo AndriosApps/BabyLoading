@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Calendar;
 
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 
 public class JournalEntry implements Serializable{
@@ -25,6 +26,7 @@ public class JournalEntry implements Serializable{
 	boolean isUltrasound;
 	double weight;
 	double waist;
+	Drawable drawable;
 	SerialBitmap entryBitmap;
 	
 	public JournalEntry(){
@@ -134,7 +136,10 @@ public class JournalEntry implements Serializable{
 		}
 		
 	}
-	
+	public Drawable getDrawable(){
+		return drawable;
+		
+	}
 	
 	
 	
@@ -245,6 +250,10 @@ public class JournalEntry implements Serializable{
 		this.isUltrasound = isUltrasound;
 	}
 	
+	
+	public void setDrawable(Drawable d){
+		this.drawable = d;
+	}
 	
 	public void setBitmap(Bitmap profileBitmap){
 		this.entryBitmap.bitmap = profileBitmap;

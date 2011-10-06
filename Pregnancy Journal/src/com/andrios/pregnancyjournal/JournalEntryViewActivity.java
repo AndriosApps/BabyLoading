@@ -11,6 +11,8 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -262,8 +264,9 @@ public class JournalEntryViewActivity extends Activity {
 	    		if (resultCode == RESULT_OK) {
 	    			Uri selectedImage = intent.getData();
 					Bitmap bitmap = null;
+					Drawable d = null;
 	    			try {
-						bitmap = getResizedBitmap((MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage)));
+						d = new BitmapDrawable(getResizedBitmap((MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage))));
 						
 					} catch (FileNotFoundException e) {
 						// TODO Auto-generated catch block
@@ -276,6 +279,8 @@ public class JournalEntryViewActivity extends Activity {
 					
 	    			Toast.makeText(this, "setting bitmap", Toast.LENGTH_SHORT).show();//TODO
 					note.setBitmap(bitmap);
+	    			//note.setDrawable(d);
+	    			//entryIMG.setImageDrawable(note.getDrawable());
 					entryIMG.setImageBitmap(note.getBitmap());
 					Toast.makeText(this, "set bitmap", Toast.LENGTH_SHORT).show();//TODO
 	    			
