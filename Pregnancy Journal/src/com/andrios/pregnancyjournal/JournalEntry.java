@@ -16,11 +16,8 @@ public class JournalEntry implements Serializable{
 
 	private Calendar date;
 	private String notes;
-	private int mood;
-	private boolean isMorningSick;
+	private String mood;
 	private String title;
-	private boolean wishingBoy;
-	boolean wishingChanged;
 	boolean isImportant;
 	boolean isDrVisit;
 	boolean isUltrasound;
@@ -32,13 +29,11 @@ public class JournalEntry implements Serializable{
 	public JournalEntry(){
 		this.date = Calendar.getInstance();
 		this.notes = "";
-		this.mood = 0;
-		this.isMorningSick = false;
-		this.wishingChanged = false;
+		this.mood = "";
 		this.isDrVisit = false;
 		this.isUltrasound = false;
 		this.title = "";
-		entryBitmap = new SerialBitmap();
+		//entryBitmap = new SerialBitmap();
 	}
 	
 	
@@ -54,21 +49,16 @@ public class JournalEntry implements Serializable{
 		return notes;
 	}
 	
-	public int getMood(){
+	public String getMood(){
 		return mood;
 	}
 	
-	public boolean getMorningSick(){
-		return isMorningSick;
-	}
 	
 	public String getTitle(){
 		return title;
 	}
 	
-	public boolean getWishingBoy(){
-		return wishingBoy;
-	}
+	
 	
 	public boolean getImportant(){
 		return isImportant;
@@ -153,13 +143,10 @@ public class JournalEntry implements Serializable{
 		this.notes = notes;
 	}
 	
-	public void setMood(int mood){
+	public void setMood(String mood){
 		this.mood = mood;
 	}
 	
-	public void setMorningSick(boolean isMorningSick){
-		this.isMorningSick = isMorningSick;
-	}
 	
 	public void setTitle(String title){
 		this.title = title;
@@ -169,10 +156,6 @@ public class JournalEntry implements Serializable{
 		this.date = date;
 	}
 	
-	public void setWishingBoy(boolean wishingBoy){
-		wishingChanged = true;
-		this.wishingBoy = wishingBoy;
-	}
 	
 	public void setImportant(boolean isImportant){
 		this.isImportant = isImportant;
@@ -186,49 +169,14 @@ public class JournalEntry implements Serializable{
 	}
 	
 	public String print(){
-		String gender;
-		if(getWishingBoy()){
-			gender = "boy";
-		}else{
-			gender = "girl";
-		}
+	
 		
-		String mood = "";
-		switch (getMood()) {
-		  case 0: 
-			  mood = "Excited";
-		    break;
-		  case 1: 
-			  mood = "Happy";
-		    break;
-		  case 2: 
-			  mood = "Scared";
-		    break;
-		  case 3: 
-			  mood = "Hopefull";
-		    break;
-		  case 4: 
-			  mood = "Worried";
-		    break;
-		  case 5: 
-			  mood = "Crying";
-		    break;
-		  case 6: 
-			  mood = "Uncertain";
-		    break;
-		  case 7: 
-			  mood = "Mad";
-		    break;
-		  default: 
-			  mood = "";
-		    
-		}
+		
 		
 		String myString = 
 			getDateString() +
 			"\n\n" + getTitle() +
 			"\nMood: " + getMood() +
-			"\nWishing for a  " + gender +
 			"\n\n Notes:\n" + getNotes() +
 			"\n\n"; 
 		

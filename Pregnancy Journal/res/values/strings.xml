@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="hello">Hello World, MainActivity!</string>
-    <string name="app_name">Pregnancy Journal</string>
+    <string name="app_name">Dad\'s Diary</string>
     <string name="color_pink">#ff99ff</string>
     <string name="color_blue">#33cccc</string>
     <string name="color_title">#ffffff</string>
     <string name="color_text_1">#000000</string>
     <string name="size_title">22dip</string>
+    <string name="lmp">LMP Date:</string>
+    <string name="title_due_date">Your wife\'s estimated due date is:</string>
+    <string name="title_trimester_first">First Trimester</string>
+    <string name="title_trimester_second">Second Trimester</string>
+    <string name="title_trimester_third">Third Trimester</string>
+    <string name="title_timeline">My Wife\'s Timeline</string>
+    <string name="empty"></string>
+    <string name="title_feelings">Feelings</string>
 </resources>

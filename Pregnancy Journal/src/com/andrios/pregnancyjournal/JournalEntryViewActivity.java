@@ -49,9 +49,9 @@ public class JournalEntryViewActivity extends Activity {
 	ViewFlipper flipper;
 	OnClickListener myOnClickListener;
 	ImageView entryIMG;
-	Spinner moodSpinner;
-	CheckBox morningSickCheckBox, importantCheckBox, ultrasoundCheckBox, drVisitCheckBox;
-	RadioButton boy, girl;
+	TextView moodTXT;
+	CheckBox importantCheckBox, ultrasoundCheckBox, drVisitCheckBox;
+	
 
 	private String array_spinner[];
 	
@@ -90,20 +90,8 @@ public class JournalEntryViewActivity extends Activity {
 		flipper.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_in));
 	    flipper.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_out));
 		
-		array_spinner=new String[8];
-		array_spinner[0]="Excited";
-		array_spinner[1]="Happy";
-		array_spinner[2]="Scared";
-		array_spinner[3]="Hopeful";
-		array_spinner[4]="Worried";
-		array_spinner[5]="Crying";
-		array_spinner[6]="Uncertain";
-		array_spinner[7]="Mad";
-		moodSpinner = (Spinner) findViewById(R.id.journalEntryViewActivityMoodSpinner);
-		ArrayAdapter adapter = new ArrayAdapter(this,
-				android.R.layout.simple_spinner_item, array_spinner);
-		moodSpinner.setAdapter(adapter);
-		moodSpinner.setSelection(note.getMood());
+		
+		
 		
 		entryIMG = (ImageView) findViewById(R.id.journalEntryViewActivityEntryIMG);
 		if(note.getBitmap() != null){
@@ -114,10 +102,6 @@ public class JournalEntryViewActivity extends Activity {
 		
 		dateLBL = (TextView) findViewById(R.id.journalEntryViewActivityDateLBL);
 		dateLBL.setText(note.getDateString());
-		
-		morningSickCheckBox = (CheckBox) findViewById(R.id.journalEntryViewMorningSickCheckBox);
-		morningSickCheckBox.setChecked(note.getMorningSick());
-		
 		
 		importantCheckBox = (CheckBox) findViewById(R.id.journalEntryViewActivityImportantCheckBox);
 		importantCheckBox.setChecked(note.getImportant());
@@ -132,15 +116,12 @@ public class JournalEntryViewActivity extends Activity {
 		commentsTXT = (EditText) findViewById(R.id.journalEntryViewActivityCommentsTXT);
 		commentsTXT.setText(note.getNotes());
 		
-		boy = (RadioButton) findViewById(R.id.journalEntryViewWishingBoyRDO);
-		girl = (RadioButton) findViewById(R.id.journalEntryViewWishingGirlRDO);
-		if(note.wishingChanged){
-			boy.setChecked(note.getWishingBoy());
-			girl.setChecked(!note.getWishingBoy());
-		}
 		
 		titleTXT = (EditText) findViewById(R.id.journalEntryViewActivityTitleTXT);
 		titleTXT.setText(note.getTitle());
+		
+		moodTXT = (EditText) findViewById(R.id.journalEntryViewActivityMoodTXT);
+		moodTXT.setText(note.getMood());
 	
 	}
 	
@@ -185,15 +166,12 @@ public class JournalEntryViewActivity extends Activity {
 					System.out.println("SAVE 1");
 					Intent intent = new Intent();
 					note.setNotes(commentsTXT.getText().toString().trim());
-					note.setMood(moodSpinner.getSelectedItemPosition());
-					note.setMorningSick(morningSickCheckBox.isChecked());
+					note.setMood(moodTXT.getText().toString().trim());
 					note.setDrVisit(drVisitCheckBox.isChecked());
 					note.setUltrasound(ultrasoundCheckBox.isChecked());
 					note.setTitle(titleTXT.getText().toString().trim());
 					note.setImportant(importantCheckBox.isChecked());
-					if(boy.isChecked() || girl.isChecked()){
-						note.setWishingBoy(boy.isChecked());
-					}
+					
 
 					System.out.println("SAVE 2");
 					if(index == -1){
@@ -203,9 +181,7 @@ public class JournalEntryViewActivity extends Activity {
 					}
 					Toast.makeText(JournalEntryViewActivity.this, "saving entry", Toast.LENGTH_SHORT).show();//TODO
 
-					System.out.println("SAVE 3");
 					intent.putExtra("list", noteList);
-				System.out.println("SAVE BUTTON CLICKED");
 					JournalEntryViewActivity.this.setResult(RESULT_OK, intent);
 					JournalEntryViewActivity.this.finish();
 				}

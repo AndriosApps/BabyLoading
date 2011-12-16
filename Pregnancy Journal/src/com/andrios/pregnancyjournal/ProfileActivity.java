@@ -5,31 +5,33 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
 import java.util.Calendar;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.DatePicker;
+import android.widget.DatePicker.OnDateChangedListener;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ViewFlipper;
 
 public class ProfileActivity extends Activity {
 	
+	static final int DATE_DIALOG_ID = 1;
+	
 	Profile profile;
-	TextView nameLBL, date1LBL, date2LBL, dateTypeLBL;
+	TextView nameLBL, date2LBL, dateTypeLBL;
 	
 	SegmentedControlButton dueRDO, lmpRDO;
 	
+	int mYear, mMonth, mDay;
+	
+	DatePicker datePicker;
 	
 	
     /** Called when the activity is first created. */
@@ -39,46 +41,72 @@ public class ProfileActivity extends Activity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.profileactivity);
         
-        readData();
-        
+     
+        getExtras();
         setConnections();
         setOnClickListeners();
         
     }
     
     
+	private void getExtras() {
+		Intent intent = this.getIntent();
+		profile = (Profile) intent.getSerializableExtra("profile");
+		if(profile.firstRun){
+			createDialog();
+		}
+	}
+
+
 	private void setConnections() {
 		
 		nameLBL = (TextView) findViewById(R.id.ProfileActivityNameLBL);
 		
+		datePicker = (DatePicker) findViewById(R.id.profileActivityDatePicker);
+		getCalendar();
+		datePicker.init(mYear, mMonth, mDay, myOnDateChangedListener);
 		
-		date1LBL = (TextView) findViewById(R.id.profileActivityDateLBL);
+		
 		
 		date2LBL = (TextView) findViewById(R.id.profileActivityDate2LBL);
 		dateTypeLBL = (TextView) findViewById(R.id.profileActivityDateTypeLBL);
 	
-		dueRDO = (SegmentedControlButton) findViewById(R.id.profileActivityDueRDO);
-		dueRDO.setChecked(!profile.isLMPDate());
-		lmpRDO = (SegmentedControlButton) findViewById(R.id.profileActivityLMPRDO);
-		lmpRDO.setChecked(profile.isLMPDate());
+		//dueRDO = (SegmentedControlButton) findViewById(R.id.profileActivityDueRDO);
+		//dueRDO.setChecked(!profile.isLMPDate());
+		//lmpRDO = (SegmentedControlButton) findViewById(R.id.profileActivityLMPRDO);
+		//lmpRDO.setChecked(profile.isLMPDate());
 		
 		setDataField();
 	}
 
 
 	private void setOnClickListeners() {
-		dueRDO.setOnCheckedChangeListener(new OnCheckedChangeListener(){
-
-			public void onCheckedChanged(CompoundButton buttonView,
-					boolean isChecked) {
-				profile.setisLMPDate(!dueRDO.isChecked());
-				setDataField();
-			}
-			
-		});
+		
+		
+//		dueRDO.setOnCheckedChangeListener(new OnCheckedChangeListener(){
+//
+//			public void onCheckedChanged(CompoundButton buttonView,
+//					boolean isChecked) {
+//				profile.setisLMPDate(!dueRDO.isChecked());
+//				setDataField();
+//			}
+//			
+//		});
 		
 	}
 
+	OnDateChangedListener myOnDateChangedListener = new OnDateChangedListener(){
+
+		public void onDateChanged(DatePicker view, int year, int monthOfYear,
+				int dayOfMonth) {
+			System.out.println("Date Changed");
+			profile.setDate(year, monthOfYear, dayOfMonth);
+			getCalendar();
+			setDataField();
+			
+		}
+		
+	};
 
 	private void readData() {
 		try {
@@ -104,7 +132,7 @@ public class ProfileActivity extends Activity {
 			FileOutputStream fos;
 			fos = ctx.openFileOutput("profile", Context.MODE_WORLD_READABLE);
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
-
+			profile.firstRun = false;
 			oos.writeObject(profile);
 
 			oos.close();
@@ -146,14 +174,14 @@ public class ProfileActivity extends Activity {
 	private void setDataField(){
 		
 		nameLBL.setText(profile.getName());
-		date1LBL.setText(profile.getDateString());
+		
 		
 		
 		Calendar c = (Calendar) profile.getDate().clone();
 		
 		if(profile.isLMPDate()){
 			c.add(Calendar.DAY_OF_YEAR, 280);
-			dateTypeLBL.setText("Due Date");
+			dateTypeLBL.setText(R.string.title_due_date);
 		}else{
 			c.add(Calendar.DAY_OF_YEAR, -280);
 			dateTypeLBL.setText("LMP Date");
@@ -199,5 +227,21 @@ public class ProfileActivity extends Activity {
 		super.onPause();
 		write(ProfileActivity.this);
 	}
+	
+
+	protected void getCalendar() {
+		Calendar c = Calendar.getInstance();
+    	c = profile.getDate();
+		
+		
+		mYear = c.get(Calendar.YEAR);
+    	mMonth = c.get(Calendar.MONTH);
+    	mDay = c.get(Calendar.DAY_OF_MONTH);
+		
+		
+	}
+	
+	
+
     
 }

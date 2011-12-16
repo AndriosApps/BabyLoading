@@ -61,6 +61,7 @@ public class JournalEntryAdapter extends ArrayAdapter<JournalEntry>{
                     	Calendar c = b.getDate();
                     	dateLBL.setText(Integer.toString(c.get(Calendar.DAY_OF_MONTH)));
                     	yearLBL.setText(Integer.toString(c.get(Calendar.YEAR)));
+                    	
 	                    if(c.get(Calendar.MONTH) == 0){
 	                    	dateLL.setBackgroundResource(R.drawable.cal_0);
 	                    }else if(c.get(Calendar.MONTH) == 1){
@@ -83,7 +84,7 @@ public class JournalEntryAdapter extends ArrayAdapter<JournalEntry>{
 	                    	dateLL.setBackgroundResource(R.drawable.cal_9);
 	                    }else if(c.get(Calendar.MONTH) == 10){
 	                    	dateLL.setBackgroundResource(R.drawable.cal_10);
-	                    }else if(c.get(Calendar.MONTH) == 111){
+	                    }else if(c.get(Calendar.MONTH) == 11){
 	                    	dateLL.setBackgroundResource(R.drawable.cal_11);
 	                    }
                     
