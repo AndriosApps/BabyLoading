@@ -3,6 +3,8 @@ package com.andrios.pregnancyjournal;
 import java.io.Serializable;
 import java.util.Calendar;
 
+import android.graphics.Bitmap;
+
 public class Profile implements Serializable{
 
 	/**
@@ -15,7 +17,8 @@ public class Profile implements Serializable{
 	Calendar c;
 	private boolean isLMPDate;
 	public boolean firstRun;
-	
+
+	SerialBitmap image;
 	
 	public Profile(){
 		this.name = "Click to Set Name";
@@ -119,6 +122,15 @@ public class Profile implements Serializable{
 		return formatDateString(temp);
 	}
 	
+	public Bitmap getBitmap(){
+		try{
+			return image.bitmap;
+		}catch(Exception e){
+			return null;
+		}
+		
+	}
+	
 	
 	/*
 	 * Setter Methods
@@ -179,6 +191,11 @@ public class Profile implements Serializable{
 		}
 		dateString = day + " " + monthString + " " + year; 
 		return dateString;
+	}
+	
+	public void setBitmap(Bitmap profileBitmap){
+		
+		this.image= new SerialBitmap(profileBitmap);
 	}
 	
 }

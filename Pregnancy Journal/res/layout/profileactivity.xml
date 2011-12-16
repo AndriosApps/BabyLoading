@@ -7,16 +7,20 @@
         <TextView android:text="Click to Set Name" android:textSize="22dip" android:textColor="#ffffff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0" android:id="@+id/ProfileActivityNameLBL"></TextView>
         <LinearLayout android:id="@+id/linearLayout3" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="1"></LinearLayout>
     </LinearLayout>
-<LinearLayout android:id="@+id/linearLayout2" android:layout_height="wrap_content" android:layout_width="match_parent">
 
-    <LinearLayout
-        android:id="@+id/linearLayout6"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center" >
+<LinearLayout
+    android:id="@+id/linearLayout6"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:layout_weight="0"
+    android:gravity="center" >
 
-        <ImageView android:id="@+id/imageView1" android:src="@drawable/momprofile" android:layout_height="125dip" android:layout_width="125dip" android:scaleType="fitXY"></ImageView>
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/profileActivityImageView"
+        android:layout_width="125dip"
+        android:layout_height="125dip"
+        android:scaleType="fitCenter"
+        android:src="@drawable/momprofile" />
 </LinearLayout>
 
 <LinearLayout

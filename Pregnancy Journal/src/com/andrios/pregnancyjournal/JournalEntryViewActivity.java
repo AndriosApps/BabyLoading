@@ -35,6 +35,7 @@ import android.widget.ViewFlipper;
 public class JournalEntryViewActivity extends Activity {
 	
 
+    private static final int CAMERA_REQUEST = 1888; 
 	static final int DATE_DIALOG_ID = 1;
 
 	static final int SELECT_IMAGE = 2;
@@ -53,7 +54,6 @@ public class JournalEntryViewActivity extends Activity {
 	CheckBox importantCheckBox, ultrasoundCheckBox, drVisitCheckBox;
 	
 
-	private String array_spinner[];
 	
     /** Called when the activity is first created. */
     @Override
@@ -130,8 +130,8 @@ public class JournalEntryViewActivity extends Activity {
 
 			public void onClick(View v) {
 				
-				startActivityForResult(new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI), SELECT_IMAGE);
-				
+				Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE); 
+                startActivityForResult(cameraIntent, CAMERA_REQUEST); 
 			}
 			
 		});
@@ -179,6 +179,7 @@ public class JournalEntryViewActivity extends Activity {
 					}else{
 						noteList.set(index, note);
 					}
+					
 					Toast.makeText(JournalEntryViewActivity.this, "saving entry", Toast.LENGTH_SHORT).show();//TODO
 
 					intent.putExtra("list", noteList);
@@ -236,72 +237,16 @@ public class JournalEntryViewActivity extends Activity {
 		@Override
 	    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 			
-	    	if (requestCode == SELECT_IMAGE) {
-	    		if (resultCode == RESULT_OK) {
-	    			Uri selectedImage = intent.getData();
-					Bitmap bitmap = null;
-					Drawable d = null;
-	    			try {
-						d = new BitmapDrawable(getResizedBitmap((MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage))));
-						
-					} catch (FileNotFoundException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (Exception e) {
-						System.out.println("ERROR!");
-						e.printStackTrace();
-					}
-					
-					
-	    			Toast.makeText(this, "setting bitmap", Toast.LENGTH_SHORT).show();//TODO
-					note.setBitmap(bitmap);
-	    			//note.setDrawable(d);
-	    			//entryIMG.setImageDrawable(note.getDrawable());
-					entryIMG.setImageBitmap(note.getBitmap());
-					Toast.makeText(this, "set bitmap", Toast.LENGTH_SHORT).show();//TODO
-	    			
-	    		} else {
-	    			
-	    			Toast.makeText(this, "Add  Canceled", Toast.LENGTH_SHORT).show();
-	    		}
-	    	}
+			 if (requestCode == CAMERA_REQUEST) {  
+		            Bitmap photo = (Bitmap) intent.getExtras().get("data"); 
+		            note.setBitmap(photo);
+		            entryIMG.setImageBitmap(photo);
+		        }  
 	    }
 
-		//decodes image and scales it to reduce memory consumption
-		public Bitmap getResizedBitmap(Bitmap bm) {
-			
-			int width = bm.getWidth();
-			int height = bm.getHeight();
-			float scaleWidth;
-			float scaleHeight;
-			
-			if(width > 1000){
-				scaleWidth = ((float) 1000) / width;
-				 
-				scaleHeight = scaleWidth;
-			}else{
-				scaleWidth = (float) 1.0;
-				scaleHeight = (float) 1.0;
-			}
-			
-			
-			
-		 
-				// create a matrix for the manipulation
-		 
-		Matrix matrix = new Matrix();
-		 
-			// resize the bit map
-		 
-			matrix.postScale(scaleWidth, scaleHeight);
-		 
-			// recreate the new Bitmap
-				 
-				Bitmap resizedBitmap = Bitmap.createBitmap(bm, 0, 0, width, height, matrix, false);
-			 
-		return resizedBitmap;
-				 
-	}
+	
 
 
+		
+		
 }

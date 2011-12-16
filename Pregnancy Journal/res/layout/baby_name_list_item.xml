@@ -3,39 +3,181 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="wrap_content" android:id="@+id/baby_name_list_item_backgroundLL" android:gravity="center">
-  <LinearLayout 
-  	android:layout_height="match_parent" 
-  	android:id="@+id/linearLayout1" 
-  	android:layout_width="50dp" android:layout_weight="1" android:orientation="horizontal" android:gravity="center">
-      <ImageView android:src="@drawable/icon" android:layout_height="75dip" android:layout_width="75dip" android:scaleType="fitXY" android:id="@+id/baby_name_list_item_genderIMG"></ImageView>
-      <LinearLayout android:id="@+id/linearLayout3" android:gravity="center|left" android:layout_height="match_parent" android:layout_width="100dip" android:layout_weight="1" android:padding="5dip">
-          <TextView android:layout_height="wrap_content" android:textColor="#ffffff" android:text="TextView" android:layout_width="wrap_content" android:id="@+id/baby_name_list_item_nameLBL" android:textSize="18dip"></TextView>
+
+  <LinearLayout
+      android:id="@+id/linearLayout1"
+      android:layout_width="50dp"
+      android:layout_height="match_parent"
+      android:layout_weight="1"
+      android:gravity="center"
+      android:orientation="horizontal" >
+
+      <ImageView
+          android:id="@+id/baby_name_list_item_genderIMG"
+          android:layout_width="75dip"
+          android:layout_height="75dip"
+          android:scaleType="fitXY"
+          android:src="@drawable/icon" >
+      </ImageView>
+
+      <LinearLayout
+          android:id="@+id/linearLayout3"
+          android:layout_width="100dip"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:gravity="center|left"
+          android:padding="5dip" >
+
+          <TextView
+              android:id="@+id/baby_name_list_item_nameLBL"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="TextView"
+              android:textColor="@color/blue"
+              android:textSize="18dip" >
+          </TextView>
       </LinearLayout>
-      <LinearLayout android:id="@+id/linearLayout2" android:layout_height="match_parent" android:gravity="center" android:layout_width="100dip" android:layout_weight="1" android:orientation="vertical">
-          <LinearLayout android:id="@+id/linearLayout4" android:layout_height="50dip" android:layout_weight="1" android:layout_width="match_parent" android:gravity="center">
-              <TextView android:layout_weight="0" android:textColor="#ffffff" android:layout_height="wrap_content" android:text="Mom" android:id="@+id/textView1" android:layout_width="40dip" android:gravity="center"></TextView>
-              <LinearLayout android:id="@+id/linearLayout6" android:layout_width="wrap_content" android:layout_height="match_parent" android:gravity="center" android:layout_weight="1">
-                  <ImageView android:src="@drawable/star_outline" android:layout_width="15dip" android:layout_height="15dip" android:scaleType="fitXY" android:id="@+id/listmom1"></ImageView>
-                  <ImageView android:src="@drawable/star_outline" android:layout_width="15dip" android:layout_height="15dip" android:scaleType="fitXY" android:id="@+id/listmom2"></ImageView>
-                  <ImageView android:src="@drawable/star_outline" android:layout_width="15dip" android:layout_height="15dip" android:scaleType="fitXY" android:id="@+id/listmom3"></ImageView>
-                  <ImageView android:src="@drawable/star_outline" android:layout_width="15dip" android:layout_height="15dip" android:scaleType="fitXY" android:id="@+id/listmom4"></ImageView>
-                  <ImageView android:src="@drawable/star_outline" android:layout_width="15dip" android:layout_height="15dip" android:scaleType="fitXY" android:id="@+id/listmom5"></ImageView>
+
+      <LinearLayout
+          android:id="@+id/linearLayout2"
+          android:layout_width="100dip"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:gravity="center"
+          android:orientation="vertical" >
+
+          <LinearLayout
+              android:id="@+id/linearLayout4"
+              android:layout_width="match_parent"
+              android:layout_height="50dip"
+              android:layout_weight="1"
+              android:gravity="center" >
+
+              <TextView
+                  android:id="@+id/textView1"
+                  android:layout_width="40dip"
+                  android:layout_height="wrap_content"
+                  android:layout_weight="0"
+                  android:gravity="center"
+                  android:text="Mom"
+                  android:textColor="@color/blue" >
+              </TextView>
+
+              <LinearLayout
+                  android:id="@+id/linearLayout6"
+                  android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:gravity="center" >
+
+                  <ImageView
+                      android:id="@+id/listmom1"
+                      android:layout_width="15dip"
+                      android:layout_height="15dip"
+                      android:scaleType="fitXY"
+                      android:src="@drawable/star_outline" >
+                  </ImageView>
+
+                  <ImageView
+                      android:id="@+id/listmom2"
+                      android:layout_width="15dip"
+                      android:layout_height="15dip"
+                      android:scaleType="fitXY"
+                      android:src="@drawable/star_outline" >
+                  </ImageView>
+
+                  <ImageView
+                      android:id="@+id/listmom3"
+                      android:layout_width="15dip"
+                      android:layout_height="15dip"
+                      android:scaleType="fitXY"
+                      android:src="@drawable/star_outline" >
+                  </ImageView>
+
+                  <ImageView
+                      android:id="@+id/listmom4"
+                      android:layout_width="15dip"
+                      android:layout_height="15dip"
+                      android:scaleType="fitXY"
+                      android:src="@drawable/star_outline" >
+                  </ImageView>
+
+                  <ImageView
+                      android:id="@+id/listmom5"
+                      android:layout_width="15dip"
+                      android:layout_height="15dip"
+                      android:scaleType="fitXY"
+                      android:src="@drawable/star_outline" >
+                  </ImageView>
               </LinearLayout>
           </LinearLayout>
-          <LinearLayout android:id="@+id/linearLayout5" android:layout_height="50dip" android:layout_weight="1" android:layout_width="match_parent" android:gravity="center">
-              <TextView android:layout_weight="0" android:textColor="#ffffff" android:layout_height="wrap_content" android:text="Dad" android:id="@+id/textView2" android:layout_width="40dip" android:gravity="center"></TextView>
-              <LinearLayout android:id="@+id/linearLayout7" android:layout_width="wrap_content" android:layout_height="match_parent" android:gravity="center" android:layout_weight="1">
-                  <ImageView android:scaleType="fitXY" android:layout_width="15dip" android:src="@drawable/star_outline" android:layout_height="15dip" android:id="@+id/listdad1"></ImageView>
-                  <ImageView android:scaleType="fitXY" android:layout_width="15dip" android:src="@drawable/star_outline" android:layout_height="15dip" android:id="@+id/listdad2"></ImageView>
-                  <ImageView android:scaleType="fitXY" android:layout_width="15dip" android:src="@drawable/star_outline" android:layout_height="15dip" android:id="@+id/listdad3"></ImageView>
-                  <ImageView android:scaleType="fitXY" android:layout_width="15dip" android:src="@drawable/star_outline" android:layout_height="15dip" android:id="@+id/listdad4"></ImageView>
-                  <ImageView android:scaleType="fitXY" android:layout_width="15dip" android:src="@drawable/star_outline" android:layout_height="15dip" android:id="@+id/listdad5"></ImageView>
+
+          <LinearLayout
+              android:id="@+id/linearLayout5"
+              android:layout_width="match_parent"
+              android:layout_height="50dip"
+              android:layout_weight="1"
+              android:gravity="center" >
+
+              <TextView
+                  android:id="@+id/textView2"
+                  android:layout_width="40dip"
+                  android:layout_height="wrap_content"
+                  android:layout_weight="0"
+                  android:gravity="center"
+                  android:text="Dad"
+                  android:textColor="@color/blue" >
+              </TextView>
+
+              <LinearLayout
+                  android:id="@+id/linearLayout7"
+                  android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:gravity="center" >
+
+                  <ImageView
+                      android:id="@+id/listdad1"
+                      android:layout_width="15dip"
+                      android:layout_height="15dip"
+                      android:scaleType="fitXY"
+                      android:src="@drawable/star_outline" >
+                  </ImageView>
+
+                  <ImageView
+                      android:id="@+id/listdad2"
+                      android:layout_width="15dip"
+                      android:layout_height="15dip"
+                      android:scaleType="fitXY"
+                      android:src="@drawable/star_outline" >
+                  </ImageView>
+
+                  <ImageView
+                      android:id="@+id/listdad3"
+                      android:layout_width="15dip"
+                      android:layout_height="15dip"
+                      android:scaleType="fitXY"
+                      android:src="@drawable/star_outline" >
+                  </ImageView>
+
+                  <ImageView
+                      android:id="@+id/listdad4"
+                      android:layout_width="15dip"
+                      android:layout_height="15dip"
+                      android:scaleType="fitXY"
+                      android:src="@drawable/star_outline" >
+                  </ImageView>
+
+                  <ImageView
+                      android:id="@+id/listdad5"
+                      android:layout_width="15dip"
+                      android:layout_height="15dip"
+                      android:scaleType="fitXY"
+                      android:src="@drawable/star_outline" >
+                  </ImageView>
               </LinearLayout>
           </LinearLayout>
       </LinearLayout>
   </LinearLayout>
-  
-  
-  
   
 </LinearLayout>

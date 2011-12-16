@@ -12,16 +12,23 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.Window;
 import android.widget.DatePicker;
 import android.widget.DatePicker.OnDateChangedListener;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class ProfileActivity extends Activity {
 	
+
+    private static final int CAMERA_REQUEST = 1888; 
 	static final int DATE_DIALOG_ID = 1;
 	
 	Profile profile;
@@ -30,8 +37,10 @@ public class ProfileActivity extends Activity {
 	SegmentedControlButton dueRDO, lmpRDO;
 	
 	int mYear, mMonth, mDay;
-	
+
 	DatePicker datePicker;
+
+	ImageView profileIMG;
 	
 	
     /** Called when the activity is first created. */
@@ -59,7 +68,10 @@ public class ProfileActivity extends Activity {
 
 
 	private void setConnections() {
-		
+		profileIMG = (ImageView) findViewById(R.id.profileActivityImageView);
+		if(profile.getBitmap() != null){
+			profileIMG.setImageBitmap(profile.getBitmap());
+		}
 		nameLBL = (TextView) findViewById(R.id.ProfileActivityNameLBL);
 		
 		datePicker = (DatePicker) findViewById(R.id.profileActivityDatePicker);
@@ -81,7 +93,34 @@ public class ProfileActivity extends Activity {
 
 
 	private void setOnClickListeners() {
+		nameLBL.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				createDialog();
+				
+			}
+			
+		});
 		
+		profileIMG.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE); 
+                startActivityForResult(cameraIntent, CAMERA_REQUEST); 
+				
+			}
+			
+		});
+		
+		profileIMG.setOnLongClickListener(new OnLongClickListener(){
+
+			public boolean onLongClick(View v) {
+				profile.setBitmap(null);
+				profileIMG.setBackgroundResource(R.drawable.momprofile);
+				return false;
+				
+			}
+		});
 		
 //		dueRDO.setOnCheckedChangeListener(new OnCheckedChangeListener(){
 //
@@ -241,6 +280,15 @@ public class ProfileActivity extends Activity {
 		
 	}
 	
+	@Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+		
+		 if (requestCode == CAMERA_REQUEST) {  
+	            Bitmap photo = (Bitmap) intent.getExtras().get("data"); 
+	            profile.setBitmap(photo);
+	            profileIMG.setImageBitmap(photo);
+	        }  
+    }
 	
 
     

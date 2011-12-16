@@ -8,21 +8,27 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnLongClickListener;
 import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
 	
-	Button namesBTN, journalBTN, settingsBTN, emailBTN, profileBTN;
+	Button namesBTN, journalBTN, settingsBTN, emailBTN;
+	ImageView profileBTN;
 	TextView dueDateLBL;
 	Profile profile;
+	String email;
 	
     /** Called when the activity is first created. */
     @Override
@@ -31,10 +37,11 @@ public class MainActivity extends Activity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.main);
         
-        setConnections();
-        setOnClickListeners();
+        
         
     }
+
+	
 
 	private void setConnections() {
 		dueDateLBL = (TextView) findViewById(R.id.mainActivityDueDateLBL);
@@ -46,13 +53,19 @@ public class MainActivity extends Activity {
 		emailBTN = (Button) findViewById(R.id.mainActivityEmailBTN);
 		
 		
-		profileBTN = (Button) findViewById(R.id.mainActivityProfileBTN);
+		profileBTN = (ImageView) findViewById(R.id.mainActivityProfileBTN);
+		
+		if(profile.getBitmap() != null){
+			profileBTN.setImageBitmap(profile.getBitmap());
+			
+		}
 	}
 	
 	public void onResume(){
 		super.onResume();
 		readData();
-		
+		setConnections();
+        setOnClickListeners();
 		buildTimeline();
 	}
 
@@ -67,20 +80,35 @@ public class MainActivity extends Activity {
 			}
 		});
 		
+
+		
 		emailBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-			    final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
-			     
-			    emailIntent .setType("plain/text");
-			     
-			    //emailIntent .putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"miniMurph2012@gmail.com"});
-			     
-			    emailIntent .putExtra(android.content.Intent.EXTRA_SUBJECT, "Baby Email");
-			     
-			    //emailIntent .putExtra(android.content.Intent.EXTRA_TEXT, myBodyText);
-			     
-			    startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+				
+				SharedPreferences prefs = MainActivity.this.getSharedPreferences("email", 0);
+		        
+		        if (prefs.getString("email", null) != null) { 
+		        	email = prefs.getString("email", null);
+		        	System.out.println("email: " + email);
+		        	 final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+				     
+					    emailIntent .setType("plain/text");
+					     
+					    emailIntent .putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{email});
+					     
+					    emailIntent .putExtra(android.content.Intent.EXTRA_SUBJECT, "Baby Email");
+					     
+					    //emailIntent .putExtra(android.content.Intent.EXTRA_TEXT, myBodyText);
+					     
+					    startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+		        }else{
+		        	emailDialog();
+		        }
+		        
+		        
+				
+			   
 
 			}
 
@@ -173,6 +201,29 @@ public class MainActivity extends Activity {
 				Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
 				intent.putExtra("profile", profile);
 				startActivity(intent);
+			}
+		});
+		
+		alert.show();
+	}
+	
+	private void emailDialog(){
+		final AlertDialog.Builder alert = new AlertDialog.Builder(this);
+		
+		alert.setTitle("Email Your Baby");
+		alert.setMessage(R.string.about_email);
+		final EditText input = new EditText(this);
+		alert.setView(input);
+		alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int whichButton) {
+				SharedPreferences prefs = MainActivity.this.getSharedPreferences("email", 0);
+		        
+		        
+		        SharedPreferences.Editor editor = prefs.edit();
+		        
+		        System.out.println("Email " + input.getText().toString());
+		        editor.putString("email", input.getText().toString());
+		        editor.commit();
 			}
 		});
 		

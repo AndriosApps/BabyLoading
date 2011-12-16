@@ -23,7 +23,6 @@ public class JournalEntry implements Serializable{
 	boolean isUltrasound;
 	double weight;
 	double waist;
-	Drawable drawable;
 	SerialBitmap entryBitmap;
 	
 	public JournalEntry(){
@@ -126,10 +125,7 @@ public class JournalEntry implements Serializable{
 		}
 		
 	}
-	public Drawable getDrawable(){
-		return drawable;
-		
-	}
+
 	
 	
 	
@@ -197,14 +193,11 @@ public class JournalEntry implements Serializable{
 	public void setUltrasound(boolean isUltrasound){
 		this.isUltrasound = isUltrasound;
 	}
-	
-	
-	public void setDrawable(Drawable d){
-		this.drawable = d;
-	}
+
 	
 	public void setBitmap(Bitmap profileBitmap){
-		this.entryBitmap.bitmap = profileBitmap;
+		
+		this.entryBitmap= new SerialBitmap(profileBitmap);
 	}
 	
 	
