@@ -9,10 +9,12 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -21,14 +23,18 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	
-	Button namesBTN, journalBTN, settingsBTN, emailBTN;
-	ImageView profileBTN;
-	TextView dueDateLBL;
+	Button namesBTN, journalBTN, settingsBTN, emailBTN, panicBTN;
+	
+	TextView dueDateLBL, ageLBL;
 	Profile profile;
 	String email;
+	
+	LinearLayout timelineLL;
+	
 	
     /** Called when the activity is first created. */
     @Override
@@ -45,20 +51,20 @@ public class MainActivity extends Activity {
 
 	private void setConnections() {
 		dueDateLBL = (TextView) findViewById(R.id.mainActivityDueDateLBL);
+		ageLBL = (TextView) findViewById(R.id.mainActivityAgeLBL);
 		
-		
+
+		panicBTN = (Button) findViewById(R.id.mainActivityPanicBTN);
 		namesBTN = (Button) findViewById(R.id.mainActivityNamesBTN);
 		journalBTN = (Button) findViewById(R.id.mainActivityJournalBTN);
 		settingsBTN = (Button) findViewById(R.id.mainActivitySettingsBTN);
 		emailBTN = (Button) findViewById(R.id.mainActivityEmailBTN);
 		
 		
-		profileBTN = (ImageView) findViewById(R.id.mainActivityProfileBTN);
 		
-		if(profile.getBitmap() != null){
-			profileBTN.setImageBitmap(profile.getBitmap());
-			
-		}
+		timelineLL = (LinearLayout) findViewById(R.id.mainActivityTimelineLL);
+		
+		
 	}
 	
 	public void onResume(){
@@ -70,14 +76,23 @@ public class MainActivity extends Activity {
 	}
 
 	private void setOnClickListeners() {
-		profileBTN.setOnClickListener(new OnClickListener(){
+		timelineLL.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				Intent intent = new Intent(v.getContext(), ProfileActivity.class);
-				intent.putExtra("profile", profile);
-				startActivity(intent);
+				timelineDialog();
 				
 			}
+			
+		});
+		
+		
+		panicBTN.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				panicDialog();
+				
+			}
+			
 		});
 		
 
@@ -114,11 +129,20 @@ public class MainActivity extends Activity {
 
 		});
 		
+		emailBTN.setOnLongClickListener(new OnLongClickListener(){
+
+			public boolean onLongClick(View v) {
+				emailDialog();
+				return false;
+			}
+			
+		});
+		
 		settingsBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
 				Intent intent = new Intent(v.getContext(), SettingsActivity.class);
-				
+				intent.putExtra("profile", profile);
 				startActivity(intent);
 			}
 
@@ -150,7 +174,10 @@ public class MainActivity extends Activity {
 	
 	private void buildTimeline(){
 	
+		profile.getDays();
+		profile.getWeekDays();
 		dueDateLBL.setText(profile.getDueDate());
+		ageLBL.setText("" + profile.getWeek() + " weeks, " + profile.getWeekDays() + " days");
 		
 		LinearLayout trimester = (LinearLayout) findViewById(R.id.mainActivityTrimesterLL);
 		for(int i = 0; i < trimester.getChildCount(); i++){
@@ -159,9 +186,25 @@ public class MainActivity extends Activity {
 		TextView trimesterText = (TextView) trimester.getChildAt(profile.getTrimester());
 		trimesterText.setBackgroundColor(Color.CYAN);
 		
+		
 		LinearLayout week = (LinearLayout) findViewById(R.id.mainActivityWeekLL);
 		for(int i = 0; i < week.getChildCount(); i++){
 			week.getChildAt(i).setBackgroundColor(R.color.andrios_grey);
+
+			week.getChildAt(i).setVisibility(View.VISIBLE);
+			if(profile.getTrimester() == 0){
+				if(i>=14){
+					week.getChildAt(i).setVisibility(View.GONE);
+				}
+			}else if(profile.getTrimester() == 1){
+				if(i<14 || i >=28){
+					week.getChildAt(i).setVisibility(View.GONE);
+				}
+			}else if(profile.getTrimester() == 2){
+				if(i <28){
+					week.getChildAt(i).setVisibility(View.GONE);
+				}
+			}
 		}
 		TextView weekText = (TextView) week.getChildAt(profile.getWeek());
 		weekText.setBackgroundColor(Color.CYAN);
@@ -207,6 +250,29 @@ public class MainActivity extends Activity {
 		alert.show();
 	}
 	
+	private void panicDialog(){
+		final AlertDialog.Builder alert = new AlertDialog.Builder(this);
+		final CharSequence[] items = {"Baby's Coming", "Contact Doctor", "She's Craving...", "She's Crying..."}; 
+		alert.setTitle("Stay Calm...");
+		alert.setItems(items, new DialogInterface.OnClickListener() {
+			
+			public void onClick(DialogInterface dialog, int item) {
+				if(item == 0){
+					Intent intent = new Intent(MainActivity.this, CheckListActivity.class);
+					startActivity(intent);
+				}
+				
+			}
+		});
+		alert.setNegativeButton("Nevermind", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int whichButton) {
+				
+			}
+		});
+		
+		alert.show();
+	}
+	
 	private void emailDialog(){
 		final AlertDialog.Builder alert = new AlertDialog.Builder(this);
 		
@@ -224,6 +290,25 @@ public class MainActivity extends Activity {
 		        System.out.println("Email " + input.getText().toString());
 		        editor.putString("email", input.getText().toString());
 		        editor.commit();
+			}
+		});
+		
+		alert.show();
+	}
+	
+	private void timelineDialog(){
+		final AlertDialog.Builder alert = new AlertDialog.Builder(this);
+		timelineLL.setDrawingCacheEnabled(true);
+		Bitmap b = Bitmap.createBitmap(timelineLL.getDrawingCache());
+		ImageView i = new ImageView(this);
+		i.setImageBitmap(b);
+		alert.setView(i);
+		alert.setMessage(R.string.about_timeline);
+		alert.setTitle("Mother's Timeline");
+		
+		alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int whichButton) {
+				
 			}
 		});
 		

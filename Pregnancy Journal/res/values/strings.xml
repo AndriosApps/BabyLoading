@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="hello">Hello World, MainActivity!</string>
-    <string name="app_name">Dad\'s Diary</string>
+    <string name="app_name">Baby Loading...</string>
     <string name="color_pink">#ff99ff</string>
     <string name="color_blue">#33cccc</string>
     <string name="color_title">#ffffff</string>
@@ -16,4 +16,13 @@
     <string name="empty"></string>
     <string name="title_feelings">Feelings</string>
     <string name="about_email">You can set up an email account for your child. You and your wife, along with friends and family can send messages that can be read later in life. \n\nEnter Email Address Below:</string>
+
+    <string name="about_timeline">This is built off of the date of your wife\'s last menstrual period. \n\nFirst Row: Current Week \nSecond Row: Current Month \nThird Row: Current Trimester</string>
+
+    <string name="title_profile">Wife\'s Profile</string>
+
+    <string name="title_developer_name">ndrios</string>
+
+    <string name="title_babys_coming">Baby\'s Comin\' Checklist</string>
+    
 </resources>

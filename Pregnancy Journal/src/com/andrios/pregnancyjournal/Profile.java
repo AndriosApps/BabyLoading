@@ -115,6 +115,33 @@ public class Profile implements Serializable{
 		return returnValue;
 	}
 	
+	public int getDays(){
+		Calendar today = Calendar.getInstance();
+		
+		long miliToday = today.getTimeInMillis();
+		long miliLMP = c.getTimeInMillis();
+		long diff = miliToday - miliLMP;
+		long diffDay = diff /(24*60*60*1000);
+		int returnValue = (int) diffDay;
+
+		System.out.println("Days: " + returnValue);
+		return returnValue;
+	}
+	
+	public int getWeekDays(){
+		Calendar today = Calendar.getInstance();
+		
+		long miliToday = today.getTimeInMillis();
+		long miliLMP = c.getTimeInMillis();
+		long diff = miliToday - miliLMP;
+		long diffDay = diff /(24*60*60*1000);
+	
+		
+		int returnValue = (int) diffDay % 7;
+		System.out.println("Weekdays: " + returnValue);
+		return returnValue;
+	}
+	
 	public String getDueDate(){
 		Calendar temp = (Calendar) c.clone();
 		temp.add(Calendar.DAY_OF_YEAR, 280);

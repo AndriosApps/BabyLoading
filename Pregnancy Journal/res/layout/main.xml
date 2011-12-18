@@ -31,114 +31,169 @@
             android:text="" >
 </Button>
     </LinearLayout>
-    <LinearLayout android:id="@+id/linearLayout1" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
-        <LinearLayout android:id="@+id/linearLayout4" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:layout_weight="1">
-            <LinearLayout android:id="@+id/linearLayout6" android:layout_weight="1" android:gravity="center" android:orientation="vertical" android:layout_width="75dip" android:layout_height="match_parent">
-                <Button android:background="@drawable/button_name_tag" android:layout_width="140dip" android:id="@+id/mainActivityNamesBTN" android:layout_height="140dip"></Button>
-            </LinearLayout>
-            <LinearLayout android:id="@+id/linearLayout7" android:layout_weight="1" android:gravity="center" android:orientation="vertical" android:layout_width="75dip" android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/mainActivityProfileBTN"
-                    android:layout_width="150dip"
-                    android:layout_height="150dip"
-                    android:background="@drawable/momprofile"
-                    android:scaleType="fitCenter" >
-</ImageView>
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <LinearLayout
+                android:id="@+id/linearLayout6"
+                android:layout_width="75dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/mainActivityNamesBTN"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:background="@drawable/button_name_tag" >
+                </Button>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout7"
+                android:layout_width="75dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/mainActivityPanicBTN"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/panic_button_normal"
+                    android:text="@string/empty" />
+
             </LinearLayout>
         </LinearLayout>
-        <LinearLayout android:id="@+id/linearLayout5" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:layout_weight="1">
-            <LinearLayout android:layout_width="75dip" android:orientation="vertical" android:gravity="center" android:layout_weight="1" android:layout_height="match_parent" android:id="@+id/LinearLayout01">
+
+        <LinearLayout
+            android:id="@+id/linearLayout5"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <LinearLayout
+                android:id="@+id/LinearLayout01"
+                android:layout_width="75dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical" >
 
                 <Button
                     android:id="@+id/mainActivityJournalBTN"
-                    android:layout_width="125dip"
-                    android:layout_height="150dip"
+                    android:layout_width="100dp"
+                    android:layout_height="125dp"
                     android:background="@drawable/button_journal" >
-</Button>
+                </Button>
             </LinearLayout>
-            <LinearLayout android:id="@+id/linearLayout8" android:layout_weight="1" android:gravity="center" android:orientation="vertical" android:layout_width="75dip" android:layout_height="match_parent">
-                <Button android:text="" android:id="@+id/mainActivityEmailBTN" android:background="@drawable/button_email_baby" android:layout_height="150dip" android:layout_width="150dip"></Button>
+
+            <LinearLayout
+                android:id="@+id/linearLayout8"
+                android:layout_width="75dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/mainActivityEmailBTN"
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:background="@drawable/button_email_baby"
+                    android:text="" >
+                </Button>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout9"
+        android:id="@+id/mainActivityTimelineLL"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="100dp"
         android:layout_weight="0"
         android:background="@color/andrios_grey"
         android:gravity="center"
         android:orientation="vertical" >
 
         <LinearLayout
-            android:id="@+id/linearLayout10"
+            android:id="@+id/linearLayout11"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" >
+            android:layout_weight="1"
+            android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/linearLayout10"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Due Date: "
-                android:textColor="@color/black" />
+                android:layout_weight="1" >
 
-            <TextView
-                android:id="@+id/mainActivityDueDateLBL"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Due Date: "
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/mainActivityDueDateLBL"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Due Date:"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LinearLayout02"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Due Date:"
-                android:textColor="@color/black" />
-        </LinearLayout>
+                android:layout_weight="1" >
 
-        <LinearLayout
-            android:id="@+id/mainActivityTrimesterLL"
-            android:layout_width="match_parent"
-            android:layout_height="15dp"
-            android:layout_weight="0"
-            android:gravity="center" >
+                <TextView
+                    android:id="@+id/TextView02"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Gestational Age: "
+                    android:textColor="@color/black" />
 
-            <TextView
-                android:id="@+id/mainActivityTrimester1LBL"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/title_trimester_first"
-                android:textColor="@color/black"
-                android:textSize="12dp" />
-
-            <TextView
-                android:id="@+id/mainActivityTrimester2LBL"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/title_trimester_second"
-                android:textColor="@color/black"
-                android:textSize="12dp" />
-
-            <TextView
-                android:id="@+id/mainActivityTrimester3LBL"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/title_trimester_third"
-                android:textColor="@color/black"
-                android:textSize="12dp" />
+                <TextView
+                    android:id="@+id/mainActivityAgeLBL"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Due Date:"
+                    android:textColor="@color/black" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/mainActivityWeekLL"
             android:layout_width="match_parent"
-            android:layout_height="15dp"
+            android:layout_height="20dp"
             android:layout_weight="0"
             android:gravity="center" >
 
@@ -150,7 +205,7 @@
                 android:gravity="center"
                 android:text="1"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek2"
@@ -160,7 +215,7 @@
                 android:gravity="center"
                 android:text="2"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek3"
@@ -170,7 +225,7 @@
                 android:gravity="center"
                 android:text="3"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek4"
@@ -180,7 +235,7 @@
                 android:gravity="center"
                 android:text="4"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek5"
@@ -190,7 +245,7 @@
                 android:gravity="center"
                 android:text="5"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek6"
@@ -200,7 +255,7 @@
                 android:gravity="center"
                 android:text="6"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek7"
@@ -210,7 +265,7 @@
                 android:gravity="center"
                 android:text="7"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek8"
@@ -220,7 +275,7 @@
                 android:gravity="center"
                 android:text="8"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek9"
@@ -230,7 +285,7 @@
                 android:gravity="center"
                 android:text="9"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek10"
@@ -240,7 +295,7 @@
                 android:gravity="center"
                 android:text="10"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek11"
@@ -250,7 +305,7 @@
                 android:gravity="center"
                 android:text="11"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek12"
@@ -260,7 +315,7 @@
                 android:gravity="center"
                 android:text="12"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek13"
@@ -270,7 +325,7 @@
                 android:gravity="center"
                 android:text="13"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek14"
@@ -280,7 +335,7 @@
                 android:gravity="center"
                 android:text="14"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek15"
@@ -290,7 +345,7 @@
                 android:gravity="center"
                 android:text="15"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek16"
@@ -300,7 +355,7 @@
                 android:gravity="center"
                 android:text="16"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek17"
@@ -310,7 +365,7 @@
                 android:gravity="center"
                 android:text="17"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek18"
@@ -320,7 +375,7 @@
                 android:gravity="center"
                 android:text="18"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek19"
@@ -330,7 +385,7 @@
                 android:gravity="center"
                 android:text="19"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek20"
@@ -340,7 +395,7 @@
                 android:gravity="center"
                 android:text="20"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek21"
@@ -350,7 +405,7 @@
                 android:gravity="center"
                 android:text="21"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek22"
@@ -360,7 +415,7 @@
                 android:gravity="center"
                 android:text="22"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek23"
@@ -370,7 +425,7 @@
                 android:gravity="center"
                 android:text="23"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek24"
@@ -380,7 +435,7 @@
                 android:gravity="center"
                 android:text="24"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek25"
@@ -390,7 +445,7 @@
                 android:gravity="center"
                 android:text="25"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek26"
@@ -400,7 +455,7 @@
                 android:gravity="center"
                 android:text="26"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek27"
@@ -410,7 +465,7 @@
                 android:gravity="center"
                 android:text="27"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek28"
@@ -420,7 +475,7 @@
                 android:gravity="center"
                 android:text="28"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek29"
@@ -430,7 +485,7 @@
                 android:gravity="center"
                 android:text="29"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek30"
@@ -440,7 +495,7 @@
                 android:gravity="center"
                 android:text="30"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek31"
@@ -450,7 +505,7 @@
                 android:gravity="center"
                 android:text="31"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek32"
@@ -460,7 +515,7 @@
                 android:gravity="center"
                 android:text="32"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek33"
@@ -470,7 +525,7 @@
                 android:gravity="center"
                 android:text="33"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek34"
@@ -480,7 +535,7 @@
                 android:gravity="center"
                 android:text="34"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek35"
@@ -490,7 +545,7 @@
                 android:gravity="center"
                 android:text="35"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek36"
@@ -500,7 +555,7 @@
                 android:gravity="center"
                 android:text="36"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek37"
@@ -510,7 +565,7 @@
                 android:gravity="center"
                 android:text="37"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek38"
@@ -520,7 +575,7 @@
                 android:gravity="center"
                 android:text="38"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek39"
@@ -530,7 +585,7 @@
                 android:gravity="center"
                 android:text="39"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/mainActivityWeek40"
@@ -540,13 +595,13 @@
                 android:gravity="center"
                 android:text="40"
                 android:textColor="@color/black"
-                android:textSize="6dp" />
+                android:textSize="10dp" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/mainActivityMonthLL"
             android:layout_width="match_parent"
-            android:layout_height="15dp"
+            android:layout_height="20dp"
             android:layout_weight="0"
             android:gravity="center" >
 
@@ -639,6 +694,44 @@
                 android:text="Month 9"
                 android:textColor="@color/black"
                 android:textSize="8dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mainActivityTrimesterLL"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_weight="0"
+            android:gravity="center" >
+
+            <TextView
+                android:id="@+id/mainActivityTrimester1LBL"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/title_trimester_first"
+                android:textColor="@color/black"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/mainActivityTrimester2LBL"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/title_trimester_second"
+                android:textColor="@color/black"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/mainActivityTrimester3LBL"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/title_trimester_third"
+                android:textColor="@color/black"
+                android:textSize="12dp" />
         </LinearLayout>
     </LinearLayout>
 

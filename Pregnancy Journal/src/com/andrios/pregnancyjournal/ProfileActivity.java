@@ -284,9 +284,14 @@ public class ProfileActivity extends Activity {
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 		
 		 if (requestCode == CAMERA_REQUEST) {  
-	            Bitmap photo = (Bitmap) intent.getExtras().get("data"); 
-	            profile.setBitmap(photo);
-	            profileIMG.setImageBitmap(photo);
+			 System.out.println("result Code" + resultCode);
+			 if((resultCode == RESULT_OK)){
+				 Bitmap photo = (Bitmap) intent.getExtras().get("data"); 
+		            profile.setBitmap(photo);
+		            profileIMG.setImageBitmap(photo);
+			 }
+	            
+	            
 	        }  
     }
 	

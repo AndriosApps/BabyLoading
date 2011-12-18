@@ -1,11 +1,16 @@
 package com.andrios.pregnancyjournal;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.Serializable;
 import java.util.Calendar;
 
 import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.widget.Toast;
 
 public class JournalEntry implements Serializable{
 
@@ -165,7 +170,23 @@ public class JournalEntry implements Serializable{
 	}
 	
 	public String print(){
-	
+		File root = android.os.Environment.getExternalStorageDirectory();               
+
+		 File dir = new File (root.getAbsolutePath() + "/baby_loading/");
+		 dir.mkdirs();
+		 File file = new File (dir, getDateString() + this.title + ".png");
+		 
+			 try {
+					
+					entryBitmap.bitmap.compress(CompressFormat.PNG, 100, new FileOutputStream(file));
+					System.out.println("Output: " +this.title + ".png");
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+				
+					e.printStackTrace();
+				}
+		 
+		
 		
 		
 		
