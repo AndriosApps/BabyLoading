@@ -24,5 +24,9 @@
     <string name="title_developer_name">ndrios</string>
 
     <string name="title_babys_coming">Baby\'s Comin\' Checklist</string>
+
+    <string name="title_doctor">Quick Contacts...</string>
+
+    <string name="title_baby_names">Baby Names...</string>
     
 </resources>

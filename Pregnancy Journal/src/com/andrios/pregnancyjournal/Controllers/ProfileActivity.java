@@ -1,4 +1,4 @@
-package com.andrios.pregnancyjournal;
+package com.andrios.pregnancyjournal.Controllers;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -6,6 +6,14 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Calendar;
+
+import com.andrios.pregnancyjournal.R;
+import com.andrios.pregnancyjournal.SegmentedControlButton;
+import com.andrios.pregnancyjournal.Models.Profile;
+import com.andrios.pregnancyjournal.R.drawable;
+import com.andrios.pregnancyjournal.R.id;
+import com.andrios.pregnancyjournal.R.layout;
+import com.andrios.pregnancyjournal.R.string;
 
 import android.app.Activity;
 import android.app.AlertDialog;

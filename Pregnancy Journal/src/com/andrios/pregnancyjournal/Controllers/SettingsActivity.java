@@ -1,4 +1,4 @@
-package com.andrios.pregnancyjournal;
+package com.andrios.pregnancyjournal.Controllers;
 
 
 import java.io.BufferedWriter;
@@ -9,6 +9,13 @@ import java.io.FileWriter;
 import java.io.ObjectInputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+
+import com.andrios.pregnancyjournal.R;
+import com.andrios.pregnancyjournal.Models.BabyName;
+import com.andrios.pregnancyjournal.Models.JournalEntry;
+import com.andrios.pregnancyjournal.Models.Profile;
+import com.andrios.pregnancyjournal.R.id;
+import com.andrios.pregnancyjournal.R.layout;
 
 import android.app.Activity;
 import android.app.AlertDialog;

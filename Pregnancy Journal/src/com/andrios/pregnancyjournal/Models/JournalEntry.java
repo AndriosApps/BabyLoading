@@ -1,10 +1,11 @@
-package com.andrios.pregnancyjournal;
+package com.andrios.pregnancyjournal.Models;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.Serializable;
 import java.util.Calendar;
+
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;

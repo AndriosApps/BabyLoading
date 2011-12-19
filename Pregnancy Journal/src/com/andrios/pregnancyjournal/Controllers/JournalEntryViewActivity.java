@@ -1,9 +1,16 @@
-package com.andrios.pregnancyjournal;
+package com.andrios.pregnancyjournal.Controllers;
 
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Calendar;
+
+import com.andrios.pregnancyjournal.R;
+import com.andrios.pregnancyjournal.Models.JournalEntry;
+import com.andrios.pregnancyjournal.R.anim;
+import com.andrios.pregnancyjournal.R.drawable;
+import com.andrios.pregnancyjournal.R.id;
+import com.andrios.pregnancyjournal.R.layout;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;

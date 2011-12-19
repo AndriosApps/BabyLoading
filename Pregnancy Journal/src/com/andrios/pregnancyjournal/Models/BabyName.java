@@ -1,14 +1,15 @@
-package com.andrios.pregnancyjournal;
+package com.andrios.pregnancyjournal.Models;
 
 import java.io.Serializable;
 
 public class BabyName implements Serializable {
 
+	
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 7580980267115197322L;
-
+	private static final long serialVersionUID = -2655782058703831528L;
 	private String name;
 	private int momRating;
 	private int dadRating;

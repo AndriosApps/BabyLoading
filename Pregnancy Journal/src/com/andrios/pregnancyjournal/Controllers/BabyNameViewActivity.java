@@ -1,7 +1,13 @@
-package com.andrios.pregnancyjournal;
+package com.andrios.pregnancyjournal.Controllers;
 
 
 import java.util.ArrayList;
+
+import com.andrios.pregnancyjournal.R;
+import com.andrios.pregnancyjournal.Models.BabyName;
+import com.andrios.pregnancyjournal.R.drawable;
+import com.andrios.pregnancyjournal.R.id;
+import com.andrios.pregnancyjournal.R.layout;
 
 import android.app.Activity;
 import android.app.AlertDialog;

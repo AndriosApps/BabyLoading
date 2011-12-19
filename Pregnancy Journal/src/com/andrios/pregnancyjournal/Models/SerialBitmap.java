@@ -1,4 +1,4 @@
-package com.andrios.pregnancyjournal;
+package com.andrios.pregnancyjournal.Models;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -16,7 +16,7 @@ public class SerialBitmap implements Serializable {
 	public Bitmap bitmap;
 
     // TODO: Finish this constructor
-    SerialBitmap(Bitmap bitmap) {
+    public SerialBitmap(Bitmap bitmap) {
         // Take your existing call to BitmapFactory and put it here
         this.bitmap = bitmap;
     }

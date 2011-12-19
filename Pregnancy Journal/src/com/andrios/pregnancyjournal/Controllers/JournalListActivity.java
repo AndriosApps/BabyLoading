@@ -1,4 +1,4 @@
-package com.andrios.pregnancyjournal;
+package com.andrios.pregnancyjournal.Controllers;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -9,8 +9,16 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Comparator;
 
+import com.andrios.pregnancyjournal.R;
+import com.andrios.pregnancyjournal.Adapters.JournalEntryAdapter;
+import com.andrios.pregnancyjournal.Models.JournalEntry;
+import com.andrios.pregnancyjournal.R.id;
+import com.andrios.pregnancyjournal.R.layout;
+
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +29,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 
 public class JournalListActivity extends Activity {
 	
@@ -29,6 +38,7 @@ public class JournalListActivity extends Activity {
 	ListView listView;
 	JournalEntryAdapter journalEntryListAdapter;
 	Button newBTN;
+	int position;
 	
 	
     /** Called when the activity is first created. */
@@ -91,6 +101,17 @@ public class JournalListActivity extends Activity {
 					intent.putExtra("list", notesList);
 					intent.putExtra("index", row);
 					startActivityForResult(intent, NOTEVIEW);
+				}
+
+			});
+			
+			listView.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+				public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+						int arg2, long arg3) {
+					position = arg2;
+					setAlertDialog();
+					return false;
 				}
 
 			});
@@ -168,5 +189,27 @@ public class JournalListActivity extends Activity {
 			Toast.makeText(ctx, "Error: Writing to file",
 					Toast.LENGTH_SHORT).show();
 		}
+	}
+	
+	private void setAlertDialog() {
+    	AlertDialog alertDialog = new AlertDialog.Builder(JournalListActivity.this).create();
+    	alertDialog.setTitle("Delete Entry");
+    	alertDialog.setMessage("Are you sure you want to remove "+ notesList.get(position).getTitle());
+    	alertDialog.setButton("Remove", new DialogInterface.OnClickListener() {
+			
+			public void onClick(DialogInterface dialog, int which) {
+				journalEntryListAdapter.remove(notesList.get(position));
+				write(JournalListActivity.this);
+			}
+		});
+    	alertDialog.setButton2("Cancel", new DialogInterface.OnClickListener() {
+			
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+    	
+    	alertDialog.show();
 	}
 }

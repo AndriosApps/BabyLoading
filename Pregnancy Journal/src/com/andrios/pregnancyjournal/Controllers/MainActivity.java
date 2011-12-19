@@ -1,8 +1,15 @@
-package com.andrios.pregnancyjournal;
+package com.andrios.pregnancyjournal.Controllers;
 
 
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
+
+import com.andrios.pregnancyjournal.R;
+import com.andrios.pregnancyjournal.Models.Profile;
+import com.andrios.pregnancyjournal.R.color;
+import com.andrios.pregnancyjournal.R.id;
+import com.andrios.pregnancyjournal.R.layout;
+import com.andrios.pregnancyjournal.R.string;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -252,13 +259,16 @@ public class MainActivity extends Activity {
 	
 	private void panicDialog(){
 		final AlertDialog.Builder alert = new AlertDialog.Builder(this);
-		final CharSequence[] items = {"Baby's Coming", "Contact Doctor", "She's Craving...", "She's Crying..."}; 
+		final CharSequence[] items = {"Baby's Coming...", "Quick Contacts..."}; 
 		alert.setTitle("Stay Calm...");
 		alert.setItems(items, new DialogInterface.OnClickListener() {
 			
 			public void onClick(DialogInterface dialog, int item) {
 				if(item == 0){
 					Intent intent = new Intent(MainActivity.this, CheckListActivity.class);
+					startActivity(intent);
+				}else if(item == 1){
+					Intent intent = new Intent(MainActivity.this, DoctorListActivity.class);
 					startActivity(intent);
 				}
 				

@@ -1,7 +1,8 @@
-package com.andrios.pregnancyjournal;
+package com.andrios.pregnancyjournal.Models;
 
 import java.io.Serializable;
 import java.util.Calendar;
+
 
 import android.graphics.Bitmap;
 
@@ -22,7 +23,7 @@ public class Profile implements Serializable{
 	
 	public Profile(){
 		this.name = "Click to Set Name";
-		c = Calendar.getInstance();
+		c = getToday();
 		this.isLMPDate = true;
 		this.firstRun = true;
 	}
@@ -93,7 +94,7 @@ public class Profile implements Serializable{
 	}
 	
 	public int getWeek(){
-		Calendar today = Calendar.getInstance();
+		Calendar today = getToday();
 		long miliToday = today.getTimeInMillis();
 		long miliLMP = c.getTimeInMillis();
 		long diff = miliToday - miliLMP;
@@ -103,7 +104,7 @@ public class Profile implements Serializable{
 	}
 	
 	public int getMonth(){
-		Calendar today = Calendar.getInstance();
+		Calendar today = getToday();
 		
 		int y1 = c.get(Calendar.YEAR);
 		int y2 = today.get(Calendar.YEAR);
@@ -116,7 +117,7 @@ public class Profile implements Serializable{
 	}
 	
 	public int getDays(){
-		Calendar today = Calendar.getInstance();
+		Calendar today = getToday();
 		
 		long miliToday = today.getTimeInMillis();
 		long miliLMP = c.getTimeInMillis();
@@ -129,7 +130,7 @@ public class Profile implements Serializable{
 	}
 	
 	public int getWeekDays(){
-		Calendar today = Calendar.getInstance();
+		Calendar today = getToday();
 		
 		long miliToday = today.getTimeInMillis();
 		long miliLMP = c.getTimeInMillis();
@@ -168,6 +169,9 @@ public class Profile implements Serializable{
 	}
 	
 	public void setDate(Calendar c){
+		c.set(Calendar.HOUR_OF_DAY, 0);
+		c.set(Calendar.MINUTE, 0);
+		c.set(Calendar.SECOND, 0);
 		this.c = c;
 	}
 	
@@ -175,6 +179,9 @@ public class Profile implements Serializable{
 		c.set(Calendar.DAY_OF_MONTH, mDay);
 		c.set(Calendar.MONTH, mMonth);
 		c.set(Calendar.YEAR, mYear);
+		c.set(Calendar.HOUR_OF_DAY, 0);
+		c.set(Calendar.MINUTE, 0);
+		c.set(Calendar.SECOND, 0);
 	}
 	
 	public void setisLMPDate(boolean isLMPDate){
@@ -223,6 +230,14 @@ public class Profile implements Serializable{
 	public void setBitmap(Bitmap profileBitmap){
 		
 		this.image= new SerialBitmap(profileBitmap);
+	}
+	
+	private Calendar getToday(){
+		Calendar c = Calendar.getInstance();
+		c.set(Calendar.HOUR_OF_DAY, 0);
+		c.set(Calendar.MINUTE, 0);
+		c.set(Calendar.SECOND, 0);
+		return c;
 	}
 	
 }
