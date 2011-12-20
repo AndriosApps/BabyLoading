@@ -12,9 +12,38 @@
         android:background="@color/task_bar"
         android:gravity="center" >
 
-        <TextView android:layout_weight="0" android:textColor="#ffffff" android:layout_height="wrap_content" android:text="Journal Entries" android:textSize="22dip" android:id="@+id/textView1" android:layout_width="wrap_content"></TextView>
-        <LinearLayout android:layout_width="wrap_content" android:layout_weight="1" android:layout_height="match_parent" android:id="@+id/journalListActivityListView"></LinearLayout>
-        <Button android:text="" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/journalListActivityNewBTN" android:background="@drawable/button_pencil"></Button>
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="Journal Entries"
+            android:textColor="#ffffff"
+            android:textSize="22dip" >
+        </TextView>
+
+        <LinearLayout
+            android:id="@+id/journalListActivityListView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1" >
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/journalListActivityNewBTN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_pencil"
+            android:text="" >
+        </Button>
     </LinearLayout>
-    <ListView android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/journalListActivityListview"></ListView>
+
+    <ListView
+        android:id="@+id/journalListActivityListview"
+        
+        android:cacheColorHint="#00000000"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </ListView>
+
 </LinearLayout>
