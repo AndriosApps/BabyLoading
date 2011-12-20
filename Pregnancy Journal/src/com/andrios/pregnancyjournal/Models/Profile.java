@@ -50,7 +50,6 @@ public class Profile implements Serializable{
 		int month = c.get(Calendar.MONTH)+1;
 		int year = c.get(Calendar.YEAR);
 		String monthString = "";
-		System.out.println("Month Is " + month);
 		if(month == 1){
 			monthString = "January";
 		}else if(month == 2){
@@ -124,8 +123,6 @@ public class Profile implements Serializable{
 		long diff = miliToday - miliLMP;
 		long diffDay = diff /(24*60*60*1000);
 		int returnValue = (int) diffDay;
-
-		System.out.println("Days: " + returnValue);
 		return returnValue;
 	}
 	
@@ -139,7 +136,6 @@ public class Profile implements Serializable{
 	
 		
 		int returnValue = (int) diffDay % 7;
-		System.out.println("Weekdays: " + returnValue);
 		return returnValue;
 	}
 	

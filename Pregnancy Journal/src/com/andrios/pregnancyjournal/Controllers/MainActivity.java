@@ -112,7 +112,6 @@ public class MainActivity extends Activity {
 		        
 		        if (prefs.getString("email", null) != null) { 
 		        	email = prefs.getString("email", null);
-		        	System.out.println("email: " + email);
 		        	 final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
 				     
 					    emailIntent .setType("plain/text");
@@ -293,11 +292,7 @@ public class MainActivity extends Activity {
 		alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
 				SharedPreferences prefs = MainActivity.this.getSharedPreferences("email", 0);
-		        
-		        
 		        SharedPreferences.Editor editor = prefs.edit();
-		        
-		        System.out.println("Email " + input.getText().toString());
 		        editor.putString("email", input.getText().toString());
 		        editor.commit();
 			}
