@@ -1,44 +1,21 @@
 package com.andrios.pregnancyjournal.Controllers;
 
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import com.andrios.pregnancyjournal.R;
-import com.andrios.pregnancyjournal.Models.JournalEntry;
 import com.andrios.pregnancyjournal.Models.Profile;
 import com.andrios.pregnancyjournal.Models.Week;
-import com.andrios.pregnancyjournal.R.anim;
-import com.andrios.pregnancyjournal.R.drawable;
-import com.andrios.pregnancyjournal.R.id;
-import com.andrios.pregnancyjournal.R.layout;
 
 import android.app.Activity;
-import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
 import android.view.animation.AnimationUtils;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 public class InfoActivity extends Activity {
@@ -186,7 +163,7 @@ public class InfoActivity extends Activity {
 		weight.setText(weekList.get(currentWeek).getWeight());
 		
 		TextView description = (TextView) v.findViewById(R.id.infoViewNotesTXT);
-		description.setText(weekList.get(currentWeek).getDescription());
+		description.setText(weekList.get(currentWeek).getDescription() + "\n\n" + weekList.get(currentWeek).getWhatToDo());
 		
 		
 		ImageView image = (ImageView) v.findViewById(R.id.infoViewImageView);
@@ -210,7 +187,7 @@ public class InfoActivity extends Activity {
 		weekList.add(new Week("Week 4", "Poppyseed", "N/A", "N/A", "Your little zygote is settling into her uterus...", "Be supportive. Use the buddy system to avoid alcohol. \n\nHelp her stay away from alcohol. It's best for women not to drink any alcohol during pregnancy because it can cause birth defects. Help your partner stay away from beer, wine, wine coolers, liquor and mixed drinks. You can help by giving her healthy juices and water to drink or by making fun nonalcoholic drinks together. If your partner drinks a lot of alcohol and can't stop, get help for her. ", R.drawable.week4));
 
 		//Week 5
-		weekList.add(new Week("Week 5", "Appleseed", ".13 in", "N/A", "Major organs and systems are forming...", "'Be Respectful of her desire for Intercourses' \n\nOn our first prenatal appointment our doctor pulled me aside and gave me this valuable tidbit.  Her desire for sex may change as her body changes. Many people find that sex feels different during pregnancy. As her belly gets bigger, try different positions. Find one that's comfortable for both of you. Talk to each other about what feels good. Remember, as long as your health care provider says it's okay, it's safe to have sex during pregnancy. It won't hurt the baby.", R.drawable.week5));
+		weekList.add(new Week("Week 5", "Appleseed", ".13 in", "N/A", "Major organs and systems are forming...", "'Be Respectful of her desire for Intercourse' \n\nOn our first prenatal appointment our doctor pulled me aside and gave me this valuable tidbit.  Her desire for sex may change as her body changes. Many people find that sex feels different during pregnancy. As her belly gets bigger, try different positions. Find one that's comfortable for both of you. Talk to each other about what feels good. Remember, as long as your health care provider says it's okay, it's safe to have sex during pregnancy. It won't hurt the baby.", R.drawable.week5));
 
 		//Week 6
 		weekList.add(new Week("Week 6", "Sweet Pea", ".25 in", "N/A", "Blood is starting to circulate... ", "Quit smoking. \n\nIf you smoke, you are blowing out secondhand smoke. This smoke isn't good for your partner or the baby. It can hurt the baby when it's inside your partner's uterus and after birth. Also, pregnant women who smoke are more likely to have babies born too small and too soon. If you both smoke or even if one of you smokes, now is a great time to quit. Get help from your provider or groups such as the American Cancer Society. ", R.drawable.week6));
