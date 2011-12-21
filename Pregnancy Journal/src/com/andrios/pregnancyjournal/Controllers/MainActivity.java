@@ -32,7 +32,7 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 	
-	Button namesBTN, journalBTN, settingsBTN, emailBTN, panicBTN;
+	Button namesBTN, journalBTN, settingsBTN, emailBTN, panicBTN, infoBTN;
 	
 	TextView dueDateLBL, ageLBL;
 	Profile profile;
@@ -59,6 +59,7 @@ public class MainActivity extends Activity {
 		ageLBL = (TextView) findViewById(R.id.mainActivityAgeLBL);
 		
 
+		infoBTN = (Button) findViewById(R.id.mainActivityInfoBTN);
 		panicBTN = (Button) findViewById(R.id.mainActivityPanicBTN);
 		namesBTN = (Button) findViewById(R.id.mainActivityNamesBTN);
 		journalBTN = (Button) findViewById(R.id.mainActivityJournalBTN);
@@ -145,14 +146,22 @@ public class MainActivity extends Activity {
 		settingsBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				Intent intent = new Intent(v.getContext(), InfoActivity.class);//TODO FIX SETTINGSACTIVITY
+				Intent intent = new Intent(v.getContext(), SettingsActivity.class);//TODO FIX SETTINGSACTIVITY
 				intent.putExtra("profile", profile);
 				startActivity(intent);
 			}
 
 		});
 		
+		infoBTN.setOnClickListener(new OnClickListener() {
 
+			public void onClick(View v) {
+				Intent intent = new Intent(v.getContext(), InfoActivity.class);//TODO FIX SETTINGSACTIVITY
+				intent.putExtra("profile", profile);
+				startActivity(intent);
+			}
+
+		});
 		
 		namesBTN.setOnClickListener(new OnClickListener() {
 

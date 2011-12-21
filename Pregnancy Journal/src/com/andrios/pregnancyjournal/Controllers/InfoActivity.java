@@ -70,7 +70,11 @@ public class InfoActivity extends Activity {
 	private void getExtras() {
 		Intent intent = this.getIntent();
 		profile = (Profile) intent.getSerializableExtra("profile");
+		
 		currentWeek = profile.getWeek() - 1;
+		if(currentWeek < 0){
+			currentWeek = 0;
+		}
 		
 		buildWeeks();
 	}

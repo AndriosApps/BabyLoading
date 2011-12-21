@@ -121,6 +121,45 @@
                 </Button>
             </LinearLayout>
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LinearLayout03"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <LinearLayout
+                android:id="@+id/LinearLayout04"
+                android:layout_width="75dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/mainActivityInfoBTN"
+                    android:layout_width="100dp"
+                    android:layout_height="125dp"
+                    android:background="@drawable/button_journal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LinearLayout05"
+                android:layout_width="75dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/Button01"
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:background="@drawable/button_email_baby" />
+            </LinearLayout>
+        </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
