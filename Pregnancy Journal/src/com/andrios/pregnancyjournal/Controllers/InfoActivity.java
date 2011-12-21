@@ -204,13 +204,13 @@ public class InfoActivity extends Activity {
 		weekList.add(new Week("Week 2", "N/A", "N/A", "N/A", "Not Yet Pregnant... Get to work...", "Week 2 What to Do", R.drawable.week2));
 
 		//Week 3
-		weekList.add(new Week("Week 3", "Poppyseed", "N/A", "N/A", "Your little zygote is settling into your uterus...", "Week 3 What to Do", R.drawable.week3));
+		weekList.add(new Week("Week 3", "Poppyseed", "N/A", "N/A", "Your little zygote is settling into your uterus...", "Learn as much as you can about pregnancy and childbirth.", R.drawable.week3));
 
 		//Week 4
-		weekList.add(new Week("Week 4", "Poppyseed", "N/A", "N/A", "Your little zygote is settling into your uterus...", "Week 4 What to Do", R.drawable.week4));
+		weekList.add(new Week("Week 4", "Poppyseed", "N/A", "N/A", "Your little zygote is settling into your uterus...", "Be supportive. Use the buddy system to avoid alcohol.", R.drawable.week4));
 
 		//Week 5
-		weekList.add(new Week("Week 5", "Appleseed", ".13 in", "N/A", "Major organs and systems are forming...", "Week 5 What to Do", R.drawable.week5));
+		weekList.add(new Week("Week 5", "Appleseed", ".13 in", "N/A", "Major organs and systems are forming...", "'Be Respectful of her desire for Intercourses' \n\nOn our first prenatal appointment our doctor pulled me aside and gave me this valuable tidbit.  Her desire for sex may change as her body changes. Many people find that sex feels different during pregnancy. As her belly gets bigger, try different positions. Find one that's comfortable for both of you. Talk to each other about what feels good. Remember, as long as your health care provider says it's okay, it's safe to have sex during pregnancy. It won't hurt the baby.", R.drawable.week5));
 
 		//Week 6
 		weekList.add(new Week("Week 6", "Sweet Pea", ".25 in", "N/A", "Blood is starting to circulate... ", "Week 6 What to Do", R.drawable.week6));
@@ -219,7 +219,7 @@ public class InfoActivity extends Activity {
 		weekList.add(new Week("Week 7", "Blueberry", ".51 in", "N/A", "Baby's brain is growing fast...", "Week 7 What to Do", R.drawable.week7));
 
 		//Week 8
-		weekList.add(new Week("Week 8", "Raspberry", ".63 in", ".04 oz", "Little arms and legs are moving like crazy... ", "Week 8 What to Do", R.drawable.week8));
+		weekList.add(new Week("Week 8", "Raspberry", ".63 in", ".04 oz", "Little arms and legs are moving like crazy... ", "Go to prenatal care visits. If you have questions, ask. ", R.drawable.week8));
 
 		//Week 9
 		weekList.add(new Week("Week 9", "Green Olive", ".9 in", ".07 oz", "A Doppler device might pick up a heartbeat...", "Week 9 What to Do", R.drawable.week9));
