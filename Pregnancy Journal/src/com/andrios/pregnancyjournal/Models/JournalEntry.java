@@ -171,30 +171,50 @@ public class JournalEntry implements Serializable{
 	}
 	
 	public String print(){
-		File root = android.os.Environment.getExternalStorageDirectory();               
+		
+		 
+		String important = "";
+		String doctorVisit = "";
+		String ultrasound = "";
+		String imageName = "";
+		
+		if(isImportant){
+			important = "          **IMPORTANT**";
+		}
+		if(this.isDrVisit){
+			doctorVisit = "\nDoctor Visit";
+		}
+		
+		if(this.isUltrasound){
+			ultrasound = "\nUltrasound";
+		}
+		if(this.getBitmap() != null){
+			File root = android.os.Environment.getExternalStorageDirectory();               
 
-		 File dir = new File (root.getAbsolutePath() + "/baby_loading/");
-		 dir.mkdirs();
-		 File file = new File (dir, getDateString() + this.title + ".png");
-		 
-			 try {
+			 File dir = new File (root.getAbsolutePath() + "/baby_loading/");
+			 dir.mkdirs();
+			 File file = new File (dir, getDateString() + this.title + ".png");
+			 
+				 try {
+						
+						entryBitmap.bitmap.compress(CompressFormat.PNG, 100, new FileOutputStream(file));
+						System.out.println("Output: " +this.title + ".png");
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
 					
-					entryBitmap.bitmap.compress(CompressFormat.PNG, 100, new FileOutputStream(file));
-					System.out.println("Output: " +this.title + ".png");
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-				
-					e.printStackTrace();
-				}
-		 
-		
-		
-		
+						e.printStackTrace();
+					}
+				 imageName = "\n\nAssociated Image: " + getDateString() + this.title + ".png";
+		}
 		
 		String myString = 
 			getDateString() +
 			"\n\n" + getTitle() +
+			important +
+			doctorVisit+
+			ultrasound+
 			"\nMood: " + getMood() +
+			imageName+
 			"\n\n Notes:\n" + getNotes() +
 			"\n\n"; 
 		

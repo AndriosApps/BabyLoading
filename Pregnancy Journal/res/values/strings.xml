@@ -29,4 +29,18 @@
 
     <string name="title_baby_names">Baby Names...</string>
     
+      
+    <string name="month_0">0</string>  
+    <string name="month_1">1</string>
+    <string name="month_2">2</string>
+    <string name="month_3">3</string>
+    <string name="month_4">4</string>
+    <string name="month_5">5</string>
+    <string name="month_6">6</string>
+    <string name="month_7">7</string>
+    <string name="month_8">8</string>
+    <string name="lable_day">Day</string>
+    <string name="label_week">Week</string>
+    <string name="label_month">Month</string>
+    
 </resources>

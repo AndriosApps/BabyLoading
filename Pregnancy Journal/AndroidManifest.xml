@@ -32,6 +32,7 @@
         <activity android:name=".Controllers.CheckListActivity" android:screenOrientation="portrait"/>"
         <activity android:name=".Controllers.DoctorListActivity" android:screenOrientation="portrait"/>"
         <activity android:name=".Controllers.BabyNameViewActivity" android:screenOrientation="portrait"/>"
+        <activity android:name=".Controllers.InfoActivity" android:screenOrientation="portrait"/>"
         
         
         

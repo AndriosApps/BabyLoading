@@ -145,7 +145,7 @@ public class MainActivity extends Activity {
 		settingsBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				Intent intent = new Intent(v.getContext(), SettingsActivity.class);
+				Intent intent = new Intent(v.getContext(), InfoActivity.class);//TODO FIX SETTINGSACTIVITY
 				intent.putExtra("profile", profile);
 				startActivity(intent);
 			}

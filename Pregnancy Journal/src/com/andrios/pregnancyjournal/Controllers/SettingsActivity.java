@@ -100,7 +100,7 @@ public class SettingsActivity extends Activity {
 			public void onClick(View v) {
 				writeJournal();
 				writeNames();
-				Toast.makeText(SettingsActivity.this, "Files have been written to SDCard/baby_names",
+				Toast.makeText(SettingsActivity.this, "Files have been written to SDCard/baby_loading",
 						Toast.LENGTH_SHORT).show();
 				
 			}
