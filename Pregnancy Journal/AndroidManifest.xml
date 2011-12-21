@@ -17,22 +17,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-         <activity android:name=".Controllers.NamesListActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".Controllers.JournalListActivity" android:screenOrientation="portrait" />
+         <activity android:name=".Controllers.NamesListActivity"/>
+        <activity android:name=".Controllers.JournalListActivity"/>
         
         
         
-        <activity android:name=".Controllers.BabyNameViewActivitye" android:screenOrientation="portrait"/>
-        <activity android:name=".Controllers.JournalEntryViewActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".Controllers.BabyNameViewActivitye" />
+        <activity android:name=".Controllers.JournalEntryViewActivity"/>
             
-        <activity android:name=".Controllers.SettingsActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".Controllers.AboutActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".Controllers.ProfileActivity" android:screenOrientation="portrait"/>"
-        <activity android:name=".Controllers.LogActivity" android:screenOrientation="portrait"/>"
-        <activity android:name=".Controllers.CheckListActivity" android:screenOrientation="portrait"/>"
-        <activity android:name=".Controllers.DoctorListActivity" android:screenOrientation="portrait"/>"
-        <activity android:name=".Controllers.BabyNameViewActivity" android:screenOrientation="portrait"/>"
-        <activity android:name=".Controllers.InfoActivity" android:screenOrientation="portrait"/>"
+        <activity android:name=".Controllers.SettingsActivity" />
+        <activity android:name=".Controllers.AboutActivity" />
+        <activity android:name=".Controllers.ProfileActivity" />"
+        <activity android:name=".Controllers.CheckListActivity" />"
+        <activity android:name=".Controllers.DoctorListActivity" />"
+        <activity android:name=".Controllers.BabyNameViewActivity" />"
+        <activity android:name=".Controllers.InfoActivity"/>"
         
         
         

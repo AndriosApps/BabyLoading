@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
-        android:orientation="vertical" >
+        android:orientation="horizontal" >
 
         <LinearLayout
             android:id="@+id/linearLayout4"
@@ -78,14 +78,6 @@
                     android:background="@drawable/panic_button_normal"
                     android:text="@string/empty" />
             </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearLayout5"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_weight="1"
-            android:gravity="center" >
 
             <LinearLayout
                 android:id="@+id/LinearLayout01"
@@ -99,8 +91,7 @@
                     android:id="@+id/mainActivityJournalBTN"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:background="@drawable/button_journal" >
-                </Button>
+                    android:background="@drawable/button_journal" />
             </LinearLayout>
 
             <LinearLayout
@@ -115,18 +106,8 @@
                     android:id="@+id/mainActivityEmailBTN"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:background="@drawable/button_email_baby"
-                    android:text="" >
-                </Button>
+                    android:background="@drawable/button_email_baby" />
             </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/LinearLayout03"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_weight="1"
-            android:gravity="center" >
 
             <LinearLayout
                 android:id="@+id/LinearLayout04"
@@ -141,21 +122,6 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:background="@drawable/button_light_bulb" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/LinearLayout05"
-                android:layout_width="75dip"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical" >
-
-                <Button
-                    android:id="@+id/Button01"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:background="@drawable/nothing" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

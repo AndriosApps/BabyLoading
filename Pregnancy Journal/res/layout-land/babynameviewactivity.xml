@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:background="@color/task_bar"
+        android:gravity="center" >
+
+        <TextView android:text="John" android:textSize="22dip" android:textColor="#ffffff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0" android:id="@+id/babyNameViewActivityNameLBL"></TextView>
+        <LinearLayout android:id="@+id/linearLayout3" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="1"></LinearLayout>
+        <Button android:layout_weight="0" android:text="" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/babyNameViewActivitySaveBTN" android:background="@drawable/button_save"></Button>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/linearLayout2" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+        <LinearLayout android:id="@+id/linearLayout4" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+            <LinearLayout android:id="@+id/linearLayout6" android:layout_height="match_parent" android:layout_width="match_parent" android:orientation="horizontal">
+                <ImageView android:src="@drawable/icon" android:id="@+id/babyNameViewActivityGenderIMG" android:layout_width="75dip" android:layout_height="75dip" android:scaleType="fitXY"></ImageView>
+                <LinearLayout android:id="@+id/linearLayout8" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical">
+                    <LinearLayout android:id="@+id/linearLayout9" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center">
+                        <TextView android:text="Mom" android:textColor="#ffffff" android:layout_height="wrap_content" android:id="@+id/textView2" android:layout_width="100dip" android:gravity="center"></TextView>
+                        <ImageView android:layout_width="25dip" android:layout_height="25dip" android:scaleType="fitXY" android:id="@+id/mom1" android:src="@drawable/star_outline"></ImageView>
+                        <ImageView android:layout_width="25dip" android:layout_height="25dip" android:scaleType="fitXY" android:id="@+id/mom2" android:src="@drawable/star_outline"></ImageView>
+                        <ImageView android:layout_width="25dip" android:layout_height="25dip" android:scaleType="fitXY" android:id="@+id/mom3" android:src="@drawable/star_outline"></ImageView>
+                        <ImageView android:layout_width="25dip" android:layout_height="25dip" android:scaleType="fitXY" android:id="@+id/mom4" android:src="@drawable/star_outline"></ImageView>
+                        <ImageView android:layout_width="25dip" android:layout_height="25dip" android:scaleType="fitXY" android:id="@+id/mom5" android:src="@drawable/star_outline"></ImageView>
+                    </LinearLayout>
+                    <LinearLayout android:id="@+id/linearLayout10" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center">
+                        <TextView android:text="Dad" android:textColor="#ffffff" android:layout_height="wrap_content" android:id="@+id/textView3" android:layout_width="100dip" android:gravity="center"></TextView>
+                        <ImageView android:layout_width="25dip" android:layout_height="25dip" android:scaleType="fitXY" android:src="@drawable/star_outline" android:id="@+id/dad1"></ImageView>
+                        <ImageView android:layout_width="25dip" android:layout_height="25dip" android:scaleType="fitXY" android:src="@drawable/star_outline" android:id="@+id/dad2"></ImageView>
+                        <ImageView android:layout_width="25dip" android:layout_height="25dip" android:scaleType="fitXY" android:src="@drawable/star_outline" android:id="@+id/dad3"></ImageView>
+                        <ImageView android:layout_width="25dip" android:layout_height="25dip" android:scaleType="fitXY" android:src="@drawable/star_outline" android:id="@+id/dad4"></ImageView>
+                        <ImageView android:layout_width="25dip" android:layout_height="25dip" android:scaleType="fitXY" android:src="@drawable/star_outline" android:id="@+id/dad5"></ImageView>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:id="@+id/linearLayout7" android:layout_height="match_parent" android:layout_width="match_parent">
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/linearLayout11" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_weight="1">
+            <TextView android:text="Notes" android:textColor="#ffffff" android:id="@+id/textView4" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+            <EditText android:text="EditText" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:id="@+id/babyNameViewActivityCommentsTXT" android:gravity="top" android:inputType="textImeMultiLine"></EditText>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

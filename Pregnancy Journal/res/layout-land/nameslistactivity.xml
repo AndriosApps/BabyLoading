@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent" 
+  android:orientation="vertical" android:background="@drawable/background_pink">
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:background="@color/task_bar"
+        android:gravity="center" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="@string/title_baby_names"
+            android:textColor="#ffffff"
+            android:textSize="22dip" >
+</TextView>
+        <LinearLayout android:layout_width="wrap_content" android:layout_weight="1" android:layout_height="match_parent" android:id="@+id/namesListActivityListView"></LinearLayout>
+        <Button android:text="" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/namesListActivityNewBTN" android:background="@drawable/button_pencil"></Button>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout01"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/task_bar"
+        android:gravity="center" >
+
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/LinearLayout02"
+                android:layout_width="50dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+                <Button
+                    android:id="@+id/namesListActivityBoySortBTN"
+                    android:layout_width="50dip"
+                    android:layout_height="50dip"
+                    android:background="@drawable/boybtn"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="50dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+                <Button
+                    android:id="@+id/namesListActivityAllSortBTN"
+                    android:layout_width="50dip"
+                    android:layout_height="50dip"
+                    android:gravity="center"
+                    android:text="All" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="50dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+                <Button
+                    android:id="@+id/namesListActivityGirlSortBTN"
+                    android:layout_width="50dip"
+                    android:layout_height="50dip"
+                    android:background="@drawable/girlbtn"
+                    android:gravity="center" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/babyNamesActivityListview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/background_color" >
+        </ListView>
+
+    </LinearLayout>
+</LinearLayout>
