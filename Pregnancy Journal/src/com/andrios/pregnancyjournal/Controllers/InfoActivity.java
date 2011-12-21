@@ -204,22 +204,22 @@ public class InfoActivity extends Activity {
 		weekList.add(new Week("Week 2", "N/A", "N/A", "N/A", "Not Yet Pregnant... Get to work...", "Week 2 What to Do", R.drawable.week2));
 
 		//Week 3
-		weekList.add(new Week("Week 3", "Poppyseed", "N/A", "N/A", "Your little zygote is settling into your uterus...", "Learn as much as you can about pregnancy and childbirth.", R.drawable.week3));
+		weekList.add(new Week("Week 3", "Poppyseed", "N/A", "N/A", "Your little zygote is settling into her uterus...", "Learn as much as you can about pregnancy and childbirth. \n\nWatch, listen, browse and read. Watch videotapes, listen to audiotapes, check out the Internet, or read books about pregnancy, childbirth and being a parent. You'll get brownie points from your partner for taking the time to learn about what she is going through and being able to give intelligent opinions.", R.drawable.week3));
 
 		//Week 4
-		weekList.add(new Week("Week 4", "Poppyseed", "N/A", "N/A", "Your little zygote is settling into your uterus...", "Be supportive. Use the buddy system to avoid alcohol.", R.drawable.week4));
+		weekList.add(new Week("Week 4", "Poppyseed", "N/A", "N/A", "Your little zygote is settling into her uterus...", "Be supportive. Use the buddy system to avoid alcohol. \n\nHelp her stay away from alcohol. It's best for women not to drink any alcohol during pregnancy because it can cause birth defects. Help your partner stay away from beer, wine, wine coolers, liquor and mixed drinks. You can help by giving her healthy juices and water to drink or by making fun nonalcoholic drinks together. If your partner drinks a lot of alcohol and can't stop, get help for her. ", R.drawable.week4));
 
 		//Week 5
 		weekList.add(new Week("Week 5", "Appleseed", ".13 in", "N/A", "Major organs and systems are forming...", "'Be Respectful of her desire for Intercourses' \n\nOn our first prenatal appointment our doctor pulled me aside and gave me this valuable tidbit.  Her desire for sex may change as her body changes. Many people find that sex feels different during pregnancy. As her belly gets bigger, try different positions. Find one that's comfortable for both of you. Talk to each other about what feels good. Remember, as long as your health care provider says it's okay, it's safe to have sex during pregnancy. It won't hurt the baby.", R.drawable.week5));
 
 		//Week 6
-		weekList.add(new Week("Week 6", "Sweet Pea", ".25 in", "N/A", "Blood is starting to circulate... ", "Week 6 What to Do", R.drawable.week6));
+		weekList.add(new Week("Week 6", "Sweet Pea", ".25 in", "N/A", "Blood is starting to circulate... ", "Quit smoking. \n\nIf you smoke, you are blowing out secondhand smoke. This smoke isn't good for your partner or the baby. It can hurt the baby when it's inside your partner's uterus and after birth. Also, pregnant women who smoke are more likely to have babies born too small and too soon. If you both smoke or even if one of you smokes, now is a great time to quit. Get help from your provider or groups such as the American Cancer Society. ", R.drawable.week6));
 
 		//Week 7
 		weekList.add(new Week("Week 7", "Blueberry", ".51 in", "N/A", "Baby's brain is growing fast...", "Week 7 What to Do", R.drawable.week7));
 
 		//Week 8
-		weekList.add(new Week("Week 8", "Raspberry", ".63 in", ".04 oz", "Little arms and legs are moving like crazy... ", "Go to prenatal care visits. If you have questions, ask. ", R.drawable.week8));
+		weekList.add(new Week("Week 8", "Raspberry", ".63 in", ".04 oz", "Little arms and legs are moving like crazy... ", "Go to prenatal care visits. \n\n The health care provider will need to know your medical history, too. Get to know the people who will be taking care of your partner and baby during the pregnancy.  Before you and your partner visit her health care provider, write down any questions you have and discuss them with her. And don\'t be afraid to ask those questions during the visit. \n\nDuring the prenatal visit at the end of the first trimester (months 1Ð3 of the pregnancy), you can hear the baby's heartbeat.", R.drawable.week8));
 
 		//Week 9
 		weekList.add(new Week("Week 9", "Green Olive", ".9 in", ".07 oz", "A Doppler device might pick up a heartbeat...", "Week 9 What to Do", R.drawable.week9));
@@ -240,7 +240,7 @@ public class InfoActivity extends Activity {
 		weekList.add(new Week("Week 14", "Lemon", "3.4 in", "1.5 oz", "Liver, kidney and spleen are continuing to develop...", "Week 14 What to Do", R.drawable.week14));
 
 		//Week 15
-		weekList.add(new Week("Week 15", "Naval Orange", "4.0 in", "2.5 oz", "Legs are finally longer than arms...", "Week 15 What to Do", R.drawable.week15));
+		weekList.add(new Week("Week 15", "Naval Orange", "4.0 in", "2.5 oz", "Legs are finally longer than arms...", "Go to prenatal care visits. \n\nDuring the second trimester (months 4Ð6), go with your partner if she needs an ultrasound (a test that uses sound waves to take a picture of the baby). You'll be able to see your baby's head, arms, hands, legs and feet. You may even find out the sex of your baby. Your baby will start to seem very real to you. ", R.drawable.week15));
 
 		//Week 16
 		weekList.add(new Week("Week 16", "Avocado", "4.6 in", "3.5 oz", "Eyebrows, lashes and hair are filling in... ", "Week 16 What to Do", R.drawable.week16));
@@ -282,16 +282,16 @@ public class InfoActivity extends Activity {
 		weekList.add(new Week("Week 28", "Eggplant", "13.6-14.8 in", "1.5-2.2 lb", "Immune system is preparing for the outside world... ", "Week 28 What to Do", R.drawable.week28));
 
 		//Week 29
-		weekList.add(new Week("Week 29", "Squash", "15.2-16.7 in", "2.5-3.8 lb", "Sleeping and waking cycles are establishing...", "Week 29 What to Do", R.drawable.week29));
+		weekList.add(new Week("Week 29", "Squash", "15.2-16.7 in", "2.5-3.8 lb", "Sleeping and waking cycles are establishing...", "Go to prenatal care visits \n\nDuring a third-trimester (months 7Ð9) prenatal visit, ask the provider how you can help during labor and delivery.", R.drawable.week29));
 
 		//Week 30
-		weekList.add(new Week("Week 30", "Squash", "15.2-16.7 in", "2.5-3.8 lb", "Sleeping and waking cycles are establishing...", "Week 30 What to Do", R.drawable.week30));
+		weekList.add(new Week("Week 30", "Squash", "15.2-16.7 in", "2.5-3.8 lb", "Sleeping and waking cycles are establishing...", "Go to childbirth education classes with your partner. \n\nYou will learn how to help your partner during labor and delivery. Ask the doctor, midwife, nurse or local hospital or clinic about childbirth classes near you. ", R.drawable.week30));
 
 		//Week 31
-		weekList.add(new Week("Week 31", "Squash", "15.2-16.7 in", "2.5-3.8 lb", "Sleeping and waking cycles are establishing...", "Week 31 What to Do", R.drawable.week31));
+		weekList.add(new Week("Week 31", "Squash", "15.2-16.7 in", "2.5-3.8 lb", "Sleeping and waking cycles are establishing...", "Support your partner's decision to breastfeed. Breastmilk is the best food for your baby. It has everything that your baby needs to grow and be healthy. Find out about breastfeeding together. Talk to your doctor, midwife or nurse about breastfeeding", R.drawable.week31));
 
 		//Week 32
-		weekList.add(new Week("Week 32", "Squash", "15.2-16.7 in", "2.5-3.8 lb", "Sleeping and waking cycles are establishing...", "Week 32 What to Do", R.drawable.week32));
+		weekList.add(new Week("Week 32", "Squash", "15.2-16.7 in", "2.5-3.8 lb", "Sleeping and waking cycles are establishing...", "Help plan for the baby. \n\nTalk to your partner about what you both want for the baby. Decide where the baby will sleep, and make that part of your home colorful and welcoming for the baby. Go shopping for baby things. \n\nIf you are worried about not having enough money, here are some tips to help you:\n-Ask family members and friends if you can borrow a crib, changing table, toys and baby clothes. Many people are between kids or don't plan to have any more kids and are glad to let you use their baby things.\n-Check out secondhand and thrift shops. They often have baby furniture, toys and clothes at low prices.\n-Put a small amount of money aside each week to help pay for baby things. Even $10 a week can add up to make things easier once the baby comes.", R.drawable.week32));
 
 		//Week 33
 		weekList.add(new Week("Week 33", "Honeydew", "17.2-18.7 in", "4.2-5.8 lb", "Growth is slowing, and baby may soon descend... ", "Week 33 What to Do", R.drawable.week33));
