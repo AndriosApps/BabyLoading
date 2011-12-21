@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent" 
-  android:orientation="vertical" android:background="@drawable/background_pink">
-    <LinearLayout android:id="@+id/linearLayout1" android:background="#0099cc" android:layout_width="match_parent" android:layout_height="50dip" android:gravity="center">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:background="@color/task_bar"
+        android:gravity="center" >
+
         <TextView android:text="John" android:textSize="22dip" android:textColor="#ffffff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0" android:id="@+id/babyNameViewActivityNameLBL"></TextView>
         <LinearLayout android:id="@+id/linearLayout3" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="1"></LinearLayout>
         <Button android:layout_weight="0" android:text="" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/babyNameViewActivitySaveBTN" android:background="@drawable/button_save"></Button>

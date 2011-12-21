@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent" 
-  android:orientation="vertical">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    android:orientation="vertical" >
 
     <LinearLayout
         android:id="@+id/linearLayout1"
@@ -38,20 +38,18 @@
             android:padding="5dp"
             android:text="" >
         </Button>
-
-        <Button
-            android:id="@+id/journalEntryActivityFlipBTN"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/button_page"
-            android:padding="5dp"
-            android:text="" >
-        </Button>
     </LinearLayout>
 
   <ViewFlipper android:id="@+id/details" android:layout_height="fill_parent" android:paddingLeft="15dip" android:paddingRight="15dip" android:layout_width="fill_parent" android:layout_weight="1">
       <LinearLayout android:orientation="vertical" android:id="@+id/linearLayout14" android:layout_width="match_parent" android:layout_height="match_parent">
-          <LinearLayout android:orientation="vertical" android:id="@+id/linearLayout2" android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="match_parent">
+
+          <LinearLayout
+              android:id="@+id/linearLayout2"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_weight="0"
+              android:orientation="vertical" >
+
               <LinearLayout android:id="@+id/linearLayout5" android:gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content">
                   <LinearLayout android:id="@+id/linearLayout12" android:layout_height="match_parent" android:layout_weight="1" android:layout_width="125dip" android:orientation="vertical" android:gravity="center_vertical">
 
@@ -86,19 +84,50 @@
                               android:text="Important" />
 
                           <CheckBox android:text="Ultrasound" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/journalEntryViewUltrasoundCheckBox"></CheckBox>
-                          <CheckBox android:text="Dr. Appointment" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/journalEntryViewDrVisitCheckBox"></CheckBox>
                       </LinearLayout>
-                      <LinearLayout android:id="@+id/linearLayout10" android:layout_height="match_parent" android:layout_weight="1" android:layout_width="wrap_content"></LinearLayout>
+                      <LinearLayout android:id="@+id/linearLayout10" android:layout_height="match_parent" android:layout_weight="1" android:layout_width="wrap_content">
+
+                          <CheckBox
+                              android:id="@+id/journalEntryViewDrVisitCheckBox"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:text="Dr. Appointment" />
+
+                      </LinearLayout>
                   </LinearLayout>
                   <LinearLayout android:id="@+id/linearLayout7" android:layout_height="match_parent" android:layout_width="match_parent"></LinearLayout>
               </LinearLayout>
           </LinearLayout>
+
+          <LinearLayout
+              android:id="@+id/linearLayout11"
+              android:layout_width="match_parent"
+              android:layout_height="100dp"
+              android:layout_weight="1"
+              android:orientation="vertical" >
+
+              <TextView
+                  android:id="@+id/textView4"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Notes"
+                  android:textColor="#ffffff" />
+
+              <EditText
+                  android:id="@+id/journalEntryViewActivityCommentsTXT"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:gravity="top"
+                  android:inputType="textMultiLine|textImeMultiLine"
+                  android:text="EditText" >
+
+                  <requestFocus />
+              </EditText>
+          </LinearLayout>
+
       </LinearLayout>
       <LinearLayout android:id="@+id/linearLayout15" android:layout_width="match_parent" android:layout_height="match_parent">
-          <LinearLayout android:orientation="vertical" android:id="@+id/linearLayout11" android:layout_height="match_parent" android:layout_width="match_parent" android:layout_weight="1">
-              <TextView android:layout_height="wrap_content" android:id="@+id/textView4" android:text="Notes" android:textColor="#ffffff" android:layout_width="wrap_content"></TextView>
-              <EditText android:gravity="top" android:id="@+id/journalEntryViewActivityCommentsTXT" android:layout_height="match_parent" android:layout_weight="1" android:inputType="textMultiLine|textImeMultiLine" android:text="EditText" android:layout_width="match_parent"></EditText>
-          </LinearLayout>
       </LinearLayout>
   
   

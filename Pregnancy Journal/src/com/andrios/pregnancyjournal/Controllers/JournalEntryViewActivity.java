@@ -53,7 +53,7 @@ public class JournalEntryViewActivity extends Activity {
 	TextView dateLBL;
 	EditText commentsTXT, titleTXT;
 	JournalEntry note;
-	Button saveBTN,flipBTN;
+	Button saveBTN;
 	ViewFlipper flipper;
 	OnClickListener myOnClickListener;
 	ImageView entryIMG;
@@ -92,7 +92,7 @@ public class JournalEntryViewActivity extends Activity {
 	
 	private void setConnections() {
 		
-		flipBTN = (Button) findViewById(R.id.journalEntryActivityFlipBTN);
+		//flipBTN = (Button) findViewById(R.id.journalEntryActivityFlipBTN);
 		flipper = (ViewFlipper) findViewById(R.id.details); 
 		flipper.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_in));
 	    flipper.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_out));
@@ -143,19 +143,19 @@ public class JournalEntryViewActivity extends Activity {
 			
 		});
 				
-		flipBTN.setOnClickListener(new OnClickListener(){
-
-			public void onClick(View arg0) {
-				flipper.showNext();
-				if(flipper.getDisplayedChild() == 0){
-					flipBTN.setBackgroundResource(R.drawable.button_page);
-				}else{
-					flipBTN.setBackgroundResource(R.drawable.button_clipboard);
-				}
-				
-			}
-			
-		});
+//		flipBTN.setOnClickListener(new OnClickListener(){
+//
+//			public void onClick(View arg0) {
+//				flipper.showNext();
+//				if(flipper.getDisplayedChild() == 0){
+//					flipBTN.setBackgroundResource(R.drawable.button_page);
+//				}else{
+//					flipBTN.setBackgroundResource(R.drawable.button_clipboard);
+//				}
+//				
+//			}
+//			
+//		});
 		dateLBL.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
@@ -170,7 +170,6 @@ public class JournalEntryViewActivity extends Activity {
 			public void onClick(View v) {
 				if(checkFormat()){
 					
-					System.out.println("SAVE 1");
 					Intent intent = new Intent();
 					note.setNotes(commentsTXT.getText().toString().trim());
 					note.setMood(moodTXT.getText().toString().trim());
@@ -180,7 +179,6 @@ public class JournalEntryViewActivity extends Activity {
 					note.setImportant(importantCheckBox.isChecked());
 					
 
-					System.out.println("SAVE 2");
 					if(index == -1){
 						noteList.add(note);
 					}else{
@@ -245,9 +243,12 @@ public class JournalEntryViewActivity extends Activity {
 	    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 			
 			 if (requestCode == CAMERA_REQUEST) {  
-		            Bitmap photo = (Bitmap) intent.getExtras().get("data"); 
-		            note.setBitmap(photo);
-		            entryIMG.setImageBitmap(photo);
+				 if(resultCode == RESULT_OK){
+					 Bitmap photo = (Bitmap) intent.getExtras().get("data"); 
+			            note.setBitmap(photo);
+			            entryIMG.setImageBitmap(photo);
+				 }
+		           
 		        }  
 	    }
 

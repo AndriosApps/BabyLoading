@@ -137,11 +137,10 @@ public class JournalListActivity extends Activity {
     		if (resultCode == RESULT_OK) {
     			notesList = (ArrayList<JournalEntry>) intent.getSerializableExtra("list");
     			setConnections();
-    			System.out.println("WRITING LIST");
     			write(JournalListActivity.this);
     		} else {
     			
-    			Toast.makeText(this, "Add  Canceled", Toast.LENGTH_SHORT).show();
+    			Toast.makeText(this, "Canceled", Toast.LENGTH_SHORT).show();
     		}
     	}
     }

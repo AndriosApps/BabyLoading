@@ -1,15 +1,14 @@
 package com.andrios.pregnancyjournal.Controllers;
 
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 
 import com.andrios.pregnancyjournal.R;
 import com.andrios.pregnancyjournal.Models.Profile;
-import com.andrios.pregnancyjournal.R.color;
-import com.andrios.pregnancyjournal.R.id;
-import com.andrios.pregnancyjournal.R.layout;
-import com.andrios.pregnancyjournal.R.string;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -18,19 +17,18 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.Bitmap.CompressFormat;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	
@@ -49,7 +47,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.main);
-        
+        com.andrios.pregnancyjournal.AppRater.app_launched(this);
         
         
     }
@@ -189,6 +187,7 @@ public class MainActivity extends Activity {
 		for(int i = 0; i < trimester.getChildCount(); i++){
 			trimester.getChildAt(i).setBackgroundColor(R.color.andrios_grey);
 		}
+		
 		TextView trimesterText = (TextView) trimester.getChildAt(profile.getTrimester());
 		trimesterText.setBackgroundColor(Color.CYAN);
 		
@@ -212,8 +211,13 @@ public class MainActivity extends Activity {
 				}
 			}
 		}
-		TextView weekText = (TextView) week.getChildAt(profile.getWeek());
-		weekText.setBackgroundColor(Color.CYAN);
+		
+		int thisWeek = profile.getWeek() - 1;
+		if(thisWeek >= 0){
+			TextView weekText = (TextView) week.getChildAt(thisWeek);
+			weekText.setBackgroundColor(Color.CYAN);	
+		}
+		
 		
 		LinearLayout month = (LinearLayout) findViewById(R.id.mainActivityMonthLL);
 		for(int i = 0; i < month.getChildCount(); i++){
@@ -304,19 +308,52 @@ public class MainActivity extends Activity {
 	private void timelineDialog(){
 		final AlertDialog.Builder alert = new AlertDialog.Builder(this);
 		timelineLL.setDrawingCacheEnabled(true);
-		Bitmap b = Bitmap.createBitmap(timelineLL.getDrawingCache());
+		final Bitmap b = Bitmap.createBitmap(timelineLL.getDrawingCache());
 		ImageView i = new ImageView(this);
 		i.setImageBitmap(b);
 		alert.setView(i);
 		alert.setMessage(R.string.about_timeline);
-		alert.setTitle("Mother's Timeline");
+		alert.setTitle(profile.getName() + "'s Timeline");
 		
-		alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+		alert.setPositiveButton("Share", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int whichButton) {
+				shareTimeline(b);
+			}
+		});
+		
+		alert.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
 				
 			}
 		});
 		
+		
 		alert.show();
 	}
+	
+	public void shareTimeline(Bitmap b){
+		
+		File root = android.os.Environment.getExternalStorageDirectory();               
+
+		 File dir = new File (root.getAbsolutePath() + "/baby_loading/");
+		try {
+			
+			b.compress(CompressFormat.PNG, 100, new FileOutputStream(dir+"timeline_"+ profile.getDateString()+"_.png"));
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		Intent picMessageIntent = new Intent(android.content.Intent.ACTION_SEND);  
+		picMessageIntent.setType("image/jpeg");  
+		
+		File downloadedPic =  new File(  
+				dir+"timeline_"+ profile.getDateString()+"_.png");  
+		  
+		picMessageIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(downloadedPic)); 
+		picMessageIntent.putExtra(Intent.EXTRA_SUBJECT, "My Wife is " + profile.getWeek() + " weeks, " + profile.getWeekDays() + " days along!");
+		picMessageIntent.putExtra(Intent.EXTRA_TEXT, "AndriOS Apps Baby Loading for Android");
+		 
+	    startActivity(Intent.createChooser(picMessageIntent, "Share your timeline using:"));  
+	}
+
 }

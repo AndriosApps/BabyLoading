@@ -93,13 +93,9 @@ public class Profile implements Serializable{
 	}
 	
 	public int getWeek(){
-		Calendar today = getToday();
-		long miliToday = today.getTimeInMillis();
-		long miliLMP = c.getTimeInMillis();
-		long diff = miliToday - miliLMP;
-		long diffWeek = diff /(7*24*60*60*1000);
-		int returnValue = (int) diffWeek;
-		return returnValue;
+		int diffDays = getDays();
+		int diffWeeks = diffDays / 7;
+		return diffWeeks;
 	}
 	
 	public int getMonth(){
@@ -121,18 +117,21 @@ public class Profile implements Serializable{
 		long miliToday = today.getTimeInMillis();
 		long miliLMP = c.getTimeInMillis();
 		long diff = miliToday - miliLMP;
-		long diffDay = diff /(24*60*60*1000);
+
+		long diffHour = diff /(60*60*1000);
+		
+		while(diffHour % 24 != 0){
+			diffHour += 1;
+		}
+		
+		long diffDay = diffHour / 24;
 		int returnValue = (int) diffDay;
 		return returnValue;
 	}
 	
 	public int getWeekDays(){
-		Calendar today = getToday();
 		
-		long miliToday = today.getTimeInMillis();
-		long miliLMP = c.getTimeInMillis();
-		long diff = miliToday - miliLMP;
-		long diffDay = diff /(24*60*60*1000);
+		long diffDay = getDays();
 	
 		
 		int returnValue = (int) diffDay % 7;
@@ -165,10 +164,11 @@ public class Profile implements Serializable{
 	}
 	
 	public void setDate(Calendar c){
-		c.set(Calendar.HOUR_OF_DAY, 0);
-		c.set(Calendar.MINUTE, 0);
-		c.set(Calendar.SECOND, 0);
 		this.c = c;
+		this.c.set(Calendar.HOUR_OF_DAY, 0);
+		this.c.set(Calendar.MINUTE, 0);
+		this.c.set(Calendar.SECOND, 1);
+		
 	}
 	
 	public void setDate(int mYear, int mMonth, int mDay){
@@ -177,7 +177,8 @@ public class Profile implements Serializable{
 		c.set(Calendar.YEAR, mYear);
 		c.set(Calendar.HOUR_OF_DAY, 0);
 		c.set(Calendar.MINUTE, 0);
-		c.set(Calendar.SECOND, 0);
+		c.set(Calendar.SECOND, 1);
+		getDays();
 	}
 	
 	public void setisLMPDate(boolean isLMPDate){
@@ -232,7 +233,8 @@ public class Profile implements Serializable{
 		Calendar c = Calendar.getInstance();
 		c.set(Calendar.HOUR_OF_DAY, 0);
 		c.set(Calendar.MINUTE, 0);
-		c.set(Calendar.SECOND, 0);
+		c.set(Calendar.SECOND, 1);
+		
 		return c;
 	}
 	

@@ -173,21 +173,22 @@ public class ProfileActivity extends Activity {
 		
 	}
 	public void write(Context ctx){
-		
-		try {
-		
-			FileOutputStream fos;
-			fos = ctx.openFileOutput("profile", Context.MODE_WORLD_READABLE);
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
-			profile.firstRun = false;
-			oos.writeObject(profile);
-
-			oos.close();
-			fos.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-			Toast.makeText(ctx, "Error: Writing to file",
-					Toast.LENGTH_SHORT).show();
+		if(profile.getDays() >= 0){
+			try {
+			
+				FileOutputStream fos;
+				fos = ctx.openFileOutput("profile", Context.MODE_WORLD_READABLE);
+				ObjectOutputStream oos = new ObjectOutputStream(fos);
+				profile.firstRun = false;
+				oos.writeObject(profile);
+	
+				oos.close();
+				fos.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+				Toast.makeText(ctx, "Error: Writing to file",
+						Toast.LENGTH_SHORT).show();
+			}
 		}
 	}
 	

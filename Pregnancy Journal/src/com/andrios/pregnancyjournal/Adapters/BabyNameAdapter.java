@@ -78,7 +78,6 @@ public class BabyNameAdapter extends ArrayAdapter<BabyName>{
                     	background.setBackgroundDrawable(d);
                     	                    	
                     }
-                    System.out.println(b.getName() + "Mom: " + b.getMomRating() + " Dad: " +b.getDadRating());
                     if(b.getMomRating() >= 1){
             			mom1.setImageResource(R.drawable.star_lit);
             		}else{

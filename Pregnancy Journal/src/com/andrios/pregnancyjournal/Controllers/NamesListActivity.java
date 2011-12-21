@@ -220,7 +220,7 @@ public class NamesListActivity extends Activity {
 	private void createTestNames() {
 		nameList = new ArrayList<BabyName>();
 		BabyName a = new BabyName();
-		a.setName("Trillian");
+		a.setName("Sue");
 		a.setGender(false);
 		
 		
