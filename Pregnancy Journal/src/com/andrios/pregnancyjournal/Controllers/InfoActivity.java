@@ -9,6 +9,12 @@ import com.andrios.pregnancyjournal.Models.Week;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.gesture.Gesture;
+import android.gesture.GestureLibraries;
+import android.gesture.GestureLibrary;
+import android.gesture.GestureOverlayView;
+import android.gesture.GestureOverlayView.OnGesturePerformedListener;
+import android.gesture.Prediction;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -18,7 +24,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
-public class InfoActivity extends Activity {
+public class InfoActivity extends Activity implements OnGesturePerformedListener {
 	
 
     
@@ -26,6 +32,8 @@ public class InfoActivity extends Activity {
 	TextView previousLBL, currentLBL, nextLBL;
 	Profile profile;
 	int currentWeek;
+
+	GestureLibrary mLibrary;
 	
 	ArrayList<Week> weekList;
 	
@@ -37,10 +45,19 @@ public class InfoActivity extends Activity {
         setContentView(R.layout.infoview);
         
      
-        getExtras();
+        
+        
+    }
+    
+    public void onResume(){
+    	super.onResume();
+    	getExtras();
         setConnections();
         setOnClickListeners();
-        
+        mLibrary = GestureLibraries.fromRawResource(this, R.raw.gestures);
+        if (!mLibrary.load()) {
+            finish();
+        }
     }
     
 	@SuppressWarnings("unchecked")
@@ -73,7 +90,8 @@ public class InfoActivity extends Activity {
 	    flipper.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_out));
 		
 		
-		
+	    GestureOverlayView gestures = (GestureOverlayView) findViewById(R.id.infoActivityGestureOverlay);
+	 	  gestures.addOnGesturePerformedListener(this);
 		
 	
 	}
@@ -105,7 +123,25 @@ public class InfoActivity extends Activity {
 		
 	}
 	
+	public void onGesturePerformed(GestureOverlayView overlay, Gesture gesture) {
+	    ArrayList<Prediction> predictions = mLibrary.recognize(gesture);
+	    System.out.println("GESTURE");
+	    // We want at least one prediction
+	    if (predictions.size() > 0 && predictions.get(0).score > 1.0) {
+	        String action = predictions.get(0).name;
+	        System.out.println("Action Name: " + action);
+	        if ("left".equals(action)) {
+	        	next();
+	        } else if ("right".equals(action)) {
+	        	previous();
+	        }
+	    }
+	}
+	
 	private void previous() {
+		flipper.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_right_in));
+	    flipper.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.push_right_out));
+		
 		View v = null;
 		if(currentWeek >= 2){
 			if(flipper.getChildAt(flipper.getDisplayedChild() + 1) != null){
@@ -123,6 +159,9 @@ public class InfoActivity extends Activity {
 	
 	
 	private void next(){
+		flipper.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_in));
+	    flipper.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_out));
+		
 		View v = null;
 		if(currentWeek <= 38){
 			if(flipper.getChildAt(flipper.getDisplayedChild() + 1) != null){
@@ -175,52 +214,52 @@ public class InfoActivity extends Activity {
 		weekList = new ArrayList<Week>();
 		
 		//Week 1
-		weekList.add(new Week("Week 1", "N/A", "N/A", "N/A", "Not Yet Pregnent... Get to work...", "Week 1 What to Do", R.drawable.week1));
+		weekList.add(new Week("Week 1", "N/A", "N/A", "N/A", "Not Yet Pregnent...", "Quit Smoking. \n\nIf you smoke, you are exposing your wife and unborn child to secondhand smoke. This smoke isn't good for your partner or the baby. It can hurt the baby when it's inside your partner's uterus and after birth. Also, pregnant women who smoke are more likely to have babies born too small and too soon. If you both smoke or even if one of you smokes, now is a great time to quit. Get help from your provider or groups such as the American Cancer Society. ", R.drawable.week1));
 
 		//Week 2
-		weekList.add(new Week("Week 2", "N/A", "N/A", "N/A", "Not Yet Pregnant... Get to work...", "Week 2 What to Do", R.drawable.week2));
+		weekList.add(new Week("Week 2", "N/A", "N/A", "N/A", "Not Yet Pregnant... ", "Get to Work\n\nEat you Wheaties, plan a romantic weekend, light some candles, and turn on the mood music... it's go time!", R.drawable.week2));
 
 		//Week 3
-		weekList.add(new Week("Week 3", "Poppyseed", "N/A", "N/A", "Your little zygote is settling into her uterus...", "Learn as much as you can about pregnancy and childbirth. \n\nWatch, listen, browse and read. Watch videotapes, listen to audiotapes, check out the Internet, or read books about pregnancy, childbirth and being a parent. You'll get brownie points from your partner for taking the time to learn about what she is going through and being able to give intelligent opinions.", R.drawable.week3));
+		weekList.add(new Week("Week 3", "Poppyseed", "N/A", "N/A", "Sperm meets egg within the fallopian tube and the miracle of life begins. The fertilized egg then begins its journey towards the uterus.", "Learn as much as you can about pregnancy and childbirth. \n\nWatch, listen, browse and read. Watch videotapes, listen to audiotapes, check out the internet, or read books about pregnancy, childbirth and being a parent. You'll get brownie points from your partner for taking the time to learn about what she is going through and being able to give intelligent opinions.", R.drawable.week3));
 
 		//Week 4
-		weekList.add(new Week("Week 4", "Poppyseed", "N/A", "N/A", "Your little zygote is settling into her uterus...", "Be supportive. Use the buddy system to avoid alcohol. \n\nHelp her stay away from alcohol. It's best for women not to drink any alcohol during pregnancy because it can cause birth defects. Help your partner stay away from beer, wine, wine coolers, liquor and mixed drinks. You can help by giving her healthy juices and water to drink or by making fun nonalcoholic drinks together. If your partner drinks a lot of alcohol and can't stop, get help for her. ", R.drawable.week4));
+		weekList.add(new Week("Week 4", "Poppyseed", "N/A", "N/A", "Your little zygote or blastocyst is settling into her uterus...", "Be supportive. Use the buddy system to avoid alcohol. \n\nHelp her stay away from alcohol. It's best for women not to drink any alcohol during pregnancy because it can cause birth defects. Help your partner stay away from beer, wine, wine coolers, liquor and mixed drinks. You can help by giving her healthy juices and water to drink or by making fun nonalcoholic drinks together. If your partner drinks a lot of alcohol and can't stop, get help for her. ", R.drawable.week4));
 
 		//Week 5
 		weekList.add(new Week("Week 5", "Appleseed", ".13 in", "N/A", "Major organs and systems are forming...", "'Be Respectful of her desire for Intercourse' \n\nOn our first prenatal appointment our doctor pulled me aside and gave me this valuable tidbit.  Her desire for sex may change as her body changes. Many people find that sex feels different during pregnancy. As her belly gets bigger, try different positions. Find one that's comfortable for both of you. Talk to each other about what feels good. Remember, as long as your health care provider says it's okay, it's safe to have sex during pregnancy. It won't hurt the baby.", R.drawable.week5));
 
 		//Week 6
-		weekList.add(new Week("Week 6", "Sweet Pea", ".25 in", "N/A", "Blood is starting to circulate... ", "Quit smoking. \n\nIf you smoke, you are blowing out secondhand smoke. This smoke isn't good for your partner or the baby. It can hurt the baby when it's inside your partner's uterus and after birth. Also, pregnant women who smoke are more likely to have babies born too small and too soon. If you both smoke or even if one of you smokes, now is a great time to quit. Get help from your provider or groups such as the American Cancer Society. ", R.drawable.week6));
+		weekList.add(new Week("Week 6", "Sweet Pea", ".25 in", "N/A", "Blood is starting to circulate... ", "Be sympathetic to her morning sickness\n\nMany women begin to experience morning sickness, which can actually strike at any time during the day, during week six.  Help her however she needs it, bring her crackers or ginger ale, and try to keep strong smells which trigger her symptoms as far away from her as needed. ", R.drawable.week6));
 
 		//Week 7
-		weekList.add(new Week("Week 7", "Blueberry", ".51 in", "N/A", "Baby's brain is growing fast...", "Week 7 What to Do", R.drawable.week7));
+		weekList.add(new Week("Week 7", "Blueberry", ".51 in", "N/A", "Baby's brain is growing fast...", "What about that \'Maternal Glow\' I've always heard about?\n\nYour wife's body is experiencing many changes, which may result in acne.  Your wife may be feeling rather self concious, take a minute to remind her how beautifull you think she is. As a side note it may be a good time to consider purchasing a shiny gift for later down the road when her mood is really in the dumps.", R.drawable.week7));
 
 		//Week 8
-		weekList.add(new Week("Week 8", "Raspberry", ".63 in", ".04 oz", "Little arms and legs are moving like crazy... ", "Go to prenatal care visits. \n\n The health care provider will need to know your medical history, too. Get to know the people who will be taking care of your partner and baby during the pregnancy.  Before you and your partner visit her health care provider, write down any questions you have and discuss them with her. And don\'t be afraid to ask those questions during the visit. \n\nDuring the prenatal visit at the end of the first trimester (months 1Ð3 of the pregnancy), you can hear the baby's heartbeat.", R.drawable.week8));
+		weekList.add(new Week("Week 8", "Raspberry", ".63 in", ".04 oz", "Arms, legs, nose and lips are beginning to develop... ", "Go to prenatal care visits. \n\nYour spouse's first prenatal visit is likely this week. Your doctor will need to know your medical history, as well as your wife's. It's a good show of support, and you get to know the people who will be taking care of your partner and baby during the pregnancy.  Prior to your prenatal care vist, discuss questions you have with your spouse and be prepared to ask them during your visit. \n\nIf you are lucky you will see the first pictures of your unborn child, and may even see the flutter of a heartbeat during an ultrasound. Its an event best shared with your spouse, she will definately appreciate your involvement.", R.drawable.week8));
 
 		//Week 9
-		weekList.add(new Week("Week 9", "Green Olive", ".9 in", ".07 oz", "A Doppler device might pick up a heartbeat...", "Week 9 What to Do", R.drawable.week9));
+		weekList.add(new Week("Week 9", "Green Olive", ".9 in", ".07 oz", "The head is roughly the same size as the body...", "Gotta go, Gotta go right now!\n\nYour wife may be making more frequent trips to the restroom, now is probably not the best time to tease her about this as it will likely be a conversation that goes south rather quickly.", R.drawable.week9));
 
 		//Week 10
-		weekList.add(new Week("Week 10", "Prune", " 1.2 in", ".14 oz", "Arm joints are working, and soon legs will too...", "Week 10 What to Do", R.drawable.week10));
+		weekList.add(new Week("Week 10", "Prune", " 1.2 in", ".14 oz", "Arm joints are working, and soon legs will too...", "Let's talk about work\n\nIf your spouse has not told her coworkers yet, now may be a good time to develop a plan for maternity leave.  If your workplace offers patternity leave, it is a good time to begin planning your own course of action, finish up what projects you are working on and for those which you cannot finish in time, begin training coworkers to cover for you in your absence.", R.drawable.week10));
 
 		//Week 11
-		weekList.add(new Week("Week 11", "Lime", "1.6 in", ".25 oz", "Fingers and toes are no longer webbed... ", "Week 11 What to Do", R.drawable.week11));
+		weekList.add(new Week("Week 11", "Lime", "1.6 in", ".25 oz", "Your Baby is now considered a Fetus...", "Prenatal Testing\n\nAre you worried about the health and well-being of your developing child?  This is a good time to talk to your doctor about benefits of prenatal testing.  Just remember to do your homework, you are not under any obligations to do any tests.", R.drawable.week11));
 
 		//Week 12
-		weekList.add(new Week("Week 12", "Plum", "2.1 in", ".49 oz", "Almost all vital systems are fully formed... ", "Week 12 What to Do", R.drawable.week12));
+		weekList.add(new Week("Week 12", "Plum", "2.1 in", ".49 oz", "Almost all vital systems are fully formed... ", "Ask her how she's feeling\n\nYour wife may not be experiencing morning sickness and the frequent trips to the bathroom may have decreased.  Take some time to see how she is feeling, take her on a date, remind her exactly what she was thinking three months ago...", R.drawable.week12));
 
 		//Week 13
-		weekList.add(new Week("Week 13", "Peach", "2.9 in", ".81 oz", "Teeth and vocal cords are appearing... ", "Week 13 What to Do", R.drawable.week13));
+		weekList.add(new Week("Week 13", "Peach", "2.9 in", ".81 oz", "Eyes and ears are moving into position, the face looks more and more human...", "Review your budget\n\nMom should be feeling pretty good as you move into the second trimester.  The second trimester isn't as physically taxing as the first and third.  Now may be a good time to review your budget. Consider starting a college fund: \n\n$/Month for 18yrs\n$50   = $14k   - $20k \n$100 = $28k   - $40k\n$200 = $50k   - $75k.\n$400 = $115k - $160k", R.drawable.week13));
 
 		//Week 14
-		weekList.add(new Week("Week 14", "Lemon", "3.4 in", "1.5 oz", "Liver, kidney and spleen are continuing to develop...", "Week 14 What to Do", R.drawable.week14));
+		weekList.add(new Week("Week 14", "Lemon", "3.4 in", "1.5 oz", "The chin no longer rests on the chest, the hands begin to flex, all nourishment is coming from the placenta...", "Everybody Poops\n\nExcept maybe your wife.  Her hormones have relaxed her bowels and her uterus may be pressing on them resulting in constipation.  If you have taken over shopping or cooking while she watches the bun in the oven, make sure you're feeding her enough fiber.  If it becomes more of an issue make sure to consult your doctor.", R.drawable.week14));
 
 		//Week 15
-		weekList.add(new Week("Week 15", "Naval Orange", "4.0 in", "2.5 oz", "Legs are finally longer than arms...", "Go to prenatal care visits. \n\nDuring the second trimester (months 4Ð6), go with your partner if she needs an ultrasound (a test that uses sound waves to take a picture of the baby). You'll be able to see your baby's head, arms, hands, legs and feet. You may even find out the sex of your baby. Your baby will start to seem very real to you. ", R.drawable.week15));
+		weekList.add(new Week("Week 15", "Naval Orange", "4.0 in", "2.5 oz", "Legs are finally longer than arms, baby starts to kick...", "Go to prenatal care visits. \n\nDuring the second trimester (months 4-6), go with your partner if she needs an ultrasound (a test that uses sound waves to take a picture of the baby). You'll be able to see your baby's head, arms, hands, legs and feet. You may even find out the sex of your baby. Your baby will start to seem very real to you. ", R.drawable.week15));
 
 		//Week 16
-		weekList.add(new Week("Week 16", "Avocado", "4.6 in", "3.5 oz", "Eyebrows, lashes and hair are filling in... ", "Week 16 What to Do", R.drawable.week16));
+		weekList.add(new Week("Week 16", "Avocado", "4.6 in", "3.5 oz", "Eyebrows, lashes and hair are filling in... ", "Make a will\n\nYeah Yeah... it's not going to happen to you, but what if it does?  Make sure your affairs are in order in case the unspeakable occurs. Consider godparents, life insurance and anything else that will take care of your child in the event of your death... Ok that was a lot, go grab a beer and think it over. Just don't share with mom.", R.drawable.week16));
 
 		//Week 17
 		weekList.add(new Week("Week 17", "Onion", "5.1 in", "5.9 oz", "Skeleton is hardening, and fat is accumulating...", "Week 17 What to Do", R.drawable.week17));
