@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -44,7 +45,8 @@ public class InfoActivity extends Activity implements OnGesturePerformedListener
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.infoview);
         
-     
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
         
         
     }
@@ -143,7 +145,7 @@ public class InfoActivity extends Activity implements OnGesturePerformedListener
 	    flipper.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.push_right_out));
 		
 		View v = null;
-		if(currentWeek >= 2){
+		if(currentWeek >= 1){
 			if(flipper.getChildAt(flipper.getDisplayedChild() + 1) != null){
 				v = flipper.getChildAt(flipper.getDisplayedChild() + 1);
 				
@@ -178,7 +180,7 @@ public class InfoActivity extends Activity implements OnGesturePerformedListener
 	
 	private void setNextWeekView(View v){
 		
-		if(currentWeek >= 2){
+		if(currentWeek >= 1){
 			previousLBL.setText(weekList.get(currentWeek -1).getName());
 		}else{
 			previousLBL.setText("      ");
@@ -214,7 +216,7 @@ public class InfoActivity extends Activity implements OnGesturePerformedListener
 		weekList = new ArrayList<Week>();
 		
 		//Week 1
-		weekList.add(new Week("Week 1", "N/A", "N/A", "N/A", "Not Yet Pregnent...", "Quit Smoking. \n\nIf you smoke, you are exposing your wife and unborn child to secondhand smoke. This smoke isn't good for your partner or the baby. It can hurt the baby when it's inside your partner's uterus and after birth. Also, pregnant women who smoke are more likely to have babies born too small and too soon. If you both smoke or even if one of you smokes, now is a great time to quit. Get help from your provider or groups such as the American Cancer Society. ", R.drawable.week1));
+		weekList.add(new Week("Week 1", "N/A", "N/A", "N/A", "Not Yet Pregnant...", "Quit Smoking. \n\nIf you smoke, you are exposing your wife and unborn child to secondhand smoke. This smoke isn't good for your partner or the baby. It can hurt the baby when it's inside your partner's uterus and after birth. Also, pregnant women who smoke are more likely to have babies born too small and too soon. If you both smoke or even if one of you smokes, now is a great time to quit. Get help from your provider or groups such as the American Cancer Society. ", R.drawable.week1));
 
 		//Week 2
 		weekList.add(new Week("Week 2", "N/A", "N/A", "N/A", "Not Yet Pregnant... ", "Get to Work\n\nEat you Wheaties, plan a romantic weekend, light some candles, and turn on the mood music... it's go time!", R.drawable.week2));
@@ -262,52 +264,52 @@ public class InfoActivity extends Activity implements OnGesturePerformedListener
 		weekList.add(new Week("Week 16", "Avocado", "4.6 in", "3.5 oz", "Eyebrows, lashes and hair are filling in... ", "Make a will\n\nYeah Yeah... it's not going to happen to you, but what if it does?  Make sure your affairs are in order in case the unspeakable occurs. Consider godparents, life insurance and anything else that will take care of your child in the event of your death... Ok that was a lot, go grab a beer and think it over. Just don't share with mom.", R.drawable.week16));
 
 		//Week 17
-		weekList.add(new Week("Week 17", "Onion", "5.1 in", "5.9 oz", "Skeleton is hardening, and fat is accumulating...", "Week 17 What to Do", R.drawable.week17));
+		weekList.add(new Week("Week 17", "Onion", "5.1 in", "5.9 oz", "Skeleton is hardening, and fat is accumulating...", "Hold a photo shoot\n\nYour wife may not appreciate it now, but she will later on when you can show her the progression of her pregnancy.  You can use this app to help, simply make a new journal entry and click the image to access your device's camera. After the pregnancy is over, go to the settings screen and click the save button.  Your List of names, journal and all images will be saved to the folder \'baby_loading\' on your SD card.", R.drawable.week17));
 
 		//Week 18
-		weekList.add(new Week("Week 18", "Sweet Potato", "5.6 in", "6.7 oz", "Baby's moving like crazy -- feel anything yet?", "Week 18 What to Do", R.drawable.week18));
+		weekList.add(new Week("Week 18", "Sweet Potato", "5.6 in", "6.7 oz", "Baby's moving like crazy -- feel anything yet?", "Play the name game\n\nIt's hard to agree on names, or maybe you already have them picked out.  Use the name rater in this app to help you find the names you and your wife like most.  Add and rate the names you like and hand your device to your wife to do the same with hers. After she is done, verify your ratings and talk about the ones that came out on top. Experiment with different orders and combinations of first and middle name as you will likely feel differently about them.", R.drawable.week18));
 
 		//Week 19
-		weekList.add(new Week("Week 19", "Mango", "6.0 in", "8.5 oz", "Vernix caseosa is coating baby's skin...", "Week 19 What to Do", R.drawable.week19));
+		weekList.add(new Week("Week 19", "Mango", "6.0 in", "8.5 oz", "Vernix caseosa is coating baby's skin...", "Let her know you are paying attention\n\nYou've done your homework and know that as she gets further along she\'ll likely have trouble sleeping.  Surprise her with a maternity pillow or taker her to pick one out. Hello brownie points!", R.drawable.week19));
 
 		//Week 20
-		weekList.add(new Week("Week 20", "Cantaloupe", "6.5 in", "10.6 oz", "Boy or girl, genitals are fully formed...", "Week 20 What to Do", R.drawable.week20));
+		weekList.add(new Week("Week 20", "Cantaloupe", "6.5 in", "10.6 oz", "You're half way there, scalp hair is growing, baby is moving like crazy...", "Back to School\n\nYour wife will be looking into childbirth classes.  This is another opportunity to support her, go to the classes, ask questions, and meet other dads in the class.  Its always good to have know other parents in your area.", R.drawable.week20));
 
 		//Week 21
-		weekList.add(new Week("Week 21", "Papaya", "10.5-11.8 in", "12.7-20.8 oz", "Nipples are sprouting, and face is fully formed!", "Week 21 What to Do", R.drawable.week21));
+		weekList.add(new Week("Week 21", "Papaya", "10.5-11.8 in", "12.7-20.8 oz", "Rapid growth phase has ended, heart grows stronger...", "Show her that you care\n\nYou got your wife through the first trimester, you've gotten your afairs in order, now take some time to focus on your relationship.  Take her out for dinner or take her on a trip,(Ask your doctor if its safe)", R.drawable.week21));
 
 		//Week 22
-		weekList.add(new Week("Week 22", "Papaya", "10.5-11.8 in", "12.7-20.8 oz", "Nipples are sprouting, and face is fully formed!", "Week 22 What to Do", R.drawable.week22));
+		weekList.add(new Week("Week 22", "Papaya", "10.5-11.8 in", "12.7-20.8 oz", "Eyelids and eyebrows are formed, brain begins a rapid growth...", "Become a masseuse\n\nYour wife is slowly gaining weight, this will take a toll on her feet and back.  Take five minutes to give her a foot or back massage, she will appreciate it.", R.drawable.week22));
 
 		//Week 23
-		weekList.add(new Week("Week 23", "Papaya", "10.5-11.8 in", "12.7-20.8 oz", "Nipples are sprouting, and face is fully formed!", "Week 23 What to Do", R.drawable.week23));
+		weekList.add(new Week("Week 23", "Papaya", "10.5-11.8 in", "12.7-20.8 oz", "Your baby could survive (in intensive care) if born now...", "Watch out for that... Mood Swing!\n\nYou won't know when they are coming, you won't know what they are about, and you probably can't fix the problem.  Just be there to listen and try not to make it worse.  Doing something unexpected like bringing flowers or cooking dinner or doing laundry can't hurt.", R.drawable.week23));
 
 		//Week 24
-		weekList.add(new Week("Week 24", "Papaya", "10.5-11.8 in", "12.7-20.8 oz", "Nipples are sprouting, and face is fully formed!", "Week 24 What to Do", R.drawable.week24));
+		weekList.add(new Week("Week 24", "Papaya", "10.5-11.8 in", "12.7-20.8 oz", "Baby's body begins to fill out, bone mass increases, organs and tissues continue development...", "Know your signs\n\nMarch of Dimes advises not to ignore the following symptoms of Preterm Labor:\nMenstrual-like cramps (constant or occasional)\nLos, dull backache (constant or occasional)\nPelvic pressure (feels like the baby is pushing down)\nAbdominal cramping (with or without diarrhea)\nIncrease or change in mucous vaginal discharge\nUterine contractions every 10 minutes or more often (may be painless)", R.drawable.week24));
 
 		//Week 25
-		weekList.add(new Week("Week 25", "Eggplant", "13.6-14.8 in", "1.5-2.2 lb", "Immune system is preparing for the outside world... ", "Week 25 What to Do", R.drawable.week25));
+		weekList.add(new Week("Week 25", "Eggplant", "13.6-14.8 in", "1.5-2.2 lb", "Spinal structure, joints and ligaments are forming and nostrils begin to open... ", "What to pack for the big trip?\n\nTalk to your wife and your caregiver to see what you should bring with you to the hospital.  Use our hospital checklist feature accessed through the Don't Panic button on the homescreen", R.drawable.week25));
 
 		//Week 26
-		weekList.add(new Week("Week 26", "Eggplant", "13.6-14.8 in", "1.5-2.2 lb", "Immune system is preparing for the outside world... ", "Week 26 What to Do", R.drawable.week26));
+		weekList.add(new Week("Week 26", "Eggplant", "13.6-14.8 in", "1.5-2.2 lb", "Air sacs in the lungs are developing, brain wave activity begins for visual and auditory systems... ", "Prep the Battlespace\n\n...er ...um we mean the nursery.  Mom can't be around paint fumes so that part is up to you.  If the paint isn't right the first time just grin, say \'I Love You Honey\' and repaint it.  After the paint is dried and mom can help decorate, take time to spend time with your wife while putting together your little one's room.", R.drawable.week26));
 
 		//Week 27
-		weekList.add(new Week("Week 27", "Eggplant", "13.6-14.8 in", "1.5-2.2 lb", "Immune system is preparing for the outside world... ", "Week 27 What to Do", R.drawable.week27));
+		weekList.add(new Week("Week 27", "Eggplant", "13.6-14.8 in", "1.5-2.2 lb", "Rapid groth in brain and lungs, Eyelids open, retinas begin to form... ", "It's what time again?\n\nYou want me to go where and get what? Cravings for all kinds of things can strike your wife at all hours.  Do what you can to help her eat healthy meals and snacks, but undersand that you must regard the status of her mental health which can only be kept in check with a deep fried pickle dipped in her favorite pint of ice cream.", R.drawable.week27));
 
 		//Week 28
-		weekList.add(new Week("Week 28", "Eggplant", "13.6-14.8 in", "1.5-2.2 lb", "Immune system is preparing for the outside world... ", "Week 28 What to Do", R.drawable.week28));
+		weekList.add(new Week("Week 28", "Eggplant", "13.6-14.8 in", "1.5-2.2 lb", "The baby can now hear and even recognize your voice... ", "Break-time\'s over, back to work\n\nYou are now in the third trimester, prenatal care visits will become more routine (every other week), your wife will become more symptomatic and uncomfortable the later she gets in her pregnancy. Even fewer clothes will fit, and she may even require bed rest at some point.  She needs you more now than ever, so be there for her, stay involved. Don\'t forget about the random acts of kindness, a massage is always welcome. \n\nPlay the baby some Mozart...s/he might like classical music, who knows?", R.drawable.week28));
 
 		//Week 29
-		weekList.add(new Week("Week 29", "Squash", "15.2-16.7 in", "2.5-3.8 lb", "Sleeping and waking cycles are establishing...", "Go to prenatal care visits \n\nDuring a third-trimester (months 7Ð9) prenatal visit, ask the provider how you can help during labor and delivery.", R.drawable.week29));
+		weekList.add(new Week("Week 29", "Squash", "15.2-16.7 in", "2.5-3.8 lb", "The baby is sensitive to light, sound, taste and smell...", "Go to prenatal care visits \n\nDuring a third-trimester (months 7-9) prenatal visit, ask the provider how you can help during labor and delivery. Help your wife develope a written Birth Plan, make sure that you know this inside and out, if you have to make a snap decision at the hospital, you want to make sure that it is in accordance with your wife's desires, a Birth Plan will help with this.", R.drawable.week29));
 
 		//Week 30
-		weekList.add(new Week("Week 30", "Squash", "15.2-16.7 in", "2.5-3.8 lb", "Sleeping and waking cycles are establishing...", "Go to childbirth education classes with your partner. \n\nYou will learn how to help your partner during labor and delivery. Ask the doctor, midwife, nurse or local hospital or clinic about childbirth classes near you. ", R.drawable.week30));
+		weekList.add(new Week("Week 30", "Squash", "15.2-16.7 in", "2.5-3.8 lb", "The baby is growing toenails...", "Go to childbirth education classes with your partner. \n\nYou will learn how to help your partner during labor and delivery. Ask the doctor, midwife, nurse or local hospital or clinic about childbirth classes near you. ", R.drawable.week30));
 
 		//Week 31
-		weekList.add(new Week("Week 31", "Squash", "15.2-16.7 in", "2.5-3.8 lb", "Sleeping and waking cycles are establishing...", "Support your partner's decision to breastfeed. Breastmilk is the best food for your baby. It has everything that your baby needs to grow and be healthy. Find out about breastfeeding together. Talk to your doctor, midwife or nurse about breastfeeding", R.drawable.week31));
+		weekList.add(new Week("Week 31", "Squash", "15.2-16.7 in", "2.5-3.8 lb", "Sleeping and waking cycles are establishing...", "Support your partner's decision to breastfeed. \n\nMany experts believe breastmilk is the best food for your baby. It has everything that your baby needs to grow and be healthy, passing immunity from mother to baby. Find out about breastfeeding together. Talk to your doctor, midwife or nurse about breastfeeding. Your wife will still need your support after the baby is born.  Read this:\n\nhttp://www.storknet.com/cubbies/breast/dads.htm", R.drawable.week31));
 
 		//Week 32
-		weekList.add(new Week("Week 32", "Squash", "15.2-16.7 in", "2.5-3.8 lb", "Sleeping and waking cycles are establishing...", "Help plan for the baby. \n\nTalk to your partner about what you both want for the baby. Decide where the baby will sleep, and make that part of your home colorful and welcoming for the baby. Go shopping for baby things. \n\nIf you are worried about not having enough money, here are some tips to help you:\n-Ask family members and friends if you can borrow a crib, changing table, toys and baby clothes. Many people are between kids or don't plan to have any more kids and are glad to let you use their baby things.\n-Check out secondhand and thrift shops. They often have baby furniture, toys and clothes at low prices.\n-Put a small amount of money aside each week to help pay for baby things. Even $10 a week can add up to make things easier once the baby comes.", R.drawable.week32));
+		weekList.add(new Week("Week 32", "Squash", "15.2-16.7 in", "2.5-3.8 lb", "Sleeping and waking cycles are establishing...", "Help plan for the baby. \n\nTalk to your partner about what you both want for the baby.. Go shopping for baby things. \n\nIf you are worried about not having enough money, here are some tips to help you:\n-Ask family members and friends if you can borrow a crib, changing table, toys and baby clothes. Many people are between kids or don't plan to have any more kids and are glad to let you use their baby things.\n-Check out secondhand and thrift shops. They often have baby furniture, toys and clothes at low prices.\n-Put a small amount of money aside each week to help pay for baby things. Even $10 a week can add up to make things easier once the baby comes.", R.drawable.week32));
 
 		//Week 33
 		weekList.add(new Week("Week 33", "Honeydew", "17.2-18.7 in", "4.2-5.8 lb", "Growth is slowing, and baby may soon descend... ", "Week 33 What to Do", R.drawable.week33));
