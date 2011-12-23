@@ -240,13 +240,13 @@ public class InfoActivity extends Activity implements OnGesturePerformedListener
 		weekList.add(new Week("Week 8", "Raspberry", ".63 in", ".04 oz", "Arms, legs, nose and lips are beginning to develop... ", "Go to prenatal care visits. \n\nYour spouse's first prenatal visit is likely this week. Your doctor will need to know your medical history, as well as your wife's. It's a good show of support, and you get to know the people who will be taking care of your partner and baby during the pregnancy.  Prior to your prenatal care vist, discuss questions you have with your spouse and be prepared to ask them during your visit. \n\nIf you are lucky you will see the first pictures of your unborn child, and may even see the flutter of a heartbeat during an ultrasound. Its an event best shared with your spouse, she will definately appreciate your involvement.", R.drawable.week8));
 
 		//Week 9
-		weekList.add(new Week("Week 9", "Green Olive", ".9 in", ".07 oz", "The head is roughly the same size as the body...", "Gotta go, Gotta go right now!\n\nYour wife may be making more frequent trips to the restroom, now is probably not the best time to tease her about this as it will likely be a conversation that goes south rather quickly.", R.drawable.week9));
+		weekList.add(new Week("Week 9", "Green Olive", ".9 in", ".07 oz", "Your Baby is now considered a Fetus...", "Gotta go, Gotta go right now!\n\nYour wife may be making more frequent trips to the restroom, now is probably not the best time to tease her about this as it will likely be a conversation that goes south rather quickly.", R.drawable.week9));
 
 		//Week 10
 		weekList.add(new Week("Week 10", "Prune", " 1.2 in", ".14 oz", "Arm joints are working, and soon legs will too...", "Let's talk about work\n\nIf your spouse has not told her coworkers yet, now may be a good time to develop a plan for maternity leave.  If your workplace offers patternity leave, it is a good time to begin planning your own course of action, finish up what projects you are working on and for those which you cannot finish in time, begin training coworkers to cover for you in your absence.", R.drawable.week10));
 
 		//Week 11
-		weekList.add(new Week("Week 11", "Lime", "1.6 in", ".25 oz", "Your Baby is now considered a Fetus...", "Prenatal Testing\n\nAre you worried about the health and well-being of your developing child?  This is a good time to talk to your doctor about benefits of prenatal testing.  Just remember to do your homework, you are not under any obligations to do any tests.", R.drawable.week11));
+		weekList.add(new Week("Week 11", "Lime", "1.6 in", ".25 oz", "The head is equal in length to the rest of the body...", "Prenatal Testing\n\nAre you worried about the health and well-being of your developing child?  This is a good time to talk to your doctor about benefits of prenatal testing.  Just remember to do your homework, you are not under any obligations to do any tests.", R.drawable.week11));
 
 		//Week 12
 		weekList.add(new Week("Week 12", "Plum", "2.1 in", ".49 oz", "Almost all vital systems are fully formed... ", "Ask her how she's feeling\n\nYour wife may not be experiencing morning sickness and the frequent trips to the bathroom may have decreased.  Take some time to see how she is feeling, take her on a date, remind her exactly what she was thinking three months ago...", R.drawable.week12));
@@ -264,7 +264,7 @@ public class InfoActivity extends Activity implements OnGesturePerformedListener
 		weekList.add(new Week("Week 16", "Avocado", "4.6 in", "3.5 oz", "Eyebrows, lashes and hair are filling in... ", "Make a will\n\nYeah Yeah... it's not going to happen to you, but what if it does?  Make sure your affairs are in order in case the unspeakable occurs. Consider godparents, life insurance and anything else that will take care of your child in the event of your death... Ok that was a lot, go grab a beer and think it over. Just don't share with mom.", R.drawable.week16));
 
 		//Week 17
-		weekList.add(new Week("Week 17", "Onion", "5.1 in", "5.9 oz", "Skeleton is hardening, and fat is accumulating...", "Hold a photo shoot\n\nYour wife may not appreciate it now, but she will later on when you can show her the progression of her pregnancy.  You can use this app to help, simply make a new journal entry and click the image to access your device's camera. After the pregnancy is over, go to the settings screen and click the save button.  Your List of names, journal and all images will be saved to the folder \'baby_loading\' on your SD card.", R.drawable.week17));
+		weekList.add(new Week("Week 17", "Open Hand", "5.1 in", "5.9 oz", "Skeleton is hardening, and fat is accumulating...", "Hold a photo shoot\n\nYour wife may not appreciate it now, but she will later on when you can show her the progression of her pregnancy.  You can use this app to help, simply make a new journal entry and click the image to access your device's camera. After the pregnancy is over, go to the settings screen and click the save button.  Your List of names, journal and all images will be saved to the folder \'baby_loading\' on your SD card.", R.drawable.week17));
 
 		//Week 18
 		weekList.add(new Week("Week 18", "Sweet Potato", "5.6 in", "6.7 oz", "Baby's moving like crazy -- feel anything yet?", "Play the name game\n\nIt's hard to agree on names, or maybe you already have them picked out.  Use the name rater in this app to help you find the names you and your wife like most.  Add and rate the names you like and hand your device to your wife to do the same with hers. After she is done, verify your ratings and talk about the ones that came out on top. Experiment with different orders and combinations of first and middle name as you will likely feel differently about them.", R.drawable.week18));
@@ -306,34 +306,34 @@ public class InfoActivity extends Activity implements OnGesturePerformedListener
 		weekList.add(new Week("Week 30", "Squash", "15.2-16.7 in", "2.5-3.8 lb", "The baby is growing toenails...", "Go to childbirth education classes with your partner. \n\nYou will learn how to help your partner during labor and delivery. Ask the doctor, midwife, nurse or local hospital or clinic about childbirth classes near you. ", R.drawable.week30));
 
 		//Week 31
-		weekList.add(new Week("Week 31", "Squash", "15.2-16.7 in", "2.5-3.8 lb", "Sleeping and waking cycles are establishing...", "Support your partner's decision to breastfeed. \n\nMany experts believe breastmilk is the best food for your baby. It has everything that your baby needs to grow and be healthy, passing immunity from mother to baby. Find out about breastfeeding together. Talk to your doctor, midwife or nurse about breastfeeding. Your wife will still need your support after the baby is born.  Read this:\n\nhttp://www.storknet.com/cubbies/breast/dads.htm", R.drawable.week31));
+		weekList.add(new Week("Week 31", "Squash", "18 in", "3 lb", "Sleeping and waking cycles are establishing...", "Support your partner's decision to breastfeed. \n\nMany experts believe breastmilk is the best food for your baby. It has everything that your baby needs to grow and be healthy, passing immunity from mother to baby. Find out about breastfeeding together. Talk to your doctor, midwife or nurse about breastfeeding. Your wife will still need your support after the baby is born.  Read this:\n\nhttp://www.storknet.com/cubbies/breast/dads.htm", R.drawable.week31));
 
 		//Week 32
-		weekList.add(new Week("Week 32", "Squash", "15.2-16.7 in", "2.5-3.8 lb", "Sleeping and waking cycles are establishing...", "Help plan for the baby. \n\nTalk to your partner about what you both want for the baby.. Go shopping for baby things. \n\nIf you are worried about not having enough money, here are some tips to help you:\n-Ask family members and friends if you can borrow a crib, changing table, toys and baby clothes. Many people are between kids or don't plan to have any more kids and are glad to let you use their baby things.\n-Check out secondhand and thrift shops. They often have baby furniture, toys and clothes at low prices.\n-Put a small amount of money aside each week to help pay for baby things. Even $10 a week can add up to make things easier once the baby comes.", R.drawable.week32));
+		weekList.add(new Week("Week 32", "Squash", "15.2-16.7 in", "4 lb", "Sleeping and waking cycles are establishing...", "Help plan for the baby. \n\nTalk to your partner about what you both want for the baby.. Go shopping for baby things. \n\nIf you are worried about not having enough money, here are some tips to help you:\n-Ask family members and friends if you can borrow a crib, changing table, toys and baby clothes. Many people are between kids or don't plan to have any more kids and are glad to let you use their baby things.\n-Check out secondhand and thrift shops. They often have baby furniture, toys and clothes at low prices.\n-Put a small amount of money aside each week to help pay for baby things. Even $10 a week can add up to make things easier once the baby comes.", R.drawable.week32));
 
 		//Week 33
-		weekList.add(new Week("Week 33", "Honeydew", "17.2-18.7 in", "4.2-5.8 lb", "Growth is slowing, and baby may soon descend... ", "Week 33 What to Do", R.drawable.week33));
+		weekList.add(new Week("Week 33", "Honeydew", "17.2-18.7 in", "4.5 lb", "Baby's immune system has started up... ", "Week 33 What to Do", R.drawable.week33));
 
 		//Week 34
-		weekList.add(new Week("Week 34", "Honeydew", "17.2-18.7 in", "4.2-5.8 lb", "Growth is slowing, and baby may soon descend... ", "Week 34 What to Do", R.drawable.week34));
+		weekList.add(new Week("Week 34", "Honeydew", "20 in", "5 lb", "Boys testicles should be descending, fingernails are at the end of their fingertips... ", "How bout a warm cup of milk...\n\nFor your wife. Many women experience insomnia to a greater or lesser extent during their third trimester.  Combined with other symptoms that your wife is experiencing, she will likely be exhausted.  Do what you can to help her get some shut eye.  Some women find a cup of warm milk or a back rub helps them get to sleep.", R.drawable.week34));
 
 		//Week 35
-		weekList.add(new Week("Week 35", "Honeydew", "17.2-18.7 in", "4.2-5.8 lb", "Growth is slowing, and baby may soon descend... ", "Week 35 What to Do", R.drawable.week35));
+		weekList.add(new Week("Week 35", "Honeydew", "20 in", "5.5 lb", "Brain is growing, skull remains soft until after birth... ", "Week 35 What to Do", R.drawable.week35));
 
 		//Week 36
-		weekList.add(new Week("Week 36", "Honeydew", "17.2-18.7 in", "4.2-5.8 lb", "Growth is slowing, and baby may soon descend... ", "Week 36 What to Do", R.drawable.week36));
+		weekList.add(new Week("Week 36", "Honeydew", ">20 in", "6 lb", "Growth is slowing, most systems are (relatively) matured, except for the digestive system... ", "Week 36 What to Do", R.drawable.week36));
 
 		//Week 37
-		weekList.add(new Week("Week 37", "Watermelon", "18.9-20.9 in", "6.2-9.2 lb", "Full term! Baby's finally ready for the outside world...", "Week 37 What to Do", R.drawable.week37));
+		weekList.add(new Week("Week 37", "Watermelon", ">20 in", "6.2-9.2 lb", "Full term! Baby's finally ready for the outside world...", "Week 37 What to Do", R.drawable.week37));
 
 		//Week 38
-		weekList.add(new Week("Week 38", "Watermelon", "18.9-20.9 in", "6.2-9.2 lb", "Full term! Baby's finally ready for the outside world...", "Week 38 What to Do", R.drawable.week38));
+		weekList.add(new Week("Week 38", "Watermelon", ">20 in", "6.2-9.2 lb", "Full term! Baby's finally ready for the outside world...", "Week 38 What to Do", R.drawable.week38));
 
 		//Week 39
-		weekList.add(new Week("Week 39", "Watermelon", "18.9-20.9 in", "6.2-9.2 lb", "Full term! Baby's finally ready for the outside world...", "Week 39 What to Do", R.drawable.week39));
+		weekList.add(new Week("Week 39", "Watermelon", ">20 in", "6.2-9.2 lb", "Full term! Baby's finally ready for the outside world...", "Week 39 What to Do", R.drawable.week39));
 
 		//Week 40
-		weekList.add(new Week("Week 40", "Watermelon", "18.9-20.9 in", "6.2-9.2 lb", "Full term! Baby's finally ready for the outside world...", "Week 40 What to Do", R.drawable.week40));
+		weekList.add(new Week("Week 40", "Watermelon", ">20 in", "6.2-9.2 lb", "Full term! Baby's finally ready for the outside world...", "Week 40 What to Do", R.drawable.week40));
 	}
 	
 

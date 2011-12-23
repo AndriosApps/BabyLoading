@@ -137,6 +137,12 @@ public class CheckListActivity extends Activity {
 		checkedItems.add(0);
 		checkList.add("Your Hospital Bag");
 		checkedItems.add(0);
+		checkList.add("Notify Doctor");
+		checkedItems.add(0);
+		checkList.add("Notify Family / Friends");
+		checkedItems.add(0);
+		checkList.add("Wallet");
+		checkedItems.add(0);
 		checkList.add("Phone & Charger");
 		checkedItems.add(0);
 		checkList.add("Camera / Batteries / Memory Card");
