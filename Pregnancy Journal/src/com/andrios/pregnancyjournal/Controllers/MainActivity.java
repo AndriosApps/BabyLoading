@@ -190,7 +190,7 @@ public class MainActivity extends Activity {
 		profile.getDays();
 		profile.getWeekDays();
 		dueDateLBL.setText(profile.getDueDate());
-		ageLBL.setText("" + profile.getWeek() + " weeks, " + profile.getWeekDays() + " days");
+		ageLBL.setText(" Week " + profile.getWeek() + " Day "  + (profile.getWeekDays() + 1) );
 		
 		LinearLayout trimester = (LinearLayout) findViewById(R.id.mainActivityTrimesterLL);
 		for(int i = 0; i < trimester.getChildCount(); i++){

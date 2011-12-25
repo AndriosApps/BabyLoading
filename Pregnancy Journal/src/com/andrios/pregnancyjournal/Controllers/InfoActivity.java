@@ -16,11 +16,14 @@ import android.gesture.GestureOverlayView;
 import android.gesture.GestureOverlayView.OnGesturePerformedListener;
 import android.gesture.Prediction;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.view.Window;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
@@ -46,18 +49,18 @@ public class InfoActivity extends Activity implements OnGesturePerformedListener
         setContentView(R.layout.infoview);
         
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
- 
-    }
-    
-    public void onResume(){
-    	super.onResume();
-    	getExtras();
+        getExtras();
         setConnections();
         setOnClickListeners();
         mLibrary = GestureLibraries.fromRawResource(this, R.raw.gestures);
         if (!mLibrary.load()) {
             finish();
         }
+    }
+    
+    public void onResume(){
+    	super.onResume();
+    	
     }
     
 	@SuppressWarnings("unchecked")
@@ -202,6 +205,14 @@ public class InfoActivity extends Activity implements OnGesturePerformedListener
 		weight.setText(weekList.get(currentWeek).getWeight());
 		
 		TextView description = (TextView) v.findViewById(R.id.infoViewNotesTXT);
+		description.setOnTouchListener(new OnTouchListener() {
+    
+
+	public boolean onTouch(View v, MotionEvent event) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+ });
 		description.setText(weekList.get(currentWeek).getDescription() + "\n\n" + weekList.get(currentWeek).getWhatToDo());
 		
 		
@@ -229,7 +240,7 @@ public class InfoActivity extends Activity implements OnGesturePerformedListener
 		weekList.add(new Week("Week 5", "Pin Head", "1/16 in", "N/A", "Major organs and systems are forming...", "'Be Respectful of her desire for Intercourse' \n\nOn our first prenatal appointment our doctor pulled me aside and gave me this valuable tidbit.  Her desire for sex may change as her body changes. Many people find that sex feels different during pregnancy. As her belly gets bigger, try different positions. Find one that's comfortable for both of you. Talk to each other about what feels good. Remember, as long as your health care provider says it's okay, it's safe to have sex during pregnancy. It won't hurt the baby.", R.drawable.week5));
 
 		//Week 6
-		weekList.add(new Week("Week 6", "Fishing Sinker", "1/4 in", "N/A", "Blood is starting to circulate... ", "Be sympathetic to her morning sickness\n\nMany women begin to experience morning sickness, which can actually strike at any time during the day, during week six.  Help her however she needs it, bring her crackers or ginger ale, and try to keep strong smells which trigger her symptoms as far away from her as needed. ", R.drawable.week6));
+		weekList.add(new Week("Week 6", "Fishing Sinker", "1/4 in", "N/A", "Blood is starting to circulate... ", "Be sympathetic to her morning sickness\n\nMany women begin to experience morning sickness, which can actually strike at any time during the day.  Help her however she needs it, bring her crackers or ginger ale, and try to keep strong smells which trigger her symptoms as far away from her as needed. ", R.drawable.week6));
 
 		//Week 7
 		weekList.add(new Week("Week 7", "Blueberry", "1/2 in", "N/A", "Baby's brain is growing fast...", "What about that \'Maternal Glow\' I've always heard about?\n\nYour wife's body is experiencing many changes, which may result in acne.  Your wife may be feeling rather self concious, take a minute to remind her how beautifull you think she is. As a side note it may be a good time to consider purchasing a shiny gift for later down the road when her mood is really in the dumps.", R.drawable.week7));
@@ -298,7 +309,7 @@ public class InfoActivity extends Activity implements OnGesturePerformedListener
 		weekList.add(new Week("Week 28", "Boot", "14.8 in", "2.2 lbs", "The baby can now hear and even recognize your voice... ", "Break-time\'s over, back to work\n\nYou are now in the third trimester, prenatal care visits will become more routine (every other week), your wife will become more symptomatic and uncomfortable the later she gets in her pregnancy. Even fewer clothes will fit, and she may even require bed rest at some point.  She needs you more now than ever, so be there for her, stay involved. Don\'t forget about the random acts of kindness, a massage is always welcome. \n\nPlay the baby some Mozart...s/he might like classical music, who knows?", R.drawable.week28));
 
 		//Week 29
-		weekList.add(new Week("Week 29", "Loaf of Bread", "15 in", "2.5 lbs", "The baby is sensitive to light, sound, taste and smell...", "Go to prenatal care visits \n\nDuring a third-trimester (months 7-9) prenatal visit, ask the provider how you can help during labor and delivery. Help your wife develope a written Birth Plan, make sure that you know this inside and out, if you have to make a snap decision at the hospital, you want to make sure that it is in accordance with your wife's desires, a Birth Plan will help with this.", R.drawable.week29));
+		weekList.add(new Week("Week 29", "Football", "15 in", "2.5 lbs", "The baby is sensitive to light, sound, taste and smell...", "Go to prenatal care visits \n\nDuring a third-trimester (months 7-9) prenatal visit, ask the provider how you can help during labor and delivery. Help your wife develope a written Birth Plan, make sure that you know this inside and out, if you have to make a snap decision at the hospital, you want to make sure that it is in accordance with your wife's desires, a Birth Plan will help with this.", R.drawable.week29));
 
 		//Week 30
 		weekList.add(new Week("Week 30", "Football", "16 in", "3 lbs", "The baby is growing toenails...", "Go to childbirth education classes with your partner. \n\nYou will learn how to help your partner during labor and delivery. Ask the doctor, midwife, nurse or local hospital or clinic about childbirth classes near you. ", R.drawable.week30));

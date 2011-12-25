@@ -76,7 +76,12 @@
             android:uncertainGestureColor="#00000000" >
         
   <ViewFlipper android:id="@+id/details" android:layout_height="fill_parent" android:paddingLeft="15dip" android:paddingRight="15dip" android:layout_width="fill_parent" android:layout_weight="1">
-      <LinearLayout android:orientation="vertical" android:id="@+id/linearLayout14" android:layout_width="match_parent" android:layout_height="match_parent">
+
+      <LinearLayout
+          android:id="@+id/linearLayout14"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:orientation="vertical" >
 
           <LinearLayout
               android:id="@+id/linearLayout2"
@@ -85,13 +90,17 @@
               android:layout_weight="0"
               android:orientation="vertical" >
 
-              <LinearLayout android:id="@+id/linearLayout5" android:gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content">
+              <LinearLayout
+                  android:id="@+id/linearLayout5"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:gravity="center" >
 
                   <LinearLayout
                       android:id="@+id/linearLayout12"
-                      android:layout_width="125dip"
+                      android:layout_width="150dp"
                       android:layout_height="match_parent"
-                      android:layout_weight="1"
+                      android:layout_weight="0"
                       android:background="@drawable/monitor"
                       android:gravity="center_vertical"
                       android:orientation="vertical"
@@ -164,15 +173,26 @@
                       </LinearLayout>
                   </LinearLayout>
 
-                  <LinearLayout android:id="@+id/linearLayout13" android:layout_weight="0" android:gravity="center" android:layout_width="125dip" android:layout_height="125dip">
+                  <LinearLayout
+                      android:id="@+id/linearLayout6"
+                      android:layout_width="100dp"
+                      android:layout_height="match_parent"
+                      android:layout_weight="1" >
+                  </LinearLayout>
+
+                  <LinearLayout
+                      android:id="@+id/linearLayout13"
+                      android:layout_width="125dip"
+                      android:layout_height="125dip"
+                      android:layout_weight="0"
+                      android:gravity="center" >
 
                       <ImageView
                           android:id="@+id/infoViewImageView"
                           android:layout_width="100dip"
                           android:layout_height="125dip"
                           android:scaleType="fitXY"
-                          android:src="@drawable/momprofile" >
-</ImageView>
+                          android:src="@drawable/momprofile" />
                   </LinearLayout>
               </LinearLayout>
           </LinearLayout>
@@ -196,15 +216,11 @@
                   android:layout_width="match_parent"
                   android:layout_height="match_parent"
                   android:layout_weight="1"
-                  android:gravity="top"
                   android:focusable="false"
+                  android:gravity="top"
                   android:inputType="textMultiLine|textImeMultiLine"
-                  android:text="EditText" >
-
-                  <requestFocus />
-              </EditText>
+                  android:text="EditText" />
           </LinearLayout>
-
       </LinearLayout>
 
       <LinearLayout
@@ -228,9 +244,9 @@
 
                   <LinearLayout
                       android:id="@+id/LinearLayout07"
-                      android:layout_width="125dip"
+                      android:layout_width="150dp"
                       android:layout_height="match_parent"
-                      android:layout_weight="1"
+                      android:layout_weight="0"
                       android:background="@drawable/monitor"
                       android:gravity="center_vertical"
                       android:orientation="vertical"
@@ -304,6 +320,13 @@
                   </LinearLayout>
 
                   <LinearLayout
+                      android:id="@+id/linearLayout6"
+                      android:layout_width="100dp"
+                      android:layout_height="match_parent"
+                      android:layout_weight="1" >
+                  </LinearLayout>
+
+                  <LinearLayout
                       android:id="@+id/LinearLayout06"
                       android:layout_width="125dip"
                       android:layout_height="125dip"
@@ -339,8 +362,8 @@
                   android:layout_width="match_parent"
                   android:layout_height="match_parent"
                   android:layout_weight="1"
-                  android:gravity="top"
                   android:focusable="false"
+                  android:gravity="top"
                   android:inputType="textMultiLine|textImeMultiLine"
                   android:text="EditText" />
           </LinearLayout>
