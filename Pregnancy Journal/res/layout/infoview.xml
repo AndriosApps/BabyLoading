@@ -169,7 +169,7 @@
                       <ImageView
                           android:id="@+id/infoViewImageView"
                           android:layout_width="100dip"
-                          android:layout_height="100dip"
+                          android:layout_height="125dip"
                           android:scaleType="fitXY"
                           android:src="@drawable/momprofile" >
 </ImageView>
@@ -312,7 +312,7 @@
                       <ImageView
                           android:id="@+id/infoViewImageView"
                           android:layout_width="100dip"
-                          android:layout_height="100dip"
+                          android:layout_height="125dp"
                           android:scaleType="fitXY"
                           android:src="@drawable/momprofile" />
                   </LinearLayout>
