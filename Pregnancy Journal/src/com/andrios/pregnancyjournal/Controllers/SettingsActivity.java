@@ -34,7 +34,7 @@ import android.widget.Toast;
 
 public class SettingsActivity extends Activity {
 	
-	Button saveBTN, aboutBTN;
+	Button saveBTN, aboutBTN, backupBTN;
 	ImageView profileBTN;
 	ArrayList<BabyName> nameList;
 	ArrayList<JournalEntry> journalList;
@@ -69,6 +69,7 @@ public class SettingsActivity extends Activity {
 	private void setConnections() {
 		saveBTN = (Button) findViewById(R.id.settingsActivitySaveBTN);
 		aboutBTN = (Button) findViewById(R.id.settingsActivityAboutBTN);
+		backupBTN = (Button) findViewById(R.id.settingsActivityBackupBTN);
 		profileBTN = (ImageView) findViewById(R.id.settingsActivityProfileBTN);
 		if(profile.getBitmap() != null){
 			profileBTN.setImageBitmap(profile.getBitmap());
@@ -77,6 +78,16 @@ public class SettingsActivity extends Activity {
 	}
 
 	private void setOnClickListeners() {
+		backupBTN.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				Intent intent = new Intent(v.getContext(), BackupController.class);
+				intent.putExtra("profile", profile);
+				startActivity(intent);
+				
+			}
+		});
+		
 		profileBTN.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {

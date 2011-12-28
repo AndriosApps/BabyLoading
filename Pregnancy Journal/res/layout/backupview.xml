@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_weight="0" >
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/backupControllerUsernameTXT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/backupControllerPasswordTXT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/backupControllerBackupBTN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Backup" />
+
+        <Button
+            android:id="@+id/backupControllerRestoreBTN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Restore" />
+
+    </LinearLayout>
+
+</LinearLayout>

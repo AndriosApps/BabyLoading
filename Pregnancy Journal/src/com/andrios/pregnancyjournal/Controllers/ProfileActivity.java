@@ -1,5 +1,6 @@
 package com.andrios.pregnancyjournal.Controllers;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -157,6 +158,7 @@ public class ProfileActivity extends Activity {
 
 	private void readData() {
 		try {
+			
 			FileInputStream fis = openFileInput("profile");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 
@@ -177,7 +179,7 @@ public class ProfileActivity extends Activity {
 			try {
 			
 				FileOutputStream fos;
-				fos = ctx.openFileOutput("profile", Context.MODE_WORLD_READABLE);
+				fos = ctx.openFileOutput("profile", Context.MODE_WORLD_WRITEABLE);
 				ObjectOutputStream oos = new ObjectOutputStream(fos);
 				profile.firstRun = false;
 				oos.writeObject(profile);

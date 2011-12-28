@@ -118,10 +118,9 @@
                   android:orientation="vertical" >
 
                   <Button
-                      android:id="@+id/Button02"
+                      android:id="@+id/settingsActivityBackupBTN"
                       android:layout_width="75dip"
-                      android:layout_height="75dip"
-                      android:background="@drawable/nothing" />
+                      android:layout_height="75dip" />
 
                   <TextView
                       android:id="@+id/TextView02"
