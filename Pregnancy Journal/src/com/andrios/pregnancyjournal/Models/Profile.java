@@ -158,6 +158,13 @@ public class Profile implements Serializable{
 	/*
 	 * Setter Methods
 	 */
+	public void setEverything(SharableProfile profile){
+		this.name = profile.name;
+		this.c.setTimeInMillis(profile.milis);
+		this.isLMPDate = profile.isLMPDate;
+		this.firstRun = profile.firstRun;
+		this.image = profile.image;
+	}
 	
 	public void setName(String name){
 		this.name = name;

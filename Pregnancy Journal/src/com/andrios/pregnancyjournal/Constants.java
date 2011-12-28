@@ -25,12 +25,16 @@ public class Constants {
 	public static final String ACCESS_KEY_ID = "AKIAIVB7RXLINULKTPUQ";
 	public static final String SECRET_KEY = "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";	
 	
-	public static final String PICTURE_BUCKET = "picture-bucket";
-	public static final String PROFILE_NAME = "NameOfTheProfile";
+	public static final String BABY_LOADING_BUCKET = "baby-loading-bucket";
+	public static final String PROFILE_NAME = "Profile";
+	public static final String BABY_NAME = "Baby-Name-List";
+	public static final String CHECKLIST_NAME = "Baby-Coming-Checklist";
+	public static final String CONTACTS_NAME = "Quick-Contacts";
+	public static final String JOURNAL_NAME = "Journal";
 	
 	
-	public static String getPictureBucket(String username, String password) {
-		return (username + password + ACCESS_KEY_ID + PICTURE_BUCKET).toLowerCase();
+	public static String getBabyLoadingBucket(String username, String password) {
+		return (username + password + ACCESS_KEY_ID + BABY_LOADING_BUCKET).toLowerCase();
 	}
 	
 }

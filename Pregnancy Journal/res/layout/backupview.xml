@@ -22,15 +22,16 @@
         <EditText
             android:id="@+id/backupControllerUsernameTXT"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-
+            android:layout_height="wrap_content"
+			android:text="murphy360">
             <requestFocus />
         </EditText>
 
         <EditText
             android:id="@+id/backupControllerPasswordTXT"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content" 
+            android:text = "magicguy07"/>
 
         <Button
             android:id="@+id/backupControllerBackupBTN"

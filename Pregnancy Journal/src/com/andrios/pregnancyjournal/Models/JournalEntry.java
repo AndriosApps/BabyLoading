@@ -41,6 +41,18 @@ public class JournalEntry implements Serializable{
 		//entryBitmap = new SerialBitmap();
 	}
 	
+	public JournalEntry(SharableJournalEntry entry){
+		this.date = Calendar.getInstance();
+		this.date.setTimeInMillis(entry.date);
+		this.notes = entry.notes;
+		this.mood = entry.mood;
+		this.isDrVisit = entry.isDrVisit;
+		this.isUltrasound = entry.isUltrasound;
+		this.title = entry.title;
+		if(entry.entryBitmap != null){
+			entryBitmap = entry.entryBitmap;
+		}
+	}
 	
 	/*
 	 * Getter Methods

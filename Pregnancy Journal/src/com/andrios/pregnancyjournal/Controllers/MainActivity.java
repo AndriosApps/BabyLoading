@@ -9,6 +9,7 @@ import java.io.ObjectInputStream;
 
 import com.andrios.pregnancyjournal.R;
 import com.andrios.pregnancyjournal.Models.Profile;
+import com.andrios.pregnancyjournal.Models.SharableProfile;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -240,12 +241,13 @@ public class MainActivity extends Activity {
 		try {
 			FileInputStream fis = openFileInput("profile");
 			ObjectInputStream ois = new ObjectInputStream(fis);
-
+			
 			profile = (Profile) ois.readObject();
 			ois.close();
 			fis.close();
 			
 		} catch (Exception e) {
+			e.printStackTrace();
 			profile = new Profile();
 			createDialog();
 			
