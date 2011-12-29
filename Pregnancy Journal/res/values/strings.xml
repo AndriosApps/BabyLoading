@@ -45,5 +45,8 @@
     <string name="label_month">Month</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
+    <string name="title_dropbox">Backup to Dropbox</string>
+    <string name="title_link_dropbox">Link to Dropbox</string>
+    <string name="title_backup">Backup</string>
     
 </resources>

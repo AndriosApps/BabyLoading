@@ -54,30 +54,6 @@
                       android:textColor="#000000" />
 
               </LinearLayout>
-
-              <LinearLayout
-                  android:id="@+id/linearLayout7"
-                  android:layout_width="125dip"
-                  android:layout_height="wrap_content"
-                  android:layout_weight="1"
-                  android:gravity="center"
-                  android:orientation="vertical" >
-
-                  <Button
-                      android:id="@+id/settingsActivitySaveBTN"
-                      android:layout_width="100dip"
-                      android:layout_height="100dip"
-                      android:background="@drawable/icon_save" >
-                  </Button>
-
-                  <TextView
-                      android:id="@+id/textView4"
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:text="Save"
-                      android:textColor="#000000" >
-                  </TextView>
-              </LinearLayout>
           </LinearLayout>
 
           <LinearLayout
@@ -105,14 +81,54 @@
                       android:id="@+id/TextView01"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="About"
+                      android:text="Developer"
+                      android:textColor="#000000" />
+              </LinearLayout>
+
+          </LinearLayout>
+
+          <TextView
+              android:id="@+id/textView2"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="0"
+              android:text="Backup Options"
+              android:textColor="@color/black" />
+
+          <LinearLayout
+              android:id="@+id/LinearLayout01"
+              android:layout_width="match_parent"
+              android:layout_height="100dp"
+              android:layout_weight="1"
+              android:gravity="center" >
+
+              <LinearLayout
+                  android:id="@+id/linearLayout7"
+                  android:layout_width="50dp"
+                  android:layout_height="100dp"
+                  android:layout_weight="1"
+                  android:gravity="center"
+                  android:orientation="vertical" >
+
+                  <Button
+                      android:id="@+id/settingsActivitySaveBTN"
+                      android:layout_width="75dip"
+                      android:layout_height="75dp"
+                      android:layout_weight="0"
+                      android:background="@drawable/icon_save" />
+
+                  <TextView
+                      android:id="@+id/textView4"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="SD Card"
                       android:textColor="#000000" />
               </LinearLayout>
 
               <LinearLayout
                   android:id="@+id/linearLayout9"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
+                  android:layout_width="50dp"
+                  android:layout_height="100dp"
                   android:layout_weight="1"
                   android:gravity="center"
                   android:orientation="vertical" >
@@ -120,18 +136,41 @@
                   <Button
                       android:id="@+id/settingsActivityBackupBTN"
                       android:layout_width="75dip"
-                      android:layout_height="75dip" />
+                      android:layout_height="75dp"
+                      android:layout_weight="0" />
 
                   <TextView
                       android:id="@+id/TextView02"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="@string/empty"
+                      android:text="AWS Cloud"
                       android:textColor="#000000" />
-
               </LinearLayout>
 
+              <LinearLayout
+                  android:id="@+id/LinearLayout02"
+                  android:layout_width="50dp"
+                  android:layout_height="100dp"
+                  android:layout_weight="1"
+                  android:gravity="center"
+                  android:orientation="vertical" >
+
+                  <Button
+                      android:id="@+id/settingsActivityDropboxBTN"
+                      android:layout_width="75dip"
+                      android:layout_height="75dp"
+                      android:layout_weight="0"
+                      android:background="@drawable/box" />
+
+                  <TextView
+                      android:id="@+id/TextView03"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="Dropbox"
+                      android:textColor="#000000" />
+              </LinearLayout>
           </LinearLayout>
+
       </LinearLayout>
   
 </LinearLayout>

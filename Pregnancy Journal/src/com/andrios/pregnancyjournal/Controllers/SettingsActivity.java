@@ -4,23 +4,16 @@ package com.andrios.pregnancyjournal.Controllers;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.ObjectInputStream;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 import com.andrios.pregnancyjournal.R;
 import com.andrios.pregnancyjournal.Models.BabyName;
 import com.andrios.pregnancyjournal.Models.JournalEntry;
 import com.andrios.pregnancyjournal.Models.Profile;
-import com.andrios.pregnancyjournal.R.id;
-import com.andrios.pregnancyjournal.R.layout;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
@@ -28,16 +21,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 public class SettingsActivity extends Activity {
-	
-
+  
 	protected static final int BACKUP = 0;
 	
-	Button saveBTN, aboutBTN, backupBTN;
+	Button saveBTN, aboutBTN, backupBTN, dropboxBTN;
 	ImageView profileBTN;
 	ArrayList<BabyName> nameList;
 	ArrayList<JournalEntry> journalList;
@@ -50,8 +41,8 @@ public class SettingsActivity extends Activity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.settingsactivity);
         
-        getExtras();
-       
+
+       getExtras();
         
     }
     
@@ -60,6 +51,9 @@ public class SettingsActivity extends Activity {
     	
         setConnections();
         setOnClickListeners();
+
+        
+        
     }
 
 	private void getExtras() {
@@ -70,6 +64,7 @@ public class SettingsActivity extends Activity {
 	}
 
 	private void setConnections() {
+		dropboxBTN = (Button) findViewById(R.id.settingsActivityDropboxBTN);
 		saveBTN = (Button) findViewById(R.id.settingsActivitySaveBTN);
 		aboutBTN = (Button) findViewById(R.id.settingsActivityAboutBTN);
 		backupBTN = (Button) findViewById(R.id.settingsActivityBackupBTN);
@@ -81,6 +76,14 @@ public class SettingsActivity extends Activity {
 	}
 
 	private void setOnClickListeners() {
+		dropboxBTN.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				Intent intent = new Intent(v.getContext(), DropboxActivity.class);
+				
+				startActivityForResult(intent, BACKUP);
+			}
+		});
 		backupBTN.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
