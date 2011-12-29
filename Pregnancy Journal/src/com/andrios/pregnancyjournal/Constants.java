@@ -22,10 +22,14 @@ public class Constants {
     // to devices securely.
     // http://aws.amazon.com/articles/Mobile/4611615499399490
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//	public static final String ACCESS_KEY_ID = "AKIAIWYIRQCGAWMVVSCA";
+//	public static final String SECRET_KEY = "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";	
+//	
+//
 	public static final String ACCESS_KEY_ID = "AKIAIVB7RXLINULKTPUQ";
 	public static final String SECRET_KEY = "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";	
 	
-	public static final String BABY_LOADING_BUCKET = "baby-loading-bucket";
+	public static final String BABY_LOADING_BUCKET = "baby-loading";
 	public static final String PROFILE_NAME = "Profile";
 	public static final String BABY_NAME = "Baby-Name-List";
 	public static final String CHECKLIST_NAME = "Baby-Coming-Checklist";
@@ -33,8 +37,12 @@ public class Constants {
 	public static final String JOURNAL_NAME = "Journal";
 	
 	
-	public static String getBabyLoadingBucket(String username, String password) {
-		return (username + password + ACCESS_KEY_ID + BABY_LOADING_BUCKET).toLowerCase();
+	public static String getBabyLoadingBucket() {
+		return (BABY_LOADING_BUCKET).toLowerCase();
+	}
+	
+	public static String getBabyLoadingFile(String username, String password, String filename){
+		return("users/"+username + password+"/" + filename).toLowerCase();
 	}
 	
 }

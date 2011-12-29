@@ -28,6 +28,7 @@ public class SharableJournalEntry implements Serializable{
 		this.mood = entry.getMood();
 		this.isDrVisit = entry.isDrVisit;
 		this.isUltrasound = entry.isUltrasound;
+		this.isImportant = entry.isImportant;
 		this.title = entry.getTitle();
 		if(entry.entryBitmap != null){
 			entryBitmap = entry.entryBitmap;

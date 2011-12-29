@@ -34,6 +34,9 @@ import android.widget.Toast;
 
 public class SettingsActivity extends Activity {
 	
+
+	protected static final int BACKUP = 0;
+	
 	Button saveBTN, aboutBTN, backupBTN;
 	ImageView profileBTN;
 	ArrayList<BabyName> nameList;
@@ -83,7 +86,7 @@ public class SettingsActivity extends Activity {
 			public void onClick(View v) {
 				Intent intent = new Intent(v.getContext(), BackupController.class);
 				intent.putExtra("profile", profile);
-				startActivity(intent);
+				startActivityForResult(intent, BACKUP);
 				
 			}
 		});
@@ -205,6 +208,37 @@ public class SettingsActivity extends Activity {
 		
 		
 	}
+	
+	private void readProfile() {
+		try {
+			FileInputStream fis = openFileInput("profile");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			
+			profile = (Profile) ois.readObject();
+			ois.close();
+			fis.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+			
+		}
+		
+		
+	}
+	
+	@Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+		
+    	if (requestCode == BACKUP) {
+    		if (resultCode == RESULT_OK) {
+    			readProfile();
+    		} else {
+    			
+    			Toast.makeText(this, "Canceled", Toast.LENGTH_SHORT).show();
+    		}
+    	}
+    }
 	
 	
 }

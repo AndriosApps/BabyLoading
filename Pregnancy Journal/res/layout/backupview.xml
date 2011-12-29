@@ -18,20 +18,23 @@
         android:layout_height="100dp"
         android:layout_weight="1"
         android:orientation="vertical" >
-
+
         <EditText
             android:id="@+id/backupControllerUsernameTXT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-			android:text="murphy360">
+            android:hint="@string/username"
+            android:text="murphy360" >
+
             <requestFocus />
         </EditText>
-
+
         <EditText
             android:id="@+id/backupControllerPasswordTXT"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" 
-            android:text = "magicguy07"/>
+            android:layout_height="wrap_content"
+            android:hint="@string/password"
+            android:text="magicguy07" />
 
         <Button
             android:id="@+id/backupControllerBackupBTN"
@@ -44,6 +47,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Restore" />
+
+        <TextView
+            android:id="@+id/backupControllerLogTXT"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/empty"
+            android:textColor="@color/green" />
 
     </LinearLayout>
 

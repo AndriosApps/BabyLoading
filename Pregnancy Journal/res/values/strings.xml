@@ -2,7 +2,7 @@
 <resources>
     <string name="hello">Hello World, MainActivity!</string>
     <string name="app_name">Baby Loading...</string>
-    <string name="market">amazon</string>
+    <string name="market">android</string>
     <string name="color_pink">#ff99ff</string>
     <string name="color_blue">#33cccc</string>
     <string name="color_title">#ffffff</string>
@@ -43,5 +43,7 @@
     <string name="lable_day">Day</string>
     <string name="label_week">Week</string>
     <string name="label_month">Month</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
     
 </resources>

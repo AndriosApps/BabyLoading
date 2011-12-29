@@ -32,6 +32,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class BackupController extends Activity {
@@ -40,6 +41,7 @@ public class BackupController extends Activity {
 		
 	Button backupBTN, restoreBTN;
 	EditText usernameTXT, passwordTXT;
+	TextView logTXT;
 	Profile profile;
 	
 	
@@ -63,6 +65,7 @@ public class BackupController extends Activity {
 	private void setConnections() {
 		usernameTXT = (EditText)findViewById(R.id.backupControllerUsernameTXT);
 		passwordTXT = (EditText)findViewById(R.id.backupControllerPasswordTXT);
+		logTXT = (TextView)findViewById(R.id.backupControllerLogTXT);
 		
 		backupBTN = (Button)findViewById(R.id.backupControllerBackupBTN);
 		restoreBTN = (Button)findViewById(R.id.backupControllerRestoreBTN);
@@ -79,41 +82,71 @@ public class BackupController extends Activity {
 				if(username.length()<5 || password.length()<5){
 					Toast.makeText(BackupController.this, "Username & Password must be 5 characters", Toast.LENGTH_SHORT).show();
 				}else{
+					boolean failed = false;
 					
+				
 					try {
 						//PUT PROFILE
-	                	s3Client.createBucket( Constants.getBabyLoadingBucket(username, password) );
-	                	System.out.println("Backing up Profile");
-	                	PutObjectRequest por = new PutObjectRequest(Constants.getBabyLoadingBucket(username, password), Constants.PROFILE_NAME, openFileInput("temp"), null);
+	                	log("Backing up Profile");
+	                	PutObjectRequest por = new PutObjectRequest(Constants.getBabyLoadingBucket(), Constants.getBabyLoadingFile(username, password, Constants.PROFILE_NAME), openFileInput("temp"), null);
 	                	s3Client.putObject( por );
-	                	
+					}catch(Exception e){
+						e.printStackTrace();
+						log("-  FAILED");
+						failed = true;
+					}
+					try{
 	                	//PUT BABY NAME LIST
-	                	System.out.println("Backing up Baby Name List");
-	                	por = new PutObjectRequest(Constants.getBabyLoadingBucket(username, password), Constants.BABY_NAME, openFileInput("names"), null);
+	                	log("Backing up Baby Name List");
+	                	PutObjectRequest por = new PutObjectRequest(Constants.getBabyLoadingBucket(), Constants.getBabyLoadingFile(username, password, Constants.BABY_NAME), openFileInput("names"), null);
 	                	s3Client.putObject( por );
-	                	
+					}catch(Exception e){
+						e.printStackTrace();
+						log("-  FAILED");
+						failed = true;
+					}
+					try{
 	                	//PUT CHECKLIST
-	                	System.out.println("Backing up Check List");
-	                	por = new PutObjectRequest(Constants.getBabyLoadingBucket(username, password), Constants.CHECKLIST_NAME, openFileInput("checklist"), null);
+	                	log("Backing up Check List");
+	                	PutObjectRequest por = new PutObjectRequest(Constants.getBabyLoadingBucket(), Constants.getBabyLoadingFile(username, password, Constants.CHECKLIST_NAME), openFileInput("checklist"), null);
 	                	s3Client.putObject( por );
-	                	
+					}catch(Exception e){
+						e.printStackTrace();
+						log("-  FAILED");
+						failed = true;
+					}
+					try{
 	                	//PUT CHECKLIST
-	                	System.out.println("Backing up Quick Contacts");
-	                	por = new PutObjectRequest(Constants.getBabyLoadingBucket(username, password), Constants.CONTACTS_NAME, openFileInput("quick_contacts"), null);
+	                	log("Backing up Quick Contacts");
+	                	PutObjectRequest por = new PutObjectRequest(Constants.getBabyLoadingBucket(), Constants.getBabyLoadingFile(username, password, Constants.CONTACTS_NAME), openFileInput("quick_contacts"), null);
 	                	s3Client.putObject( por );
-	                	
+					}catch(Exception e){
+						e.printStackTrace();
+						log("-  FAILED");
+						failed = true;
+					}
+					try{
 	                	//PUT Journal
-	                	System.out.println("Backing up Journal");
+	                	log("Backing up Journal");
 	                	convertJournalEntries();
-	                	por = new PutObjectRequest(Constants.getBabyLoadingBucket(username, password), Constants.JOURNAL_NAME, openFileInput("temp"), null);
+	                	PutObjectRequest por = new PutObjectRequest(Constants.getBabyLoadingBucket(), Constants.getBabyLoadingFile(username, password, Constants.JOURNAL_NAME), openFileInput("temp"), null);
 	                	s3Client.putObject( por );
 	                	
-	                	System.out.println("BACKUP COMPLETE");
+	                	
 	                }
 	                catch ( Exception exception ) {
-	                	displayAlert( "Upload Failure", exception.getMessage() );
+	                	
 	                	exception.printStackTrace();
+	                	log("-  FAILED");
+						failed = true;
 	                }
+					
+					if(failed){
+						log("Backup Failure(s)");
+					}else{
+						log("Backup Succesfull\nBackup will be available for 1 year");
+					}
+					
 				}
 				
 				
@@ -131,39 +164,65 @@ public class BackupController extends Activity {
 				}else{
 					try{
 						//GET Profile
-						S3Object objectComplete = s3Client.getObject(Constants.getBabyLoadingBucket(username, password), Constants.PROFILE_NAME);
+						log("Getting Profile");
+						S3Object objectComplete = s3Client.getObject(Constants.getBabyLoadingBucket(), Constants.getBabyLoadingFile(username, password, Constants.PROFILE_NAME));
 						writeFile(objectComplete, "temp");
-						
-						//GET Baby Name List
-						objectComplete = s3Client.getObject(Constants.getBabyLoadingBucket(username, password), Constants.BABY_NAME);
-						writeFile(objectComplete, "names");
-						
-						//GET Baby Coming Check List
-						objectComplete = s3Client.getObject(Constants.getBabyLoadingBucket(username, password), Constants.CHECKLIST_NAME);
-						writeFile(objectComplete, "checklist");
-						
-						//GET Quick Contacts
-						objectComplete = s3Client.getObject(Constants.getBabyLoadingBucket(username, password), Constants.CONTACTS_NAME);
-						writeFile(objectComplete, "quick_contacts");
-						
-						//GET Journal
-						System.out.println("Getting Journal Entries");
-						objectComplete = s3Client.getObject(Constants.getBabyLoadingBucket(username, password), Constants.JOURNAL_NAME);
-						writeFile(objectComplete, "temp");
-						revertJournalEntries();
-						
-						System.out.println("Restore Complete");
-
+						convertToProfile();
 					}catch(Exception e){
 						e.printStackTrace();
+						log("-  FAILED");
 					}
-					convertToProfile();
+					try{
+						//GET Baby Name List
+						log("Getting Baby Name List");
+						S3Object objectComplete = s3Client.getObject(Constants.getBabyLoadingBucket(),Constants.getBabyLoadingFile(username, password, Constants.BABY_NAME));
+						writeFile(objectComplete, "names");
+					}catch(Exception e){
+						e.printStackTrace();
+						log("-  FAILED");
+					}
+					try{
+						//GET Baby Coming Check List
+						log("Getting Baby Coming Checklist");
+						S3Object objectComplete = s3Client.getObject(Constants.getBabyLoadingBucket(), Constants.getBabyLoadingFile(username, password, Constants.CHECKLIST_NAME));
+						writeFile(objectComplete, "checklist");
+					}catch(Exception e){
+						e.printStackTrace();
+						log("-  FAILED");
+					}
+					try{
+						//GET Quick Contacts
+						log("Getting Quick Contacts");
+						S3Object objectComplete = s3Client.getObject(Constants.getBabyLoadingBucket(), Constants.getBabyLoadingFile(username, password, Constants.CONTACTS_NAME));
+						writeFile(objectComplete, "quick_contacts");
+					}catch(Exception e){
+						e.printStackTrace();
+						log("-  FAILED");
+					}
+					try{
+						//GET Journal
+						log("Getting Journal");
+						System.out.println("Getting Journal Entries");
+						S3Object objectComplete = s3Client.getObject(Constants.getBabyLoadingBucket(), Constants.getBabyLoadingFile(username, password, Constants.JOURNAL_NAME));
+						writeFile(objectComplete, "temp");
+						revertJournalEntries();
+					}catch(Exception e){
+						e.printStackTrace();
+						log("-  FAILED");
+					}
+					
+						log("Restore Complete");
+
+					
+					
 				}
 				
 			}
 			
 		});
 	}
+	
+	
 	
 	private void writeFile(S3Object objectComplete, String fileName){
 		try{
@@ -205,7 +264,6 @@ public class BackupController extends Activity {
 			ObjectInputStream ois = new ObjectInputStream(fis);
 
 			SharableProfile sharedProfile = (SharableProfile) ois.readObject();
-			System.out.println("Shared Profile Name: " + sharedProfile.name);
 			profile.setEverything(sharedProfile);
 			
 			ois.close();
@@ -260,7 +318,7 @@ public class BackupController extends Activity {
 }
     
     public void convertJournalEntries(){
-    	System.out.println("Converting Journal Entries");
+    	log("Converting Journal Entries");
     	ArrayList<JournalEntry> notesList = null;
     	ArrayList<SharableJournalEntry> tempList = new ArrayList<SharableJournalEntry>();
     	
@@ -280,7 +338,6 @@ public class BackupController extends Activity {
     	
     	
     	for(int i = 0; i < notesList.size(); i++){
-    		System.out.println(notesList.get(i).getTitle());
     		tempList.add(new SharableJournalEntry(notesList.get(i)));
     	}
     	
@@ -301,7 +358,7 @@ public class BackupController extends Activity {
     }
     
     public void revertJournalEntries(){
-    	System.out.println("Reverting Journal Entries");
+    	log("Reverting Journal Entries");
     	ArrayList<JournalEntry> notesList = new ArrayList<JournalEntry>();
     	ArrayList<SharableJournalEntry> tempList = new ArrayList<SharableJournalEntry>();
     	
@@ -320,7 +377,6 @@ public class BackupController extends Activity {
 		}
     	
     	for(int i = 0; i < tempList.size(); i++){
-    		System.out.println(tempList.get(i).title);
     		notesList.add(new JournalEntry(tempList.get(i)));
     	}
     	
@@ -338,6 +394,10 @@ public class BackupController extends Activity {
 			e.printStackTrace();
 			
 		}
+    }
+    
+    private void log(String string){
+    	logTXT.setText(string + "\n" +logTXT.getText().toString().trim());
     }
    
 }

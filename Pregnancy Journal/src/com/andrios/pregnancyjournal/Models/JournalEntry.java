@@ -48,6 +48,7 @@ public class JournalEntry implements Serializable{
 		this.mood = entry.mood;
 		this.isDrVisit = entry.isDrVisit;
 		this.isUltrasound = entry.isUltrasound;
+		this.isImportant = entry.isImportant;
 		this.title = entry.title;
 		if(entry.entryBitmap != null){
 			entryBitmap = entry.entryBitmap;
