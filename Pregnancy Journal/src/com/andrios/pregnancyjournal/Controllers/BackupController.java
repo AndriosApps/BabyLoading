@@ -8,7 +8,10 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3Client;
@@ -26,6 +29,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -38,6 +43,8 @@ import android.widget.Toast;
 public class BackupController extends Activity {
 	
 	  private AmazonS3Client s3Client = new AmazonS3Client( new BasicAWSCredentials( Constants.ACCESS_KEY_ID, Constants.SECRET_KEY ) );
+
+	private int RESULT_CODE = RESULT_OK;
 		
 	Button backupBTN, restoreBTN;
 	EditText usernameTXT, passwordTXT;
@@ -57,16 +64,33 @@ public class BackupController extends Activity {
         setOnClickListeners();
     
     }
+    
+    public void onDestroy(){
+    	super.onDestroy();
+    	setResult(RESULT_CODE);
+    }
 
     private void getExtras(){
     	Intent intent = this.getIntent();
 		profile = (Profile) intent.getSerializableExtra("profile");
+		
+		
     }
 	private void setConnections() {
 		usernameTXT = (EditText)findViewById(R.id.backupControllerUsernameTXT);
 		passwordTXT = (EditText)findViewById(R.id.backupControllerPasswordTXT);
+		 SharedPreferences prefs = getSharedPreferences("account", 0);
+	        String password = prefs.getString("password", null);
+	        String username = prefs.getString("username", null);
+	        String backupDate = prefs.getString("backup_date", null);
+	        if (password != null && username != null) {
+	        	usernameTXT.setText(username);
+	        	passwordTXT.setText(password);
+	        }
 		logTXT = (TextView)findViewById(R.id.backupControllerLogTXT);
-		
+			if(backupDate != null){
+				logTXT.setText("Last Backup: " + backupDate);
+			}
 		backupBTN = (Button)findViewById(R.id.backupControllerBackupBTN);
 		restoreBTN = (Button)findViewById(R.id.backupControllerRestoreBTN);
 	}
@@ -76,6 +100,7 @@ public class BackupController extends Activity {
 		backupBTN.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
+				logTXT.setText("");
 				String username = usernameTXT.getText().toString().trim();
 				String password = passwordTXT.getText().toString().trim();
 				writeOut(BackupController.this);
@@ -145,6 +170,8 @@ public class BackupController extends Activity {
 						log("Backup Failure(s)");
 					}else{
 						log("Backup Succesfull\nBackup will be available for 1 year");
+						storeKeys(username, password);
+						storeBackupDate();
 					}
 					
 				}
@@ -157,6 +184,7 @@ public class BackupController extends Activity {
 		restoreBTN.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
+				logTXT.setText("");
 				String username = usernameTXT.getText().toString().trim();
 				String password = passwordTXT.getText().toString().trim();
 				if(username.length()<5 || password.length()<5){
@@ -212,7 +240,7 @@ public class BackupController extends Activity {
 					}
 					
 						log("Restore Complete");
-
+						storeKeys(username, password);
 					
 					
 				}
@@ -398,6 +426,26 @@ public class BackupController extends Activity {
     
     private void log(String string){
     	logTXT.setText(string + "\n" +logTXT.getText().toString().trim());
+    }
+   
+    private void storeBackupDate() {
+        // Save the access key for later
+        SharedPreferences prefs = getSharedPreferences("account", 0);
+        Editor edit = prefs.edit();
+        Date date = new Date();
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
+        
+        edit.putString("backup_date", df.format(date));
+        edit.commit();
+    }
+    
+    private void storeKeys(String username, String password) {
+        // Save the access key for later
+        SharedPreferences prefs = getSharedPreferences("account", 0);
+        Editor edit = prefs.edit();
+        edit.putString("username", username);
+        edit.putString("password", password);
+        edit.commit();
     }
    
 }

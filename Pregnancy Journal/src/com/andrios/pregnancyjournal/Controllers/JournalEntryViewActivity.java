@@ -1,11 +1,15 @@
 package com.andrios.pregnancyjournal.Controllers;
 
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 
 import com.andrios.pregnancyjournal.R;
+import com.andrios.pregnancyjournal.Database.JournalDBAdapter;
+import com.andrios.pregnancyjournal.Models.JournalEntry;
 import com.andrios.pregnancyjournal.Models.JournalEntry;
 import com.andrios.pregnancyjournal.R.anim;
 import com.andrios.pregnancyjournal.R.drawable;
@@ -16,13 +20,17 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.graphics.Bitmap.CompressFormat;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
@@ -47,19 +55,20 @@ public class JournalEntryViewActivity extends Activity {
 
 	static final int SELECT_IMAGE = 2;
 	
-	ArrayList<JournalEntry> noteList;
-	int index, mMonth, mDay, mYear;
+	
+	int mMonth, mDay, mYear;
+	long index;
 	
 	TextView dateLBL;
 	EditText commentsTXT, titleTXT;
 	JournalEntry note;
-	Button saveBTN;
 	ViewFlipper flipper;
 	OnClickListener myOnClickListener;
 	ImageView entryIMG;
 	TextView moodTXT;
 	CheckBox importantCheckBox, ultrasoundCheckBox, drVisitCheckBox;
-	
+	JournalDBAdapter dbAdapter;
+	Cursor cursor;
 
 	
     /** Called when the activity is first created. */
@@ -69,7 +78,8 @@ public class JournalEntryViewActivity extends Activity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.journalentryviewactivity);
         
-     
+        dbAdapter = new JournalDBAdapter(this);
+        dbAdapter.open();
         getExtras();
         setConnections();
         setOnClickListeners();
@@ -79,16 +89,20 @@ public class JournalEntryViewActivity extends Activity {
 	@SuppressWarnings("unchecked")
 	private void getExtras() {
 		Intent intent = this.getIntent();
-		noteList = (ArrayList<JournalEntry>) intent.getSerializableExtra("list");
 		index = intent.getIntExtra("index", -1);
 		if(index == -1){
 			note = new JournalEntry();
 			
 		}else{
-			note = noteList.get(index);
+			
+			
+			note = dbAdapter.fetchJournalEntry(index);
+	    	
 		}
 		
 	}
+	
+	
 	
 	private void setConnections() {
 		
@@ -101,11 +115,18 @@ public class JournalEntryViewActivity extends Activity {
 		
 		
 		entryIMG = (ImageView) findViewById(R.id.journalEntryViewActivityEntryIMG);
-		if(note.getBitmap() != null){
-			entryIMG.setImageBitmap(note.getBitmap());
-		}
 		
-		saveBTN = (Button) findViewById(R.id.journalEntryViewActivitySaveBTN);
+			File root = android.os.Environment.getExternalStorageDirectory();               
+
+			 File dir = new File (root.getAbsolutePath() + "/baby_loading/");
+			 System.out.println("REading image file: " + note.getImageFile());
+			 Bitmap bitmap = BitmapFactory.decodeFile(note.getImageFile());
+			 if(bitmap != null){
+				 entryIMG.setImageBitmap(bitmap);
+			 }
+			
+		
+		
 		
 		dateLBL = (TextView) findViewById(R.id.journalEntryViewActivityDateLBL);
 		dateLBL.setText(note.getDateString());
@@ -136,7 +157,7 @@ public class JournalEntryViewActivity extends Activity {
 		entryIMG.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				
+				note.setTitle(titleTXT.getText().toString().trim());
 				Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE); 
                 startActivityForResult(cameraIntent, CAMERA_REQUEST); 
 			}
@@ -165,34 +186,7 @@ public class JournalEntryViewActivity extends Activity {
 			
 		});
 		
-		saveBTN.setOnClickListener(new OnClickListener(){
-
-			public void onClick(View v) {
-				if(checkFormat()){
-					
-					Intent intent = new Intent();
-					note.setNotes(commentsTXT.getText().toString().trim());
-					note.setMood(moodTXT.getText().toString().trim());
-					note.setDrVisit(drVisitCheckBox.isChecked());
-					note.setUltrasound(ultrasoundCheckBox.isChecked());
-					note.setTitle(titleTXT.getText().toString().trim());
-					note.setImportant(importantCheckBox.isChecked());
-					
-
-					if(index == -1){
-						noteList.add(note);
-					}else{
-						noteList.set(index, note);
-					}
-					
-					Toast.makeText(JournalEntryViewActivity.this, "saving entry", Toast.LENGTH_SHORT).show();//TODO
-
-					intent.putExtra("list", noteList);
-					JournalEntryViewActivity.this.setResult(RESULT_OK, intent);
-					JournalEntryViewActivity.this.finish();
-				}
-			}
-		});
+	
 	}
 	
 	private boolean checkFormat() {
@@ -244,16 +238,44 @@ public class JournalEntryViewActivity extends Activity {
 			
 			 if (requestCode == CAMERA_REQUEST) {  
 				 if(resultCode == RESULT_OK){
+					
 					 Bitmap photo = (Bitmap) intent.getExtras().get("data"); 
-			            note.setBitmap(photo);
-			            entryIMG.setImageBitmap(photo);
+					 note.setBitmap(photo);
+			         entryIMG.setImageBitmap(photo);
 				 }
 		           
 		        }  
 	    }
 
 	
+		@Override
+		public boolean onKeyDown(int keyCode, KeyEvent event)  {
+		   if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+			   if(checkFormat()){
+					
+					Intent intent = new Intent();
+					note.setNotes(commentsTXT.getText().toString().trim());
+					note.setMood(moodTXT.getText().toString().trim());
+					note.setDrVisit(drVisitCheckBox.isChecked());
+					note.setUltrasound(ultrasoundCheckBox.isChecked());
+					note.setTitle(titleTXT.getText().toString().trim());
+					note.setImportant(importantCheckBox.isChecked());
+					
+					if(index >= 0){
+						dbAdapter.updateJournalEntry(note, index);
+					}else{
+						dbAdapter.createJournalEntry(note);
+					}
+				
+					
+					JournalEntryViewActivity.this.setResult(RESULT_OK, intent);
+					JournalEntryViewActivity.this.finish();
+				}
+		       return true;
+		   }
 
+		return super.onKeyDown(keyCode, event);
+		}
 
 		
 		

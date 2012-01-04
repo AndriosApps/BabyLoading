@@ -2,13 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_color"
     android:orientation="vertical" >
-
+
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_weight="0" >
+        android:layout_weight="0"
+        android:background="@color/task_bar"
+        android:gravity="center_vertical" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Andrios Cloud"
+            android:textSize="22dp" />
 
     </LinearLayout>
 
@@ -23,8 +33,7 @@
             android:id="@+id/backupControllerUsernameTXT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/username"
-            android:text="murphy360" >
+            android:hint="@string/username">
 
             <requestFocus />
         </EditText>
@@ -33,27 +42,37 @@
             android:id="@+id/backupControllerPasswordTXT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/password"
-            android:text="magicguy07" />
-
-        <Button
-            android:id="@+id/backupControllerBackupBTN"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Backup" />
-
-        <Button
-            android:id="@+id/backupControllerRestoreBTN"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Restore" />
-
+            android:hint="@string/password"/>
+
         <TextView
             android:id="@+id/backupControllerLogTXT"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:background="@color/black"
             android:text="@string/empty"
             android:textColor="@color/green" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="0" >
+
+            <Button
+                android:id="@+id/backupControllerBackupBTN"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Backup" />
+
+            <Button
+                android:id="@+id/backupControllerRestoreBTN"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Restore" />
+        </LinearLayout>
 
     </LinearLayout>
 

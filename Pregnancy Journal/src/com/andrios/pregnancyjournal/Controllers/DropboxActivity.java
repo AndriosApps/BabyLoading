@@ -17,6 +17,7 @@ import com.andrios.pregnancyjournal.R;
 import com.andrios.pregnancyjournal.Models.BabyName;
 import com.andrios.pregnancyjournal.Models.JournalEntry;
 import com.andrios.pregnancyjournal.Models.Profile;
+import com.andrios.pregnancyjournal.BackupHelper;
 import com.andrios.pregnancyjournal.R.id;
 import com.andrios.pregnancyjournal.R.layout;
 import com.andrios.pregnancyjournal.UploadFolder;
@@ -46,6 +47,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class DropboxActivity extends Activity {
@@ -82,6 +84,7 @@ public class DropboxActivity extends Activity {
 	protected static final int BACKUP = 0;
 	
 	Button backupBTN, linkBTN;
+	TextView outputTXT;
 	ArrayList<BabyName> nameList;
 	ArrayList<JournalEntry> journalList;
 	Profile profile;
@@ -141,6 +144,7 @@ public class DropboxActivity extends Activity {
 	private void setConnections() {
 		linkBTN = (Button) findViewById(R.id.dropboxViewLinkBTN);
 		backupBTN = (Button) findViewById(R.id.dropboxViewBackupBTN);
+		outputTXT = (TextView) findViewById(R.id.dropboxOutputTXT);
 		
 	}
 
@@ -162,6 +166,11 @@ public class DropboxActivity extends Activity {
 		backupBTN.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
+				outputTXT.append(BackupHelper.writeNames(DropboxActivity.this)+"\n");
+
+				outputTXT.append(BackupHelper.writeJournal(DropboxActivity.this)+"\n");
+
+				outputTXT.append(BackupHelper.writeProfile(DropboxActivity.this)+"\n");
 				 Date date = new Date();
 	             DateFormat df = new SimpleDateFormat("yyyy-MM-dd-kk-mm-ss");
 	             String folder = "/"+df.format(date);
@@ -169,11 +178,22 @@ public class DropboxActivity extends Activity {
 					File dir = new File(sdCard + "/baby_loading/");
 					if (dir.isDirectory()){
 						for (File child : dir.listFiles()) {
-						    if (".".equals(child.getName()) || "..".equals(child.getName())) {
-						      continue;  // Ignore the self and parent aliases.
-						    }
-						    UploadFolder upload = new UploadFolder(DropboxActivity.this, mApi, SAVE_DIR, child);
-		                    upload.execute();
+							if(child.isDirectory()){
+								for (File subChild : child.listFiles()) {
+									 if (".".equals(subChild.getName()) || "..".equals(subChild.getName())) {
+									      continue;  // Ignore the self and parent aliases.
+									    }
+									    UploadFolder upload = new UploadFolder(DropboxActivity.this, mApi, SAVE_DIR+"/photos/", subChild);
+					                    upload.execute();
+								}
+							}else{
+								 if (".".equals(child.getName()) || "..".equals(child.getName())) {
+								      continue;  // Ignore the self and parent aliases.
+								    }
+								    UploadFolder upload = new UploadFolder(DropboxActivity.this, mApi, SAVE_DIR, child);
+				                    upload.execute();
+							}
+						   
 						  }
 
 					}
@@ -186,124 +206,8 @@ public class DropboxActivity extends Activity {
 
 	}
 	
-	private void writeNames() {
-		readNameData();
-		try {
-			
-			File sdCard = Environment.getExternalStorageDirectory();
-			File dir = new File(sdCard + "/baby_loading");
-			dir.mkdirs();
-
-			if(sdCard.canWrite()){
-				File nameFile = new File(dir, "BabyNames.txt");
-				FileWriter myWriter = new FileWriter(nameFile);
-				BufferedWriter out = new BufferedWriter(myWriter);
-				for(int i = 0; i < nameList.size(); i++){
-					out.write(Integer.toString(i));
-					out.write(nameList.get(i).print());
-				}
-				out.close();
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			
-		}
-		
-	}
-
-	private void writeJournal() {
-		readJournalData();
-		try {
-			 
-			 
-			File sdCard = Environment.getExternalStorageDirectory();
-			File dir = new File(sdCard + "/baby_loading");
-			dir.mkdirs();
-
-			if(sdCard.canWrite()){
-				File nameFile = new File(dir, "MyJournal.txt");
-				FileWriter myWriter = new FileWriter(nameFile);
-				BufferedWriter out = new BufferedWriter(myWriter);
-				for(int i = 0; i < journalList.size(); i++){
-					out.write(journalList.get(i).print());
-				}
-				out.close();
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			
-		}
-	}
 	
 	
-	private void readNameData() {
-		try {
-			FileInputStream fis = openFileInput("names");
-			ObjectInputStream ois = new ObjectInputStream(fis);
-
-			nameList = (ArrayList<BabyName>) ois.readObject();
-			ois.close();
-			fis.close();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			
-			
-		}
-		
-		
-	}
-	
-	private void readJournalData() {
-		try {
-			FileInputStream fis = openFileInput("notes");
-			ObjectInputStream ois = new ObjectInputStream(fis);
-
-			journalList = (ArrayList<JournalEntry>) ois.readObject();
-			ois.close();
-			fis.close();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			
-			
-		}
-		
-		
-	}
-	
-	private void readProfile() {
-		try {
-			FileInputStream fis = openFileInput("profile");
-			ObjectInputStream ois = new ObjectInputStream(fis);
-			
-			profile = (Profile) ois.readObject();
-			ois.close();
-			fis.close();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			
-			
-		}
-		
-		
-	}
-	
-	@Override
-    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-		
-    	if (requestCode == BACKUP) {
-    		if (resultCode == RESULT_OK) {
-    			readProfile();
-    		} else {
-    			
-    			Toast.makeText(this, "Canceled", Toast.LENGTH_SHORT).show();
-    		}
-    	}
-    }
 	
 	
 	 private void logOut() {
@@ -323,8 +227,11 @@ public class DropboxActivity extends Activity {
 	    	mLoggedIn = loggedIn;
 	    	if (loggedIn) {
 	    		linkBTN.setText("Unlink from Dropbox");
+	    		backupBTN.setVisibility(View.VISIBLE);
 	    	} else {
 	    		linkBTN.setText("Link with Dropbox");
+
+	    		backupBTN.setVisibility(View.GONE);
 	    	}
 	    }
 

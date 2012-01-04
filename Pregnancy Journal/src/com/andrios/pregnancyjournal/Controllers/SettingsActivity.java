@@ -1,13 +1,11 @@
 package com.andrios.pregnancyjournal.Controllers;
 
 
-import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileWriter;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
+import com.andrios.pregnancyjournal.BackupHelper;
 import com.andrios.pregnancyjournal.R;
 import com.andrios.pregnancyjournal.Models.BabyName;
 import com.andrios.pregnancyjournal.Models.JournalEntry;
@@ -16,17 +14,18 @@ import com.andrios.pregnancyjournal.Models.Profile;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class SettingsActivity extends Activity {
   
 	protected static final int BACKUP = 0;
+	protected static final int PROFILE = 1;
 	
 	Button saveBTN, aboutBTN, backupBTN, dropboxBTN;
 	ImageView profileBTN;
@@ -73,6 +72,8 @@ public class SettingsActivity extends Activity {
 			profileBTN.setImageBitmap(profile.getBitmap());
 			
 		}
+		LinearLayout hideme = (LinearLayout)findViewById(R.id.settingsActivityHideMe);
+		hideme.setVisibility(View.GONE);
 	}
 
 	private void setOnClickListeners() {
@@ -99,7 +100,7 @@ public class SettingsActivity extends Activity {
 			public void onClick(View v) {
 				Intent intent = new Intent(v.getContext(), ProfileActivity.class);
 				intent.putExtra("profile", profile);
-				startActivity(intent);
+				startActivityForResult(intent, PROFILE);
 				
 			}
 		});
@@ -115,8 +116,11 @@ public class SettingsActivity extends Activity {
 		saveBTN.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				writeJournal();
-				writeNames();
+				BackupHelper.writeNames(SettingsActivity.this);
+
+				BackupHelper.writeJournal(SettingsActivity.this);
+
+				BackupHelper.writeProfile(SettingsActivity.this);
 				Toast.makeText(SettingsActivity.this, "Files have been written to SDCard/baby_loading",
 						Toast.LENGTH_SHORT).show();
 				
@@ -124,93 +128,7 @@ public class SettingsActivity extends Activity {
 		});
 	}
 	
-	private void writeNames() {
-		readNameData();
-		try {
-			
-			File sdCard = Environment.getExternalStorageDirectory();
-			File dir = new File(sdCard + "/baby_loading");
-			dir.mkdirs();
 
-			if(sdCard.canWrite()){
-				File nameFile = new File(dir, "BabyNames.txt");
-				FileWriter myWriter = new FileWriter(nameFile);
-				BufferedWriter out = new BufferedWriter(myWriter);
-				for(int i = 0; i < nameList.size(); i++){
-					out.write(Integer.toString(i));
-					out.write(nameList.get(i).print());
-				}
-				out.close();
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			
-		}
-		
-	}
-
-	private void writeJournal() {
-		readJournalData();
-		try {
-			 
-			 
-			File sdCard = Environment.getExternalStorageDirectory();
-			File dir = new File(sdCard + "/baby_loading");
-			dir.mkdirs();
-
-			if(sdCard.canWrite()){
-				File nameFile = new File(dir, "MyJournal.txt");
-				FileWriter myWriter = new FileWriter(nameFile);
-				BufferedWriter out = new BufferedWriter(myWriter);
-				for(int i = 0; i < journalList.size(); i++){
-					out.write(journalList.get(i).print());
-				}
-				out.close();
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			
-		}
-	}
-	
-	
-	private void readNameData() {
-		try {
-			FileInputStream fis = openFileInput("names");
-			ObjectInputStream ois = new ObjectInputStream(fis);
-
-			nameList = (ArrayList<BabyName>) ois.readObject();
-			ois.close();
-			fis.close();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			
-			
-		}
-		
-		
-	}
-	
-	private void readJournalData() {
-		try {
-			FileInputStream fis = openFileInput("notes");
-			ObjectInputStream ois = new ObjectInputStream(fis);
-
-			journalList = (ArrayList<JournalEntry>) ois.readObject();
-			ois.close();
-			fis.close();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			
-			
-		}
-		
-		
-	}
 	
 	private void readProfile() {
 		try {
@@ -233,12 +151,12 @@ public class SettingsActivity extends Activity {
 	@Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 		
-    	if (requestCode == BACKUP) {
+    	if (requestCode == BACKUP || requestCode == PROFILE) {
     		if (resultCode == RESULT_OK) {
     			readProfile();
     		} else {
     			
-    			Toast.makeText(this, "Canceled", Toast.LENGTH_SHORT).show();
+    			//Toast.makeText(this, "Canceled", Toast.LENGTH_SHORT).show();
     		}
     	}
     }

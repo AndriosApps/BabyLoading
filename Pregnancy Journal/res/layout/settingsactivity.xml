@@ -126,25 +126,34 @@
               </LinearLayout>
 
               <LinearLayout
-                  android:id="@+id/linearLayout9"
-                  android:layout_width="50dp"
-                  android:layout_height="100dp"
-                  android:layout_weight="1"
-                  android:gravity="center"
-                  android:orientation="vertical" >
+                  android:id="@+id/settingsActivityHideMe"
+                  android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1" >
 
-                  <Button
-                      android:id="@+id/settingsActivityBackupBTN"
-                      android:layout_width="75dip"
-                      android:layout_height="75dp"
-                      android:layout_weight="0" />
+                  <LinearLayout
+                      android:id="@+id/linearLayout9"
+                      android:layout_width="50dp"
+                      android:layout_height="100dp"
+                      android:layout_weight="1"
+                      android:gravity="center"
+                      android:orientation="vertical" >
 
-                  <TextView
-                      android:id="@+id/TextView02"
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:text="AWS Cloud"
-                      android:textColor="#000000" />
+                      <Button
+                          android:id="@+id/settingsActivityBackupBTN"
+                          android:layout_width="75dip"
+                          android:layout_height="75dp"
+                          android:layout_weight="0" />
+
+                      <TextView
+                          android:id="@+id/TextView02"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_weight="0"
+                          android:text="AWS Cloud"
+                          android:textColor="#000000" />
+                  </LinearLayout>
+
               </LinearLayout>
 
               <LinearLayout
@@ -166,9 +175,11 @@
                       android:id="@+id/TextView03"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
+                      android:layout_weight="0"
                       android:text="Dropbox"
                       android:textColor="#000000" />
               </LinearLayout>
+
           </LinearLayout>
 
       </LinearLayout>

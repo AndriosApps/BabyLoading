@@ -10,6 +10,8 @@ import java.util.Calendar;
 
 import com.andrios.pregnancyjournal.R;
 import com.andrios.pregnancyjournal.SegmentedControlButton;
+import com.andrios.pregnancyjournal.Database.JournalDBAdapter;
+import com.andrios.pregnancyjournal.Models.JournalEntry;
 import com.andrios.pregnancyjournal.Models.Profile;
 import com.andrios.pregnancyjournal.R.drawable;
 import com.andrios.pregnancyjournal.R.id;
@@ -21,6 +23,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
@@ -50,6 +54,7 @@ public class ProfileActivity extends Activity {
 	DatePicker datePicker;
 
 	ImageView profileIMG;
+	JournalDBAdapter dbAdapter;
 	
 	
     /** Called when the activity is first created. */
@@ -73,6 +78,50 @@ public class ProfileActivity extends Activity {
 		if(profile.firstRun){
 			createDialog();
 		}
+	}
+	
+	public void onDestroy(){
+		super.onDestroy();
+		 updateJournalEntry();
+	}
+	
+	private void updateJournalEntry(){
+		 SharedPreferences prefs = getSharedPreferences("profile", 0);
+	        int lmpId = prefs.getInt("lmp", -1);
+	        int dueId = prefs.getInt("due", -1);
+		dbAdapter = new JournalDBAdapter(this);
+        dbAdapter.open();
+        JournalEntry j = new JournalEntry();
+        j.setTitle(profile.getName() + "'s LMP");
+        j.setDate(profile.getDate());
+        if(lmpId != -1){
+        	dbAdapter.updateJournalEntry(j, lmpId);
+        }else{
+        	lmpId = (int) dbAdapter.createJournalEntry(j);
+        	Editor edit = prefs.edit();
+        	edit.putInt("lmp", lmpId);
+            edit.commit();
+        }
+        
+        //Set Due Date Entry
+        JournalEntry j1 = new JournalEntry();
+        j1.setTitle(profile.getName() + "'s Due Date");
+        Calendar c = profile.getDate();
+        c.add(Calendar.DAY_OF_YEAR, 280);
+        j1.setDate(c);
+        ;
+        if(dueId != -1){
+        	dbAdapter.updateJournalEntry(j1, dueId);
+        }else{
+        	dueId = (int) dbAdapter.createJournalEntry(j1);
+        	Editor edit = prefs.edit();
+        	edit.putInt("due", dueId);
+            edit.commit();
+        }
+        
+        dbAdapter.close();
+        
+        
 	}
 
 

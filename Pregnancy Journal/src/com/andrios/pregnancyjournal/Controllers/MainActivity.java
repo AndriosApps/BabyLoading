@@ -8,6 +8,8 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 
 import com.andrios.pregnancyjournal.R;
+import com.andrios.pregnancyjournal.Database.DatabaseHelper;
+import com.andrios.pregnancyjournal.Database.JournalDBAdapter;
 import com.andrios.pregnancyjournal.Models.Profile;
 import com.andrios.pregnancyjournal.Models.SharableProfile;
 
@@ -41,6 +43,8 @@ public class MainActivity extends Activity {
 	
 	LinearLayout timelineLL;
 	
+	JournalDBAdapter dbHelper;
+	
 	
     /** Called when the activity is first created. */
     @Override
@@ -49,8 +53,7 @@ public class MainActivity extends Activity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.main);
         com.andrios.pregnancyjournal.AppRater.app_launched(this);
-        
-        
+       
     }
 
 	
@@ -191,7 +194,12 @@ public class MainActivity extends Activity {
 		profile.getDays();
 		profile.getWeekDays();
 		dueDateLBL.setText(profile.getDueDate());
-		ageLBL.setText(" Week " + profile.getWeek() + " Day "  + (profile.getWeekDays() + 1) );
+		if(profile.getWeek() > 1){
+			ageLBL.setText(" Week " + profile.getWeek() + " Day "  + (profile.getWeekDays() + 1) );
+		}else{
+			ageLBL.setText("Not Yet Pregnant");
+		}
+		
 		
 		LinearLayout trimester = (LinearLayout) findViewById(R.id.mainActivityTrimesterLL);
 		for(int i = 0; i < trimester.getChildCount(); i++){
@@ -223,7 +231,9 @@ public class MainActivity extends Activity {
 		}
 		
 		int thisWeek = profile.getWeek() - 1;
-		if(thisWeek >= 0){
+		System.out.println("This Week: " + thisWeek);
+		System.out.println("Child Count: " + week.getChildCount());
+		if(thisWeek >= 0 && thisWeek < week.getChildCount()){
 			TextView weekText = (TextView) week.getChildAt(thisWeek);
 			weekText.setBackgroundColor(Color.CYAN);	
 		}
@@ -233,8 +243,10 @@ public class MainActivity extends Activity {
 		for(int i = 0; i < month.getChildCount(); i++){
 			month.getChildAt(i).setBackgroundColor(R.color.andrios_grey);
 		}
-		TextView monthText = (TextView) month.getChildAt(profile.getMonth());
-		monthText.setBackgroundColor(Color.CYAN);
+		if(profile.getMonth() < month.getChildCount()){
+			TextView monthText = (TextView) month.getChildAt(profile.getMonth());
+			monthText.setBackgroundColor(Color.CYAN);
+		}
 	}
 	
 	private void readData() {

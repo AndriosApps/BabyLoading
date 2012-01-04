@@ -6,9 +6,13 @@ import java.io.FileOutputStream;
 import java.io.Serializable;
 import java.util.Calendar;
 
+import com.andrios.pregnancyjournal.Database.JournalDBAdapter;
 
+
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.widget.Toast;
@@ -27,8 +31,11 @@ public class JournalEntry implements Serializable{
 	boolean isImportant;
 	boolean isDrVisit;
 	boolean isUltrasound;
-	double weight;
-	double waist;
+	boolean isWeighIn;
+	boolean isTimeLapse;
+	int weight;
+	int waist;
+	String imageFile;
 	SerialBitmap entryBitmap;
 	
 	public JournalEntry(){
@@ -37,8 +44,52 @@ public class JournalEntry implements Serializable{
 		this.mood = "";
 		this.isDrVisit = false;
 		this.isUltrasound = false;
+		this.isImportant = false;
+		this.isWeighIn = false;
+		this.isTimeLapse = false;
 		this.title = "";
 		//entryBitmap = new SerialBitmap();
+	}
+	
+	public JournalEntry(Cursor c){
+		c.moveToFirst();
+		System.out.println("Journal Entry Count: " + c.getCount());
+		this.date = Calendar.getInstance();
+		String dateString = c.getString(c.getColumnIndex(JournalDBAdapter.KEY_DATE));
+		this.date.setTimeInMillis(Long.parseLong(dateString));
+		
+		this.notes = c.getString(c.getColumnIndex(JournalDBAdapter.KEY_NOTES));
+		this.mood = c.getString(c.getColumnIndex(JournalDBAdapter.KEY_MOOD));
+		this.title = c.getString(c.getColumnIndex(JournalDBAdapter.KEY_TITLE));
+		this.weight = c.getInt(c.getColumnIndex(JournalDBAdapter.KEY_WEIGHT));
+		this.waist = c.getInt(c.getColumnIndex(JournalDBAdapter.KEY_WAIST));
+		if(c.getInt(c.getColumnIndex(JournalDBAdapter.KEY_IS_DOCTOR)) == 1){
+			this.isDrVisit = true;
+		}else{
+			this.isDrVisit = false;
+		}
+		if(c.getInt(c.getColumnIndex(JournalDBAdapter.KEY_IS_ULTRASOUND)) == 1){
+			this.isUltrasound = true;
+		}else{
+			this.isUltrasound = false;
+		}
+		if(c.getInt(c.getColumnIndex(JournalDBAdapter.KEY_IS_IMPORTANT)) == 1){
+			this.isImportant = true;
+		}else{
+			this.isImportant = false;
+		}
+		if(c.getInt(c.getColumnIndex(JournalDBAdapter.KEY_IS_WEIGH_IN)) == 1){
+			this.isWeighIn = true;
+		}else{
+			this.isWeighIn = false;
+		}
+		if(c.getInt(c.getColumnIndex(JournalDBAdapter.KEY_IS_TIMELAPSE)) == 1){
+			this.isTimeLapse = true;
+		}else{
+			this.isTimeLapse = false;
+		}
+
+		this.imageFile = c.getString(c.getColumnIndex(JournalDBAdapter.KEY_IMAGE));
 	}
 	
 	public JournalEntry(SharableJournalEntry entry){
@@ -88,7 +139,6 @@ public class JournalEntry implements Serializable{
 		int month = date.get(Calendar.MONTH)+1;
 		int year = date.get(Calendar.YEAR);
 		String monthString = "";
-		System.out.println("Month Is " + month);
 		if(month == 1){
 			monthString = "January";
 		}else if(month == 2){
@@ -119,11 +169,23 @@ public class JournalEntry implements Serializable{
 		return dateString;
 	}
 	
-	public double getWeight(){
+	public String getImageDateString(){
+		String dateString = "";
+		int day = date.get(Calendar.DAY_OF_MONTH);
+		int month = date.get(Calendar.MONTH)+1;
+		int year = date.get(Calendar.YEAR);
+		
+		dateString = year + " " + month + " " + day + " "; 
+        
+		return dateString;
+		
+	}
+	
+	public int getWeight(){
 		return weight;
 	}
 	
-	public  double getWaist(){
+	public  int getWaist(){
 		return waist;
 	}
 	
@@ -154,6 +216,30 @@ public class JournalEntry implements Serializable{
 	
 	
 	
+	public String getImageFile() {
+		return imageFile;
+	}
+
+	public void setImageFile(String imageFile) {
+		this.imageFile = imageFile;
+	}
+
+	public boolean isWeighIn() {
+		return isWeighIn;
+	}
+
+	public void setWeighIn(boolean isWeighIn) {
+		this.isWeighIn = isWeighIn;
+	}
+
+	public boolean isTimeLapse() {
+		return isTimeLapse;
+	}
+
+	public void setTimeLapse(boolean isTimeLapse) {
+		this.isTimeLapse = isTimeLapse;
+	}
+
 	public void setNotes(String notes){
 		this.notes = notes;
 	}
@@ -165,10 +251,24 @@ public class JournalEntry implements Serializable{
 	
 	public void setTitle(String title){
 		this.title = title;
+		if(imageFile != null){
+			
+			File root = android.os.Environment.getExternalStorageDirectory();               
+
+			 File dir = new File (root.getAbsolutePath() + "/baby_loading/photos");
+			 dir.mkdirs();
+			 
+			File file = new File(imageFile);
+			 File newFile = new File (dir, "/"+getImageDateString() + this.title + ".png");
+			 file.renameTo(newFile);
+			 setImageFile(dir+"/"+getImageDateString()+getTitle()+".png");
+		}
+		
 	}
 
 	public void setDate(Calendar date){
 		this.date = date;
+		
 	}
 	
 	
@@ -180,6 +280,18 @@ public class JournalEntry implements Serializable{
 		date.set(Calendar.YEAR, year);
 		date.set(Calendar.MONTH, monthOfYear);
 		date.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+		if(imageFile != null){
+			
+			File root = android.os.Environment.getExternalStorageDirectory();               
+
+			 File dir = new File (root.getAbsolutePath() + "/baby_loading/photos");
+			 dir.mkdirs();
+			 
+			File file = new File(imageFile);
+			 File newFile = new File (dir, "/"+getImageDateString() + this.title + ".png");
+			 file.renameTo(newFile);
+			 setImageFile(dir+"/"+getImageDateString()+getTitle()+".png");
+		}
 		
 	}
 	
@@ -201,23 +313,9 @@ public class JournalEntry implements Serializable{
 		if(this.isUltrasound){
 			ultrasound = "\nUltrasound";
 		}
-		if(this.getBitmap() != null){
-			File root = android.os.Environment.getExternalStorageDirectory();               
-
-			 File dir = new File (root.getAbsolutePath() + "/baby_loading/");
-			 dir.mkdirs();
-			 File file = new File (dir, getDateString() + this.title + ".png");
-			 
-				 try {
-						
-						entryBitmap.bitmap.compress(CompressFormat.PNG, 100, new FileOutputStream(file));
-						System.out.println("Output: " +this.title + ".png");
-					} catch (FileNotFoundException e) {
-						// TODO Auto-generated catch block
-					
-						e.printStackTrace();
-					}
-				 imageName = "\n\nAssociated Image: " + getDateString() + this.title + ".png";
+		
+		if(imageFile != null){
+			imageName = imageFile;
 		}
 		
 		String myString = 
@@ -234,11 +332,13 @@ public class JournalEntry implements Serializable{
 		return myString;
 	}
 	
-	public void setWeight(double weight){
+
+	
+	public void setWeight(int weight){
 		this.weight = weight;
 	}
 	
-	public void setWaist(double waist){
+	public void setWaist(int waist){
 		this.waist = waist;
 	}
 	public void setDrVisit(boolean isDrVisit){
@@ -251,8 +351,25 @@ public class JournalEntry implements Serializable{
 
 	
 	public void setBitmap(Bitmap profileBitmap){
+		if(this.title.equals("")){
+			
+		}
+		File root = android.os.Environment.getExternalStorageDirectory();               
+
+		 File dir = new File (root.getAbsolutePath() + "/baby_loading/photos");
+		 dir.mkdirs();
+		 File file = new File (dir, "/"+getImageDateString() + this.title + ".png");
+		 
+			 try {
+					
+					profileBitmap.compress(CompressFormat.PNG, 100, new FileOutputStream(file));
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+				
+					e.printStackTrace();
+				}
+		setImageFile(dir+"/"+getImageDateString()+getTitle()+".png");
 		
-		this.entryBitmap= new SerialBitmap(profileBitmap);
 	}
 	
 	

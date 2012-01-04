@@ -172,7 +172,7 @@ public class UploadFolder extends AsyncTask<Void, Long, Boolean> {
     protected void onPostExecute(Boolean result) {
         mDialog.dismiss();
         if (result) {
-            showToast("File successfully uploaded");
+            
         } else {
             showToast(mErrorMsg);
         }

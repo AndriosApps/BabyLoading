@@ -2,6 +2,7 @@ package com.andrios.pregnancyjournal.Models;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 
 import android.graphics.Bitmap;
@@ -99,16 +100,11 @@ public class Profile implements Serializable{
 	}
 	
 	public int getMonth(){
-		Calendar today = getToday();
+		int week = getWeek();
 		
-		int y1 = c.get(Calendar.YEAR);
-		int y2 = today.get(Calendar.YEAR);
-		int m1 = c.get(Calendar.MONTH) + 1;
-		int m2 = today.get(Calendar.MONTH) + 1;
-		
-		int returnValue = (y2 - y1) * 12 + (m2 - m1);
+		int month = week / 4;
 
-		return returnValue;
+		return month;
 	}
 	
 	public int getDays(){
@@ -243,6 +239,12 @@ public class Profile implements Serializable{
 		c.set(Calendar.SECOND, 1);
 		
 		return c;
+	}
+
+	public String print() {
+		String output = this.name + "\nLMP: " + this.getDateString() + "\nDue Date: " + this.getDueDate() ;
+		
+		return output;
 	}
 	
 }
