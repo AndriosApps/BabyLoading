@@ -32,6 +32,7 @@
         <activity android:name=".Controllers.AboutActivity" />
         <activity android:name=".Controllers.ProfileActivity" />"
         <activity android:name=".Controllers.CheckListActivity" />"
+        <activity android:name=".Controllers.QuestionListActivity" />"
         <activity android:name=".Controllers.DoctorListActivity" />"
         <activity android:name=".Controllers.BabyNameViewActivity" />"
         <activity android:name=".Controllers.BackupController" />"

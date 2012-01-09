@@ -285,7 +285,7 @@ public class MainActivity extends Activity {
 	
 	private void panicDialog(){
 		final AlertDialog.Builder alert = new AlertDialog.Builder(this);
-		final CharSequence[] items = {"Baby's Coming...", "Quick Contacts..."}; 
+		final CharSequence[] items = {"Baby's Coming...", "Quick Contacts...", "Questions..."}; 
 		alert.setTitle("Stay Calm...");
 		alert.setItems(items, new DialogInterface.OnClickListener() {
 			
@@ -295,6 +295,9 @@ public class MainActivity extends Activity {
 					startActivity(intent);
 				}else if(item == 1){
 					Intent intent = new Intent(MainActivity.this, DoctorListActivity.class);
+					startActivity(intent);
+				}else if(item == 2){
+					Intent intent = new Intent(MainActivity.this, QuestionListActivity.class);
 					startActivity(intent);
 				}
 				
